@@ -19,7 +19,8 @@ unmanagedSourceDirectories in Compile <++= baseDirectory { base =>
     base / "src/main/s99",
     base / "src/test/s99",
     base / "src/main/fp",
-    base / "src/main/jisuanke"
+    base / "src/main/jisuanke",
+    base / "src/main/leetcode"
   )
 }
 
