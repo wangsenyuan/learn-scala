@@ -1,0 +1,3 @@
+http://poj.org/problem?id=3684
+
+Simon is doing a physics experiment with N identical balls with the same radius of R centimeters. Before the experiment, all N balls are fastened within a vertical tube one by one and the lowest point of the lowest ball is H meters above the ground. At beginning of the experiment, (at second 0), the first ball is released and falls down due to the gravity. After that, the balls are released one by one in every second until all balls have been released. When a ball hits the ground, it will bounce back with the same speed as it hits the ground. When two balls hit each other, they with exchange their velocities (both speed and direction).
