@@ -37,17 +37,11 @@ object C extends App with FileOp {
         i <- graph(root)
         if (i != parent)
         key = (root, i)
+        value <- edges.get(key)
       } {
-        edges.get(key) match {
-          case Some(value) if (value.isEmpty) =>
-            edges += key -> encodeTree(i, root)
-          case _ => //do nothing
-        }
-        edges.get(key) match {
-          case Some(value) =>
-            children += value
-          case None => //do nothing
-        }
+        val ab = if (value.isEmpty) encodeTree(i, root) else value
+        edges += key -> ab
+        children += ab
       }
 
       children.sorted.foldLeft("(" + colors(root)) {

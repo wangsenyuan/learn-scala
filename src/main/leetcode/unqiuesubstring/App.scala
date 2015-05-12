@@ -33,4 +33,5 @@ object App extends App {
   println(lengthOfLongestSubstring("bbbbbb"))
 
   println(lengthOfLongestSubstring("abcabcbb"))
+  println(lengthOfLongestSubstring("hchzvfrkmlnozjk"))
 }

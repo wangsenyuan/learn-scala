@@ -28,13 +28,13 @@ object A extends App {
 
       val nums = (0 to 9).foldLeft(Nil: List[Num])((xs, i) => Num(i, List.fill(7)(-1)) :: xs)
 
-      val xs =
-        (for {
-          x <- nums
-        } yield find(x, 1)).filterNot(_.isEmpty)
+      val xs = for {
+        x <- nums
+        r <- find(x, 1)
+      } yield r
 
       xs match {
-        case List(x) => println(s"Case #$t: ${x.get.output}")
+        case List(x) => println(s"Case #$t: ${x.output}")
         case _ => println(s"Case #$t: ERROR!")
       }
 
@@ -46,7 +46,9 @@ object A extends App {
 
 abstract class Num(val x: Int, val broken: List[Int]) {
   type State = List[Int]
+
   def fullState: State
+
   def state: State = {
     def go(fl: State, bl: State): State = (fl, bl) match {
       case (Nil, Nil) => Nil
