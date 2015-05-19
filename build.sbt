@@ -1,3 +1,5 @@
+import sbt.Keys._
+
 name := "ALG-S"
 
 scalaVersion := "2.11.2"
@@ -23,6 +25,8 @@ unmanagedSourceDirectories in Compile <++= baseDirectory { base =>
     base / "src/main/leetcode"
   )
 }
+
+unmanagedClasspath in Test += baseDirectory.value / "src/test/scala"
 
 retrieveManaged := true
 
