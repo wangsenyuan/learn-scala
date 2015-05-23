@@ -11,43 +11,41 @@ public class Solution {
 //            int pivot = nums[right];
             int i = left, j = right - 1;
 
-            for (; ; ) {
-                while (nums[++i] < pivot) {
+            while (i < j) {
+                while (nums[++i] > pivot) {
                 }
-                while (nums[--j] > pivot) {
+                while (nums[--j] < pivot) {
                 }
 
                 if (i < j) {
                     swap(nums, i, j);
-                } else {
-                    break;
                 }
             }
             swap(nums, i, right - 1);
-            if (k == right - i + 1) {
+            if (k == i) {
                 return nums[i];
-            } else if (k < right - i + 1) {
+            } else if (k > i) {
                 return qsort(nums, i + 1, right, k);
             } else {
-                return qsort(nums, left, i - 1, k - (right - i + 1));
+                return qsort(nums, left, i - 1, k);
             }
         } else {
             insertSort(nums, left, right);
-            return nums[right - k + 1];
+            return nums[k];
         }
     }
 
     private static int median3(int[] nums, int left, int right) {
         int center = (left + right) / 2;
-        if (nums[left] > nums[center]) {
+        if (nums[left] < nums[center]) {
             swap(nums, left, center);
         }
 
-        if (nums[left] > nums[right]) {
+        if (nums[left] < nums[right]) {
             swap(nums, left, right);
         }
 
-        if (nums[center] > nums[right]) {
+        if (nums[center] < nums[right]) {
             swap(nums, center, right);
         }
 
@@ -59,7 +57,7 @@ public class Solution {
         for (int i = left + 1; i <= right; i++) {
             int tmp = nums[i];
             int j = i;
-            while (j > 0 && nums[j - 1] > tmp) {
+            while (j > 0 && nums[j - 1] < tmp) {
                 nums[j] = nums[j - 1];
                 j -= 1;
             }
@@ -79,7 +77,7 @@ public class Solution {
             return nums[0];
         }
 
-        return qsort(nums, 0, nums.length - 1, k);
+        return qsort(nums, 0, nums.length - 1, k - 1);
     }
 
     public static void main(String[] args) {
