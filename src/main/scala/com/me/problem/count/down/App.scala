@@ -7,7 +7,9 @@ object App extends App {
 
   abstract trait Op {
     def value: Int
+
     def expression: String
+
     def isValid: Boolean
   }
 
@@ -20,7 +22,7 @@ object App extends App {
 
     override def expression: String = "(" + left.expression + " + " + right.expression + ")"
 
-    override def isValid: Boolean = true
+    override def isValid: Boolean = left.value <= right.value
   }
 
   case class Sub(left: Op, right: Op) extends Op {
@@ -36,7 +38,7 @@ object App extends App {
 
     override def expression: String = left.expression + " * " + right.expression
 
-    override def isValid: Boolean = true
+    override def isValid: Boolean = left.value <= right.value && left.value != 1 && right.value != 1
   }
 
   case class Div(left: Op, right: Op) extends Op {
@@ -44,7 +46,7 @@ object App extends App {
 
     override def expression: String = left.expression + " / " + right.expression
 
-    override def isValid: Boolean = right.value != 0 && left.value % right.value == 0
+    override def isValid: Boolean = right.value != 0 && left.value % right.value == 0 && right.value != 1
   }
 
   case class Val(override val value: Int) extends Op {
@@ -77,14 +79,22 @@ object App extends App {
         } yield op
     }
 
-  def choices(nums: List[Int]): List[List[Int]] =
-    nums match {
-      case Nil => List(Nil)
-      case h :: tail =>
-        (for {
-          subChoice <- choices(tail)
-        } yield List(subChoice, (h :: subChoice), subChoice ++ List(h))).flatten
-    }
+  def choices(nums: List[Int]): List[List[Int]] = {
+
+    def go(lists: List[List[Int]], i: Int, used: Set[Int]): List[List[Int]] =
+      if (i == nums.length) lists
+      else {
+        for {
+          x <- nums
+          if (!used(x))
+          subChoice <- go(lists ++ lists.map(x :: _), i + 1, used + x)
+        } yield {
+          subChoice
+        }
+      }
+
+    go(List(Nil), 0, Set.empty).toSet.toList
+  }
 
   def countDown(nums: Array[Int], res: Int): List[Op] = {
     for {
@@ -95,7 +105,7 @@ object App extends App {
     } yield op
   }
 
-  //  choices(Array(1, 2).toList).foreach(println)
+  choices(Array(1, 3, 10).toList).foreach(println)
 
   //  splitArray(Array(1, 3, 7, 10, 25, 50).toList).foreach(println)
 
