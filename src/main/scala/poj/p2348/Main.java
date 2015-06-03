@@ -25,12 +25,13 @@ public class Main {
     }
 
     public static boolean play(int a, int b) {
-        if (a > b) {
-            return play(b, a);
-        }
-
         boolean win = true;
         for (; ; ) {
+            if(a > b) {
+                int c = a;
+                a = b;
+                b = c;
+            }
             if (b % a == 0 || b - a > a) {
                 break;
             }
