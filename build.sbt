@@ -2,7 +2,7 @@ import sbt.Keys._
 
 name := "ALG-S"
 
-scalaVersion := "2.11.2"
+scalaVersion := "2.11.6"
 
 ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
 
