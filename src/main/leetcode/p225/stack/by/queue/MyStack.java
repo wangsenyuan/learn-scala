@@ -23,15 +23,7 @@ public class MyStack {
                 second.offer(first.poll());
             }
             first.poll();
-        } else if (second.size() > 0) {
-            while (second.size() > 1) {
-                first.offer(second.poll());
-            }
-            second.poll();
-        } else {
-            throw new NoSuchElementException();
         }
-
         swapQueue();
     }
 
@@ -43,13 +35,6 @@ public class MyStack {
                 second.offer(first.poll());
             }
             rt = first.peek();
-        } else if (second.size() > 0) {
-            while (second.size() > 1) {
-                first.offer(second.poll());
-            }
-            rt = second.peek();
-        } else {
-            throw new NoSuchElementException();
         }
 //        swapQueue();
         return rt;
