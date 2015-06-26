@@ -49,11 +49,6 @@ public class Solution {
         return c == '+' || c == '-';
     }
 
-    static abstract class Node {
-        public abstract int eval();
-    }
-
-
     static class Stack {
         int[] nums = new int[3];
         int pnum = -1;
