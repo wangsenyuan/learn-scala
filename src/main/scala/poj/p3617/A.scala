@@ -3,7 +3,7 @@ package poj.p3617
 import scala.io.Source
 
 object A extends App {
-  val file = Source.fromFile("src/main/scala/poj/p3617/A-console.in").getLines()
+  val file = Source.fromFile("src/main/scala/poj/p3617/C-console.in").getLines()
   val n = file.next().toInt
   val xs = Array.fill(n)("")
   for {

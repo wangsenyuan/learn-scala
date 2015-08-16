@@ -4,7 +4,7 @@ import scala.io.Source
 
 object A extends App {
 
-  val file = "src/main/scala/codejam/year2015/apactest/A-console.in"
+  val file = "src/main/scala/codejam/year2015/apactest/C-console.in"
 
   val lines = Source.fromFile(file).getLines()
 
