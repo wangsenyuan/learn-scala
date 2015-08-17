@@ -15,12 +15,10 @@ public class Solution {
             }
         }
 
-
         List<Str> list = new ArrayList<>(strs.length * m);
 
         for (String str : strs) {
             char[] cs = str.toCharArray();
-
             for (int i = 1; i < cs.length + 1 && i <= m; i++) {
                 list.add(new Str(cs, i));
             }
@@ -32,10 +30,7 @@ public class Solution {
 
         for (int i = 0; i < list.size(); ) {
             Str current = list.get(i);
-            int j = i;
-            while (j < list.size() && list.get(j).compareTo(current) == 0) {
-                j++;
-            }
+            int j = findLastSame(current, list, i, i + n);
             if (j - i == n) {
                 return current.toString();
             }
@@ -43,6 +38,22 @@ public class Solution {
         }
 
         return "";
+    }
+
+    private int findLastSame(Str target, List<Str> list, int start, int end) {
+        int i = start, j = end <= list.size() ? end - 1 : list.size() - 1;
+
+        while (i <= j) {
+            int mid = (i + j) / 2;
+            Str theMid = list.get(mid);
+            if (theMid.compareTo(target) == 0) {
+                i = mid + 1;
+            } else {
+                j = mid - 1;
+            }
+        }
+
+        return i;
     }
 
     static class Str implements Comparable<Str> {
@@ -80,13 +91,6 @@ public class Solution {
         public String toString() {
             return new String(chars, 0, end);
         }
-    }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-
-        String[] strs = new String[]{"aa", "a"};
-        System.out.println(solution.longestCommonPrefix(strs));
     }
 }
 
