@@ -1,14 +1,14 @@
-package p243.shortest.words.distance;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+package word.distance.p245;
 
 /**
- * Created by senyuanwang on 15/8/18.
+ * Created by senyuanwang on 15/8/22.
  */
 public class Solution {
-    public int shortestDistance(String[] words, String word1, String word2) {
+    public int shortestWordDistance(String[] words, String word1, String word2) {
+        if(word1.equals(word2)) {
+            return shortestWordDistance(words, word1);
+        }
+
         int[] indexes1 = new int[words.length];
         int[] indexes2 = new int[words.length];
         int m = 0, n = 0;
@@ -34,5 +34,25 @@ public class Solution {
         }
 
         return dist;
+    }
+
+    private int shortestWordDistance(String[] words, String word1) {
+        int[] indexes = new int[words.length];
+        int index = 0;
+        for(int i = 0; i < words.length; i++) {
+            if(words[i].equals(word1)) {
+                indexes[index++] = i;
+            }
+        }
+
+        int res = words.length;
+
+        for(int i = 1; i < index; i++) {
+            int a = indexes[i - 1];
+            int b = indexes[i];
+            res = Math.min(res, b - a);
+        }
+
+        return res;
     }
 }

@@ -1,4 +1,4 @@
-package p236.lca;
+package lca.p236;
 
 import java.util.ArrayList;
 import java.util.List;
