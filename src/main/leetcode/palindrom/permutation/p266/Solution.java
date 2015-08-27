@@ -1,4 +1,4 @@
-package p266.palindrom.permutation;
+package palindrom.permutation.p266;
 
 import java.util.HashMap;
 import java.util.Map;
