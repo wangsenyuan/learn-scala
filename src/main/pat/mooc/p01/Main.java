@@ -47,7 +47,7 @@ public class Main {
             ay -= 1;
         }
         result.append(n - 2 * m * m + 1);
-        System.out.println(result.toString());
+        System.out.print(result.toString());
     }
 
     private static int calculate(int n) {
