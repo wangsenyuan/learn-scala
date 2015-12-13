@@ -1,4 +1,4 @@
-package longestpalindromicsubstring
+package longest.palindromic.substring.p005
 
 /**
  * Created by senyuanwang on 15/3/29.
