@@ -21,7 +21,7 @@ object Day1App extends App {
 
   val x = 3 |=> 5
 
-  println(x.head())
+//  println(x.head())
 
   trait CanTruthy[A] { self =>
     /** @return true, if `a` is truthy. */

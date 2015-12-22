@@ -6,7 +6,35 @@ import java.util.*;
  * Created by senyuanwang on 15/8/16.
  */
 public class Solution {
+
     public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+
+//        Arrays.sort(strs);
+
+        String min = null;
+
+        for (String str : strs) {
+            if (min == null) {
+                min = str;
+            } else if (min.length() > str.length()) {
+                min = str;
+            }
+        }
+        for (int i = 0; i < min.length(); i++) {
+            char c = min.charAt(i);
+            for (int j = 0; j < strs.length; j++) {
+                if (strs[j].charAt(i) != c) {
+                    return strs[0].substring(0, i);
+                }
+            }
+        }
+        return min;
+    }
+
+    public String longestCommonPrefix1(String[] strs) {
         int m = Integer.MAX_VALUE;
 
         for (String str : strs) {
@@ -91,6 +119,12 @@ public class Solution {
         public String toString() {
             return new String(chars, 0, end);
         }
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        String[] strs = {"aa", "a"};
+        System.out.println(solution.longestCommonPrefix(strs));
     }
 }
 
