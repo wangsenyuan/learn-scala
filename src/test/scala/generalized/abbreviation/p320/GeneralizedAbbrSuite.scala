@@ -4,7 +4,6 @@ package generalized.abbreviation.p320
 import org.junit.Test
 import org.scalacheck.Gen
 import org.scalacheck.Prop._
-import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitSuite
 import org.scalatest.prop.Checkers
 
