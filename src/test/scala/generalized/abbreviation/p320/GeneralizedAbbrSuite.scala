@@ -31,7 +31,7 @@ class GeneralizedAbbrSuite extends JUnitSuite with Checkers {
   val strGen: Int => Gen[String] = (n: Int) => Gen.listOfN(n, Gen.alphaChar).map(_.mkString)
 
 
- @Test
+  @Test
   def testGenAbbre() {
     val prop = forAll(strGen(7)) {
       str => {
