@@ -1,8 +1,5 @@
 package p340.longest.substr.with.atmostk.distict.chars;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by wangsenyuan on 4/3/16.
  */
@@ -10,35 +7,26 @@ public class Solution {
 
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
         char[] chars = s.toCharArray();
-        Map<Character, Integer> map = new HashMap<>();
-        int startAt = 0;
+        int[] count = new int[256];
         int maxLen = 0;
+        int j = 0;
+        int distinct = 0;
+
         for (int i = 0; i < chars.length; i++) {
-            char c = chars[i];
-            Integer count = map.get(c);
-            if (count != null) {
-                map.put(c, 1 + count);
-                maxLen = Math.max(maxLen, i - startAt + 1);
-                continue;
+            if (count[chars[i]] == 0) {
+                distinct += 1;
             }
-
-            map.put(c, 1);
-            if (map.size() <= k) {
-                maxLen = Math.max(maxLen, i - startAt + 1);
-                continue;
-            }
-
-            for (int j = startAt; j <= i && map.size() > k; j++) {
-                int countOfCharAtJ = map.get(chars[j]);
-                if (countOfCharAtJ == 1) {
-                    map.remove(chars[j]);
-                } else {
-                    map.put(chars[j], countOfCharAtJ - 1);
+            count[chars[i]] += 1;
+            while (distinct > k) {
+                count[chars[j]]--;
+                if (count[chars[j]] == 0) {
+                    distinct -= 1;
                 }
-                startAt = j + 1;
+                j += 1;
             }
-            maxLen = Math.max(maxLen, i - startAt + 1);
+            maxLen = Math.max(maxLen, i - j + 1);
         }
+
         return maxLen;
     }
 
