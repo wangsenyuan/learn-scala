@@ -1,32 +1,31 @@
 package p342.power.of.four;
 
 /**
- * Created by senyuanwang on 16/4/18.
+ * Created by wangsenyuan on 4/19/16.
  */
 public class Solution {
-
     public boolean isPowerOfFour(int num) {
         if (num <= 0) {
             return false;
         }
-        int rightOneBit = -1;
-        for (int i = 0; i < 32; i++) {
-            if ((num & 1) == 1) {
-                rightOneBit = i;
-                break;
-            }
-            num = num >> 1;
-        }
         for (int i = 0; i < 32; i += 2) {
-            if (rightOneBit == i) {
-                return true;
+            int x = 1 << i;
+            if ((num & x) > 0) {
+                int y = ~x;
+
+                if ((num & y) == 0) {
+                    return true;
+                }
             }
         }
+
         return false;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.isPowerOfFour(5));
+        for (int num = 1; num < Integer.MAX_VALUE && num > 0; num *= 4) {
+            System.out.println(String.format("%d is power of four? %b", num, solution.isPowerOfFour(num)));
+        }
     }
 }
