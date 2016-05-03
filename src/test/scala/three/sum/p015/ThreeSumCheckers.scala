@@ -41,12 +41,11 @@ class ThreeSumCheckers extends JUnitSuite with Checkers {
     val lists = Gen.listOfN(100, ints)
     val prop = forAll(lists) {
       list =>
-       val nums = list.toArray
-        val expected = toScalaList(solution.threeSum(nums)).map(toScalaList(_).map(_.asInstanceOf[Int]))
-        val target = App.threeSum(nums)
+        val expected = toScalaList(solution.threeSum(list.toArray)).map(toScalaList(_).map(_.asInstanceOf[Int]))
+        val target = App.threeSum(list.toArray)
         expected.sorted == target.sorted
-        //println(list)
-        //true
+      //println(list)
+      //true
     }
 
     prop.check

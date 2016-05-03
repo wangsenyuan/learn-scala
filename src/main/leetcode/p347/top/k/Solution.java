@@ -11,6 +11,9 @@ import java.util.List;
 public class Solution {
 
     public List<Integer> topKFrequent(int[] nums, int k) {
+        if(nums.length < k) {
+            throw new IllegalArgumentException();
+        }
         Arrays.sort(nums);
 
         List<Tuple2> list = new ArrayList<>();
