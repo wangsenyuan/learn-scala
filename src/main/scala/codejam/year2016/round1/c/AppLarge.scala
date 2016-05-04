@@ -14,33 +14,36 @@ object AppLarge extends App {
 
   def play(n: Int, f: Array[Int]): Int = {
 
-    def dfs(v: Int, path: Vector[Int], visited: Array[Int]): (Int, Int) = {
-      visited(v) = 1
-      val w = f(v)
-      if (visited(w) == 1) {
-        (path.length, findLoop(path, w))
+    val p = Array.fill(n)(-1)
+    val c = Array.fill(n)(0)
+    var pi = 0
+    def dfs(v: Int, path: Vector[Int]): Int = {
+      if (p(v) >= 0) {
+        p(v)
       } else {
-        dfs(w, path ++ Vector(w), visited)
+        val w = f(v)
+        if (path.contains(w)) {
+          p(v) = pi
+          c(pi) = findLoop(path, w)
+          pi += 1
+          p(v)
+        } else {
+          p(v) = dfs(w, path ++ Vector(w))
+          p(v)
+        }
       }
     }
 
-    val visited = Array.fill(n)(0)
-
-    var cycle2CompoentSize = 0
-    var cycle3PCompnentMax = 0
     for {
       i <- 0 until n
-      if visited(i) == 0
+      if p(i) < 0
     } {
-      val (path, cycle) = dfs(i, Vector(i), visited)
-      if (cycle > 2) {
-        cycle3PCompnentMax = cycle3PCompnentMax max path
-      } else {
-        cycle2CompoentSize += path
-      }
+      dfs(i, Vector(i))
     }
 
-    cycle2CompoentSize max cycle3PCompnentMax
+    val r1 = p.max
+    val r2 = p.filter(c(_) == 2).sum
+    r1 max r2
   }
 
   var T = StdIn.readLine().toInt
