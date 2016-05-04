@@ -6,8 +6,8 @@ package p347.top.k
 object App extends App {
 
   def topKFrequent(nums: Array[Int], k: Int): List[Int] = {
-    val list = nums.map(x => (x, 1)).toList
-    val grouped = list.groupBy(_._1).mapValues(_.size).toList
+    val list = nums.toList
+    val grouped = list.groupBy(identity).mapValues(_.size).toList
     grouped.sortBy(_._2).map(_._1).take(k)
   }
 }
