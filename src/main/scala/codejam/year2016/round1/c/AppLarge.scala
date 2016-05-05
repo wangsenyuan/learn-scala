@@ -18,17 +18,17 @@ object AppLarge extends App {
     }
 
 
-    def loop(r: Int, i: Int, path: Vector[Int]): Int = {
+    def loop(i: Int, path: Vector[Int]): Int = {
       val index = path.indexOf(i)
       if (index >= 0) {
         path.length - index
       } else {
-        loop(r, f(i), path :+ i)
+        loop(f(i), path :+ i)
       }
     }
 
     val r1 = (0 until n).foldLeft(0) {
-      (x, i) => x max loop(i, f(i), Vector(i))
+      (x, i) => x max loop(f(i), Vector(i))
     }
 
     def dfs(i: Int, p: Int, length: Int): Int = {
