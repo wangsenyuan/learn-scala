@@ -7,42 +7,46 @@ import scala.io.StdIn
   */
 object AppLarge extends App {
 
-  def findLoop(path: Vector[Int], v: Int) = {
-    val at = path.indexOf(v)
-    path.length - at
-  }
 
   def play(n: Int, f: Array[Int]): Int = {
-
-    val p = Array.fill(n)(-1)
-    val c = Array.fill(n)(0)
-    var pi = 0
-    def dfs(v: Int, path: Vector[Int]): Int = {
-      if (p(v) >= 0) {
-        p(v)
-      } else {
-        val w = f(v)
-        if (path.contains(w)) {
-          p(v) = pi
-          c(pi) = findLoop(path, w)
-          pi += 1
-          p(v)
-        } else {
-          p(v) = dfs(w, path ++ Vector(w))
-          p(v)
-        }
-      }
-    }
+    val fr = Array.fill(n)(Nil: List[Int])
 
     for {
       i <- 0 until n
-      if p(i) < 0
     } {
-      dfs(i, Vector(i))
+      fr(f(i)) = i :: fr(f(i))
     }
 
-    val r1 = p.max
-    val r2 = p.filter(c(_) == 2).sum
+
+    def loop(r: Int, i: Int, path: Vector[Int]): Int = {
+      val index = path.indexOf(i)
+      if (index >= 0) {
+        path.length - index
+      } else {
+        loop(r, f(i), path :+ i)
+      }
+    }
+
+    val r1 = (0 until n).foldLeft(0) {
+      (x, i) => x max loop(i, f(i), Vector(i))
+    }
+
+    def dfs(i: Int, p: Int, length: Int): Int = {
+      fr(i).foldLeft(length) {
+        (l, j) =>
+          if (p != j) {
+            l max dfs(j, i, length + 1)
+          } else {
+            l
+          }
+      }
+    }
+
+    val r2 = (0 until n).filter(i => i == f(f(i))).map {
+      i =>
+        dfs(f(i), i, 0) + 1
+    }.sum
+
     r1 max r2
   }
 
