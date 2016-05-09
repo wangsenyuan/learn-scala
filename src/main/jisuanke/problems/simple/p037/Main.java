@@ -19,12 +19,12 @@ public class Main {
         forest.result(paths, "");
         int maxPathLength = 0;
         int maxPathCount = 0;
-        for(String path : paths) {
+        for (String path : paths) {
             String[] split = path.split("\\|");
-            if(split.length > maxPathLength) {
+            if (split.length > maxPathLength) {
                 maxPathLength = split.length;
                 maxPathCount = 1;
-            } else if(split.length == maxPathLength) {
+            } else if (split.length == maxPathLength) {
                 maxPathCount += 1;
             }
         }
@@ -48,7 +48,7 @@ public class Main {
             for (Node child : children) {
                 nodes.add(child.add(value));
             }
-            nodes.add(new Node(value, new ArrayList<Node>()));
+            nodes.add(new Node(value, new ArrayList<>()));
             return new Node(this.value, nodes);
         }
 
