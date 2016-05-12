@@ -31,12 +31,12 @@ object Small extends App {
   }
 
 
-  private def evacuate(parities: List[Party], plan: List[String]): List[String] =
-    parities match {
+  private def evacuate(parties: List[Party], plan: List[String]): List[String] =
+    parties match {
       case Nil => plan.reverse
       case a :: b :: Nil => evacuate2(a, b, plan)
       case a :: b :: c :: tail if (a.cnt - b.cnt >= 2) =>
-        evacuate(sortParty(a.copy(cnt = a.cnt - 2), parities.tail), a.label + a.label :: plan)
+        evacuate(sortParty(a.copy(cnt = a.cnt - 2), parties.tail), a.label + a.label :: plan)
       case h :: tail =>
         evacuate(sortParty(h.copy(cnt = h.cnt - 1), tail), h.label :: plan)
     }
