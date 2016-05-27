@@ -1,5 +1,8 @@
 package com.me.scalaz
 
+import scala.language.higherKinds
+import scala.language.implicitConversions
+
 object week1 extends App {
 
   import scalaz._
