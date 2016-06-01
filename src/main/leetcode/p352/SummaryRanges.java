@@ -1,74 +1,66 @@
 package p352;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by wangsenyuan on 5/31/16.
  */
 public class SummaryRanges {
-    List<Interval> intervals;
-
     /**
      * Initialize your data structure here.
      */
+    private TreeMap<Integer, Integer> tree;
+
     public SummaryRanges() {
-        intervals = new ArrayList<>();
+        tree = new TreeMap<>();
     }
 
     public void addNum(int val) {
-        int i = 0;
-        int j = intervals.size() - 1;
-        while (i <= j) {
-            int mid = (i + j) / 2;
-            Interval interval = intervals.get(mid);
-            if (val + 1 < interval.start) {
-                j = mid - 1;
-            } else if (val - 1 > interval.end) {
-                i = mid + 1;
-            } else {
-                if (val >= interval.start && val <= interval.end) {
-                    return;
-                }
-                if (val + 1 == interval.start) {
-                    interval.start = val;
-                    mergeIntervals(intervals, mid - 1, mid);
-                    return;
-                }
+        // Value existed as key
+        if (tree.get(val) != null)
+            return;
 
-                if (val == interval.end + 1) {
-                    mergeIntervals(intervals, mid, mid + 1);
-                    return;
-                }
-            }
-        }
-        Interval interval = createInterval(val);
-        intervals.add(j + 1, interval);
-    }
+        // Value existed inside intervals
+        Map.Entry<Integer, Integer> low = tree.lowerEntry(val);
+        if (low != null && low.getValue() >= val)
+            return;
 
-    private void mergeIntervals(List<Interval> intervals, int i, int j) {
-        if (i < 0 || j >= intervals.size()) {
+        // Value can merge to end
+        if (low != null && low.getValue() + 1 == val) {
+            if (tree.get(val + 1) != null) {
+                int start = low.getKey();
+                int end = tree.get(val + 1);
+                tree.remove(val + 1);
+                tree.remove(low.getKey());
+                tree.put(start, end);
+            } else
+                tree.put(low.getKey(), val);
             return;
         }
 
-        Interval a = intervals.get(i);
-        Interval b = intervals.get(j);
-        if (a.end + 1 < b.start) {
+        // Value can merge to start
+        Map.Entry<Integer, Integer> high = tree.higherEntry(val);
+        if (high != null && high.getKey() == val + 1) {
+            int end = high.getValue();
+            tree.remove(high.getKey());
+            tree.put(val, end);
             return;
         }
-        a.end = b.end;
-        intervals.remove(j);
-    }
 
-    private Interval createInterval(int val) {
-        Interval interval = new Interval();
-        interval.start = val;
-        interval.end = val;
-        return interval;
+        // Isolated new value
+        tree.put(val, val);
     }
 
     public List<Interval> getIntervals() {
-        return intervals;
+        List<Interval> l = new LinkedList<>();
+
+        for (Map.Entry<Integer, Integer> entry : tree.entrySet())
+            l.add(new Interval(entry.getKey(), entry.getValue()));
+
+        return l;
     }
 
 }
