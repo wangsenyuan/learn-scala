@@ -1,4 +1,4 @@
-package codejam.year2016.round2.c
+package codejam.year2016.round1b.c
 
 import scala.collection.mutable
 import scala.io.StdIn
