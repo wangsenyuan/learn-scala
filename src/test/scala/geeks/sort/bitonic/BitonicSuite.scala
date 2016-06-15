@@ -15,7 +15,7 @@ class BitonicSuite extends JUnitSuite with Checkers with Sorter {
   val numsGen = (n: Int) => Gen.listOfN(n, ints)
 
   @Test
-  def testArray11(): Unit = {
+  def testArray101(): Unit = {
     val prop = forAll(numsGen(101)) {
       nums => {
         val vec = nums.toVector
