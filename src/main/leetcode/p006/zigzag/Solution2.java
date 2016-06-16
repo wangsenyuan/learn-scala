@@ -10,7 +10,7 @@ public class Solution2 {
             return s;
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         int n = s.length();
 
