@@ -12,7 +12,11 @@ public class Solution {
         int[] stack = new int[cs.length];
         for (int i = 0; i < cs.length; i++) {
             if (cs[i] == ')' && p > 0 && cs[stack[--p]] == '(') {
-                r = p > 0 ? max(r, i - stack[p - 1]) : i + 1;
+                if (p == 0) {
+                    r = i + 1;
+                } else if (i - stack[p - 1] > r) {
+                    r = i - stack[p - 1];
+                }
             } else {
                 stack[p++] = i;
             }
@@ -20,10 +24,4 @@ public class Solution {
         return r;
     }
 
-    private int max(int a, int b) {
-        if (a >= b) {
-            return a;
-        }
-        return b;
-    }
 }
