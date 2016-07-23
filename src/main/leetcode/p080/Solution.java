@@ -9,7 +9,7 @@ public class Solution {
         int p = 1;
 
         for (int i = 1; i < nums.length; i++) {
-            if (p >= 2 && nums[i] == nums[p - 1] && nums[p - 1] == nums[p - 2]) {
+            if (nums[i] == nums[p - 1] && p >= 2 && nums[p - 1] == nums[p - 2]) {
                 continue;
             }
 
