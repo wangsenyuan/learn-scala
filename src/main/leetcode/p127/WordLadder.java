@@ -106,7 +106,7 @@ public class WordLadder {
         }
     }
 
-    public static ArrayList<ArrayList<String>> findLadders(String start, String end, HashSet<String> dict) {
+    public static ArrayList<ArrayList<String>> findLadders(String start, String end, Set<String> dict) {
         dict.add(end);
         Queue<String> queue = new LinkedList<String>();
         Map<String, List<String>> parents = new HashMap<String, List<String>>();
