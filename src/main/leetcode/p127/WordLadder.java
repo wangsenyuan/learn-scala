@@ -32,10 +32,10 @@ public class WordLadder {
 
             //			ArrayList<ArrayList<String>> ladders = findLadders("nape", "mild",
             //					dict);
-            ArrayList<ArrayList<String>> ladders = findLadders("red", "tax", dict);
+            List<List<String>> ladders = findLadders("red", "tax", dict);
             long period = System.currentTimeMillis() - start;
             System.out.println("it taks [" + period + "] milliseconds to process");
-            for (ArrayList<String> ladder : ladders) {
+            for (List<String> ladder : ladders) {
                 String sep = "";
                 for (String word : ladder) {
                     System.out.print(sep + word);
@@ -51,141 +51,121 @@ public class WordLadder {
         }
     }
 
-    public int ladderLength(String start, String end, Set<String> dict) {
-        Queue<String> queue = new LinkedList<String>();
-        Map<String, String> paths = new HashMap<String, String>();
-        Map<String, Integer> dists = new HashMap<String, Integer>();
-        dists.put(start, 0);
-        Set<String> checked = new HashSet<String>();
+    public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
+        Set<String> set1 = new HashSet<>();
+        set1.add(beginWord);
 
-        queue.offer(start);
-        while (!queue.isEmpty()) {
-            String v = queue.poll();
-            if (v.equals(end)) {
-                break;
-            }
-            checked.add(v);
-            // find all next tranformable strings;
-            char[] cs = v.toCharArray();
-            for (int i = 0; i < cs.length; i++) {
-                char x = cs[i];
-                for (char c = 'a'; c <= 'z'; c++) {
-                    if (c == x) {
-                        continue;
-                    }
+        Set<String> set2 = new HashSet<>();
+        set2.add(endWord);
 
-                    cs[i] = c;
-                    String s = String.valueOf(cs);
+        wordList.remove(beginWord);
+        wordList.remove(endWord);
 
-                    if (checked.contains(s) || !dict.contains(s)) {
-                        continue;
-                    }
+        return minLengthBidirectionalSearch(set1, set2, wordList, 2);
+    }
 
-                    int distv = dists.get(v);
-                    if (!dists.containsKey(s) || distv + 1 < dists.get(s)) {
-                        queue.offer(s);
-                        dists.put(s, distv + 1);
-                        paths.put(s, v);
-                    }
-
-                }
-                cs[i] = x;
-            }
-        }
-
-        if (paths.containsKey(end)) {
-            int len = 1;
-            String s = end;
-            while (paths.containsKey(s)) {
-                len += 1;
-                s = paths.get(s);
-            }
-            return len;
-        } else {
+    public int minLengthBidirectionalSearch(Set<String> set1, Set<String> set2, Set<String> wordList, int length) {
+        if (set1.size() == 0) {
             return 0;
         }
-    }
 
-    public static ArrayList<ArrayList<String>> findLadders(String start, String end, Set<String> dict) {
-        dict.add(end);
-        Queue<String> queue = new LinkedList<String>();
-        Map<String, List<String>> parents = new HashMap<String, List<String>>();
-        Map<String, Integer> dists = new HashMap<String, Integer>();
-        dists.put(start, 0);
-        Set<String> checked = new HashSet<String>();
-        queue.offer(start);
+        Set<String> newSet = new HashSet<>();
 
-        ArrayList<ArrayList<String>> all = new ArrayList<ArrayList<String>>();
-
-        while (!queue.isEmpty()) {
-            String v = queue.poll();
-            checked.add(v);
-            if (v.equals(end)) {
-                break;
-            }
-            // find all next tranformable strings;
-            char[] cs = v.toCharArray();
-            for (int i = 0; i < cs.length; i++) {
-                char x = cs[i];
+        for (String s : set1) {
+            char[] str = s.toCharArray();
+            for (int j = 0; j < str.length; j++) {
+                char og = str[j];
                 for (char c = 'a'; c <= 'z'; c++) {
-                    if (c == x) {
-                        continue;
+                    str[j] = c;
+                    String newStr = String.valueOf(str);
+                    if (set2.contains(newStr)) {
+                        return length;
                     }
-
-                    cs[i] = c;
-                    String s = String.valueOf(cs);
-
-                    if (checked.contains(s) || !dict.contains(s)) {
-                        continue;
-                    }
-
-                    int distv = dists.get(v);
-                    if (!dists.containsKey(s) || distv + 1 < dists.get(s)) {
-                        queue.offer(s);
-                        dists.put(s, distv + 1);
-
-                        List<String> path = new ArrayList<String>();
-                        path.add(v);
-                        parents.put(s, path);
-                    } else if (dists.containsKey(s) && distv + 1 == dists.get(s)) {
-                        List<String> path = parents.get(s);
-                        path.add(v);
+                    if (wordList.contains(newStr)) {
+                        newSet.add(newStr);
+                        wordList.remove(newStr);
                     }
                 }
-                cs[i] = x;
+                str[j] = og;
             }
         }
 
-        if (checked.contains(end)) {
-            findPath(new Stack<>(), end, parents, all);
+        // This part is KEY to bringing your run-time down. Otherwise sets with more neighbours
+        // will skew the benefit that can be obtained from searching outward from two nodes.
+        if (newSet.size() < set2.size()) {
+            return minLengthBidirectionalSearch(newSet, set2, wordList, length + 1);
+        } else {
+            return minLengthBidirectionalSearch(set2, newSet, wordList, length + 1);
         }
-
-        return all;
     }
 
-    private static void findPath(Stack<String> path, String v, Map<String, List<String>> parents,
-        ArrayList<ArrayList<String>> all) {
-        if (parents.containsKey(v)) {
-            path.push(v);
-            List<String> ps = parents.get(v);
-            for (String p : ps) {
-                findPath(path, p, parents, all);
+    public static List<List<String>> findLadders(String beginWord, String endWord, Set<String> wordList) {
+        HashMap<String, ArrayList<String>> h = new HashMap();
+        Set<String> set1 = new HashSet(), set2 = new HashSet();
+        set1.add(beginWord);
+        set2.add(endWord);
+        BFS(set1, set2, wordList, h, true);
+
+        List<List<String>> ans = new ArrayList();
+        List<String> cur = new ArrayList();
+        cur.add(beginWord);
+        DFS(beginWord, endWord, h, cur, ans);
+        return ans;
+    }
+
+    private static void BFS(Set<String> set1, Set<String> set2, Set<String> wordList,
+        HashMap<String, ArrayList<String>> h, boolean forward) {
+        if (set1.size() > set2.size()) {
+            BFS(set2, set1, wordList, h, !forward);
+            return;
+        }
+        wordList.removeAll(set1);
+        wordList.removeAll(set2);
+        boolean connected = false;
+        Set<String> set3 = new HashSet();
+
+        for (String s : set1) {
+            char[] c = s.toCharArray();
+            for (int i = 0, len = c.length; i < len; i++) {
+                char ch = c[i];
+                for (char x = 'a'; x <= 'z'; x++)
+                    if (x != ch) {
+                        c[i] = x;
+                        String cand = new String(c);
+                        if (set2.contains(cand) || (!connected && wordList.contains(cand))) {
+                            if (set2.contains(cand))
+                                connected = true;
+                            else
+                                set3.add(cand);
+
+                            String cand1 = forward ? cand : s;
+                            String s1 = forward ? s : cand;
+                            ArrayList<String> cur = h.containsKey(s1) ? h.get(s1) : new ArrayList();
+                            cur.add(cand1);
+                            h.put(s1, cur);
+                        }
+                    }
+                c[i] = ch;
             }
-            path.pop();
-        } else {
-            //v has to be the start
-            path.push(v);
+        }
+        if (!connected && !set3.isEmpty())
+            BFS(set3, set2, wordList, h, forward);
+    }
 
-            ArrayList<String> vs = new ArrayList<String>();
+    private static void DFS(String str, String ed, HashMap<String, ArrayList<String>> h, List<String> cur,
+        List<List<String>> ans) {
+        if (str.equals(ed)) {
+            ans.add(new ArrayList(cur));
+            return;
+        }
 
-            for (String s : path) {
-                vs.add(s);
-            }
-
-            Collections.reverse(vs);
-            all.add(vs);
-
-            path.pop();
+        if (!h.containsKey(str))
+            return;
+        List<String> next = h.get(str);
+        for (String i : next) {
+            cur.add(i);
+            DFS(i, ed, h, cur, ans);
+            cur.remove(cur.size() - 1);
         }
     }
 }
