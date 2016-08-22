@@ -5,38 +5,44 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by wangsenyuan on 8/20/16.
+ * Created by senyuanwang on 16/8/20.
  */
 public class Solution {
     public static void main(String[] args) {
-        Solution solution = new Solution();
         Set<String> dict = new HashSet<>(Arrays.asList("leet", "code"));
-        System.out.println(solution.wordBreak("leetxcode", dict));
+        Solution solution = new Solution();
+        String s = "leetcode";
+        System.out.println(solution.wordBreak(s, dict));
     }
 
     public boolean wordBreak(String s, Set<String> wordDict) {
+        if (s == null || s.length() == 0) {
+            return false;
+        }
+        int minLen = Integer.MAX_VALUE;
+        int maxLen = 0;
+
+        for (String word : wordDict) {
+            if (word.length() < minLen) {
+                minLen = word.length();
+            }
+
+            if (word.length() > maxLen) {
+                maxLen = word.length();
+            }
+        }
         char[] cs = s.toCharArray();
-        int[] checked = new int[cs.length];
-        return wordBreak(cs, 0, checked, wordDict);
-    }
+        int n = s.length();
 
-    private boolean wordBreak(char[] cs, int i, int[] checked, Set<String> wordDict) {
-        if (i == cs.length) {
-            return true;
-        }
-
-        if (checked[i] != 0) {
-            return checked[i] == 1;
-        }
-
-        for (int j = i + 1; j <= cs.length; j++) {
-            if (wordDict.contains(new String(cs, i, j - i)) && wordBreak(cs, j, checked, wordDict)) {
-                checked[i] = 1;
-                return true;
+        boolean[] canBreak = new boolean[n + 1];
+        canBreak[0] = true;
+        for (int i = minLen; i <= n; i++) {
+            for (int k = minLen; i - k >= 0 && k <= maxLen && !canBreak[i]; k++) {
+                int j = i - k;
+                canBreak[i] = canBreak[j] && wordDict.contains(new String(cs, j, k));
             }
         }
 
-        checked[i] = -1;
-        return false;
+        return canBreak[n];
     }
 }

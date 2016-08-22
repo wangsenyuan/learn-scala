@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Solution {
     public static void main(String[] args) {
-        String s = "a";
+        String s = "abcadac";
         List<List<String>> result = partition(s);
         for (List<String> each : result) {
             System.out.println(String.join(",", each));
@@ -25,19 +25,13 @@ public class Solution {
         char[] cs = s.toCharArray();
         boolean[][] fx = new boolean[n][n];
 
-        for (int len = 0; len < n; len++) {
-            for (int i = 0; i + len < n; i++) {
-                int j = i + len;
-                if (i == j) {
-                    fx[i][j] = true;
-                    continue;
-                }
-                if (len == 1) {
-                    fx[i][j] = cs[i] == cs[j];
-                    continue;
-                }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; i - j >= 0 && i + j < n && cs[i - j] == cs[i + j]; j++) {
+                fx[i - j][i + j] = true;
+            }
 
-                fx[i][j] = cs[i] == cs[j] && fx[i + 1][j - 1];
+            for (int j = 1; i - j + 1 >= 0 && i + j < n && cs[i - j + 1] == cs[i + j]; j++) {
+                fx[i - j + 1][i + j] = true;
             }
         }
 
