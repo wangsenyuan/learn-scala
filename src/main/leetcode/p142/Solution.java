@@ -1,7 +1,5 @@
 package p142;
 
-import java.util.List;
-
 /**
  * Created by wangsenyuan on 8/22/16.
  */
