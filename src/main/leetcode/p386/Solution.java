@@ -9,7 +9,7 @@ import java.util.List;
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        List<Integer> result = solution.lexicalOrder(999);
+        List<Integer> result = solution.lexicalOrderQuick(999);
         result.forEach(System.out::println);
         System.out.println("++++++++++");
         System.out.println(result.size());
@@ -34,5 +34,27 @@ public class Solution {
         for (int i = 0; i < 10; i++) {
             process(x * 10 + i, n, result);
         }
+    }
+
+    public List<Integer> lexicalOrderQuick(int n) {
+        List<Integer> result = new ArrayList<>(n);
+
+        int current = 1;
+        for (int i = 1; i <= n; i++) {
+            result.add(current);
+            if (current * 10 <= n) {
+                current *= 10;
+            } else if (current < n && current % 10 < 9) {
+                current++;
+            } else {
+                while ((current / 10) % 10 == 9) {
+                    current /= 10;
+                }
+                current = current / 10 + 1;
+            }
+
+        }
+
+        return result;
     }
 }
