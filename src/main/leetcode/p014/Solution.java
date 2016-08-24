@@ -1,4 +1,4 @@
-package p014.longest.common.prefix;
+package p014;
 
 import java.util.*;
 

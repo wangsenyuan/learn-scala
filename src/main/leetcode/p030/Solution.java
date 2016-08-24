@@ -1,4 +1,4 @@
-package p030.substring.with.concatenation.of.all.words;
+package p030;
 
 import java.util.ArrayList;
 import java.util.HashMap;
