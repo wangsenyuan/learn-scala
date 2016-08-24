@@ -1,4 +1,4 @@
-package odd.even.linked.list.p328;
+package p328;
 
 /**
  * Created by senyuanwang on 16/1/16.

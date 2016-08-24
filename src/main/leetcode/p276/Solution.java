@@ -1,4 +1,4 @@
-package paint.fence.p276;
+package p276;
 
 /**
  * Created by senyuanwang on 15/9/5.

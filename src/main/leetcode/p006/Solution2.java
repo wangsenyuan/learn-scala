@@ -1,4 +1,4 @@
-package p006.zigzag;
+package p006;
 
 /**
  * Created by wangsenyuan on 6/16/16.
