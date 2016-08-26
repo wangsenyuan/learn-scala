@@ -51,28 +51,21 @@ public class Solution {
     }
 
     public static int lengthOfLongestSubstringTwoDistinct1(char[] cs) {
-        int i = 0, j = 0, k = 0, n = cs.length;
         int res = 0;
-
-        while (j < n && k < n) {
-            j = i + 1;
-            while (j < n && cs[j] == cs[i]) {
+        for (int i = 0; i < cs.length; ) {
+            int j = i + 1;
+            while (j < cs.length && cs[j] == cs[i]) {
                 j++;
             }
-
-            if (j == n) {
-                res = Math.max(res, j - i);
-                break;
-            }
-
-            k = j + 1;
-            while (k < n && (cs[k] == cs[i] || cs[k] == cs[j])) {
+            int k = j;
+            while (k < cs.length && (cs[k] == cs[i] || cs[k] == cs[j])) {
                 k++;
             }
-            res = Math.max(res, k - i);
+            if (k - i > res) {
+                res = k - i;
+            }
             i = j;
         }
-
         return res;
     }
 
