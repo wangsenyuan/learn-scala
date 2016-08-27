@@ -1,4 +1,4 @@
-package intersectionoftwolinkedlists;
+package p160;
 
 /**
  * Created by senyuanwang on 15/3/15.
