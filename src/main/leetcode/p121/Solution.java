@@ -23,4 +23,20 @@ public class Solution {
         }
         return profit;
     }
+
+    public int maxProfit1(int[] prices) {
+        int buy = Integer.MIN_VALUE;
+        int sell = 0;
+
+        for (int i = 0; i < prices.length; i++) {
+            int price = prices[i];
+            if (buy < -price) {
+                buy = -price;
+            }
+            if (sell < buy + price) {
+                sell = buy + price;
+            }
+        }
+        return sell;
+    }
 }
