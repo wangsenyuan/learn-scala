@@ -1,7 +1,5 @@
 package p167.twosum;
 
-import java.util.Arrays;
-
 /**
  * Created by senyuanwang on 15/8/16.
  */
@@ -16,19 +14,42 @@ public class Solution {
      * @return
      */
     public int[] twoSum(int[] numbers, int target) {
-        int[] result = new int[2];
+        int j = numbers.length - 1;
+        int i = 0;
+        while (i < j) {
+            int left = target - numbers[i];
 
-        for(int i = 1; i <= numbers.length; i++) {
-            int x = numbers[i - 1];
-            int y = target - x;
-            int j = Arrays.binarySearch(numbers, i, numbers.length, y);
-            if(j >= i) {
-                result[0] = i;
-                result[1] = j + 1;
-                break;
+            for (int k = i + 1; k <= j; ) {
+                int mid = (k + j) / 2;
+                if (numbers[mid] == left) {
+                    return new int[] {i + 1, mid + 1};
+                }
+                if (numbers[mid] > left) {
+                    j = mid - 1;
+                } else {
+                    k = mid + 1;
+                }
             }
         }
+        throw new RuntimeException("");
+    }
 
-        return result;
+    public int[] twoSum1(int[] numbers, int target) {
+        int j = numbers.length - 1;
+        int i = 0;
+        while (i < j) {
+            int sum = numbers[i] + numbers[j];
+            if (sum == target) {
+                return new int[] {i + 1, j + 1};
+            }
+
+            if (sum > target) {
+                j--;
+            } else {
+                i++;
+            }
+
+        }
+        throw new RuntimeException("");
     }
 }
