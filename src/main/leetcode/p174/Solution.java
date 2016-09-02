@@ -11,9 +11,7 @@ public class Solution {
                 new int[]{10, 30, -5}
         };*/
 
-        int[][] test = new int[][]{
-                new int[]{1, 0, 0}
-        };
+        int[][] test = new int[][] {new int[] {1, 0, 0}};
 
         int hp = calculateMinimumHP(test);
 
@@ -24,37 +22,30 @@ public class Solution {
         int n = dungeon.length;
         int m = dungeon[0].length;
 
-        int[][] dp = new int[n][m];
-
+        int[] dp = new int[m];
         if (dungeon[n - 1][m - 1] > 0) {
-            dp[n - 1][m - 1] = 1;
+            dp[m - 1] = 1;
         } else {
-            dp[n - 1][m - 1] = -dungeon[n - 1][m - 1] + 1;
+            dp[m - 1] = -dungeon[n - 1][m - 1] + 1;
         }
 
         for (int j = m - 2; j >= 0; j--) {
-            dp[n - 1][j] = max(1, dp[n - 1][j + 1] - dungeon[n - 1][j]);
+            dp[j] = max(1, dp[j + 1] - dungeon[n - 1][j]);
         }
 
         for (int i = n - 2; i >= 0; i--) {
-            dp[i][m - 1] = max(1, dp[i + 1][m - 1] - dungeon[i][m - 1]);
-        }
-
-        for (int i = n - 2; i >= 0; i--) {
-            for (int j = m - 2; j >= 0; j--) {
-                dp[i][j] = max(1, min(dp[i + 1][j], dp[i][j + 1]) - dungeon[i][j]);
+            for (int j = m - 1; j >= 0; j--) {
+                dp[j] = dp[j] - dungeon[i][j];
+                if (j < m - 1 && dp[j + 1] - dungeon[i][j] < dp[j]) {
+                    dp[j] = dp[j + 1] - dungeon[i][j];
+                }
+                if (dp[j] < 1) {
+                    dp[j] = 1;
+                }
             }
         }
 
-        return dp[0][0];
-    }
-
-    private static int min(int a, int b) {
-        if (a < b) {
-            return a;
-        } else {
-            return b;
-        }
+        return dp[0];
     }
 
     private static int max(int a, int b) {
