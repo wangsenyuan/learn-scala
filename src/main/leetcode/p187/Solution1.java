@@ -1,9 +1,9 @@
-package repeatdnasequence;
+package p187;
 
 /**
  * Created by senyuanwang on 15/3/14.
- *
- *
+ * <p>
+ * <p>
  * from https://leetcode.com/discuss/25411/java-program-in-225ms-could-be-even-faster
  */
 
@@ -33,16 +33,21 @@ public class Solution1 {
     }
 
     public List<String> findRepeatedDnaSequences(String s) {
-        List<String> rL = new Vector<String>();
+        List<String> rL = new ArrayList<>();
         byte dnaMap[] = new byte[1 << 20];
         int i;
-        if (s == null || s.length() <= 10) return rL;
+        if (s == null || s.length() <= 10)
+            return rL;
         int code = 0;
-        for (i = 0; i < 9; i++) code = ((code << 2) + codebook[s.charAt(i)]) & 0xfffff;
+        for (i = 0; i < 9; i++) {
+            code = ((code << 2) + codebook[s.charAt(i)]) & 0xfffff;
+        }
+
         for (; i < s.length(); i++) {
             code = ((code << 2) + codebook[s.charAt(i)]) & 0xfffff;
-            if (dnaMap[code] == 0) dnaMap[code]++;
-            else if (dnaMap[code] == 1) {
+            if (dnaMap[code] == 0) {
+                dnaMap[code]++;
+            } else if (dnaMap[code] == 1) {
                 dnaMap[code]++;
                 rL.add(decode(code));
             }

@@ -1,4 +1,4 @@
-package repeatdnasequence;
+package p187;
 
 import java.util.*;
 
