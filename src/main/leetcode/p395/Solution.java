@@ -22,7 +22,7 @@ public class Solution {
             return cache.get(from);
         }
 
-        if (from >= end) {
+        if (end - from < k) {
             return 0;
         }
 
