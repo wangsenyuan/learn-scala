@@ -1,4 +1,4 @@
-package buysellstock;
+package p188;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by senyuanwang on 15/3/5.
  */
-public class Solution {
+public class Solution1 {
 
 
     public static int maxProfit(int k, int[] prices) {
