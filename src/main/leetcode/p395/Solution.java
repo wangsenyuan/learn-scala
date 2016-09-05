@@ -18,47 +18,40 @@ public class Solution {
     }
 
     private int findSub(char[] cs, int from, int end, int k, Map<Integer, Integer> cache) {
-        if (cache.containsKey(from)) {
-            return cache.get(from);
-        }
-
-        if (end - from < k) {
-            return 0;
-        }
-
-        Map<Character, Integer> cnts = new HashMap<>();
-
-        for (int i = from; i < end; i++) {
-            if (cnts.containsKey(cs[i])) {
-                cnts.put(cs[i], cnts.get(cs[i]) + 1);
-            } else {
-                cnts.put(cs[i], 1);
+        return cache.computeIfAbsent(from, (Integer fromx) -> {
+            if (end - from < k) {
+                return 0;
             }
-        }
 
-        int res = 0;
-        int j = from;
-        for (int i = from; i < end; i++) {
-            if (cnts.get(cs[i]) < k) {
-                int subRes = findSub(cs, j, i, k, cache);
+            Map<Character, Integer> cnts = new HashMap<>();
+
+            for (int i = from; i < end; i++) {
+                cnts.put(cs[i], cnts.getOrDefault(cs[i], 0) + 1);
+            }
+
+            int res = 0;
+            int j = from;
+            for (int i = from; i < end; i++) {
+                if (cnts.get(cs[i]) < k) {
+                    int subRes = findSub(cs, j, i, k, cache);
+                    if (subRes > res) {
+                        res = subRes;
+                    }
+                    j = i + 1;
+                }
+            }
+
+            if (j == from) {
+                res = end - from;
+            } else if (j < end) {
+                int subRes = findSub(cs, j, end, k, cache);
                 if (subRes > res) {
                     res = subRes;
                 }
-                j = i + 1;
             }
-        }
 
-        if (j == from) {
-            res = end - from;
-        } else if (j < end) {
-            int subRes = findSub(cs, j, end, k, cache);
-            if (subRes > res) {
-                res = subRes;
-            }
-        }
+            return res;
+        });
 
-        cache.put(from, res);
-
-        return res;
     }
 }
