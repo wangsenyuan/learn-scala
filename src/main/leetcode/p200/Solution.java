@@ -1,4 +1,4 @@
-package numberofislands;
+package p200;
 
 /**
  * Created by senyuanwang on 15/4/9.
