@@ -1,5 +1,7 @@
 package p202.happynumber;
 
+import scalaz.Alpha;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,28 +11,21 @@ import java.util.Set;
 public class Solution {
 
     public static boolean isHappy(int n) {
-        return isHappy(n, new HashSet<>());
+        while (n != 89) {
+            if (n == 1) {
+                return true;
+            }
+
+            int m = 0;
+            while (n > 0) {
+                m += (n % 10) * (n % 10);
+                n = n / 10;
+            }
+            n = m;
+        }
+        return false;
     }
 
-    private static boolean isHappy(int n, Set<Integer> checked) {
-        if (checked.contains(n)) {
-            return false;
-        }
-        if (n == 1) {
-            return true;
-        }
-        checked.add(n);
-
-        int sum = 0;
-
-        while (n > 0) {
-            int x = n % 10;
-            sum += x * x;
-            n = n / 10;
-        }
-
-        return isHappy(sum, checked);
-    }
 
     public static void main(String[] args) {
         System.out.println("19 is happy? " + isHappy(19));
