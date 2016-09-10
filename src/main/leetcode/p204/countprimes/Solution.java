@@ -21,4 +21,34 @@ public class Solution {
         }
         return count;
     }
+
+    public int countPrimes1(int n) {
+        if (n < 3) {
+            return 0;
+        }
+
+        boolean[] nonPrimes = new boolean[n];
+        nonPrimes[0] = true;
+        nonPrimes[1] = true;
+        int count = n - 2;
+        for (int p = 2; p * p < n; ) {
+            for (int i = 2; i * p < n; i++) {
+                if (!nonPrimes[i * p]) {
+                    count--;
+                }
+                nonPrimes[i * p] = true;
+            }
+
+            int j = p + 1;
+            while (j * j < n) {
+                if (!nonPrimes[j]) {
+                    break;
+                }
+                j++;
+            }
+            p = j;
+        }
+
+        return count;
+    }
 }
