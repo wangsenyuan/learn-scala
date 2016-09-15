@@ -6,7 +6,7 @@ package p209.min.subarray.sum;
 public class Solution {
 
     public static int minSubArrayLen(int s, int[] nums) {
-        int n = nums.length;
+        int n = nums.length + 1;
         int len = n;
         int sum = 0;
         for (int i = 0, j = 0; i < n; ) {
@@ -20,7 +20,7 @@ public class Solution {
             sum -= nums[i++];
         }
 
-        return len == n ? 0 : len;
+        return len > n ? 0 : len;
     }
 
     public static void main(String[] args) {
