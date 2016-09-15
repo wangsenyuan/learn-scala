@@ -1,0 +1,209 @@
+Example: sample size 1[edit]
+Suppose we see a sequence of items, one at a time. We want to keep a single item in memory, and we want it to be selected at random from the sequence. If we know the total number of items (n), then the solution is easy: select an index i between 1 and n with equal probability, and keep the i-th element. The problem is that we do not always know n in advance. A possible solution is the following:
+
+Keep the first item in memory.
+When the {\displaystyle i} i-th item arrives (for {\displaystyle i>1} i>1):
+with probability {\displaystyle 1/i} 1/i, keep the new item instead of the current item; or equivalently
+with probability {\displaystyle 1-1/i} {\displaystyle 1-1/i}, keep the current item and discard the new item.
+So:
+
+when there is only one item, it is kept with probability 1;
+when there are 2 items, each of them is kept with probability 1/2;
+when there are 3 items, the third item is kept with probability 1/3, and each of the previous 2 items is also kept with probability (1/2)(1-1/3) = (1/2)(2/3) = 1/3;
+by induction, it is easy to prove that when there are n items, each item is kept with probability 1/n.
+Algorithm R[edit]
+The most common example was labelled Algorithm R by Jeffrey Vitter in his paper on the subject.[1] This simple O(n) algorithm as described in the Dictionary of Algorithms and Data Structures[2] consists of the following steps (assuming k < s and using one-based array indexing):
+
+/*
+  S has items to sample, R will contain the result
+*/
+ReservoirSample(S[1..n], R[1..k])
+  // fill the reservoir array
+  for i = 1 to k
+      R[i] := S[i]
+
+  // replace elements with gradually decreasing probability
+  for i = k+1 to n
+    j := random(1, i)   // important: inclusive range
+    if j <= k
+        R[j] := S[i]
+The algorithm creates a "reservoir" array of size k and populates it with the first k items of S. It then iterates through the remaining elements of S until S is exhausted. At the ith element of S, the algorithm generates a random number j between 1 and i. If j is less than or equal to k, the jth element of the reservoir array is replaced with the ith element of S. In effect, for all i, the ith element of S is chosen to be included in the reservoir with probability k/i. Similarly, at each iteration the jth element of the reservoir array is chosen to be replaced with probability 1/k * k/i, which simplifies to 1/i. It can be shown that when the algorithm has finished executing, each item in S has equal probability (i.e. k/length(S)) of being chosen for the reservoir. To see this, consider the following proof by induction. After the (i-1)th round, let us assume, the probability of a number being in the reservoir array is k/(i-1). Since the probability of the number being replaced in the ithround is 1/i, the probability that it survives the ith round is (i-1)/i. Thus, the probability that a given number is in the reservoir after the ith round is the product of these two probabilities, i.e. the probability of being in the reservoir after the (i-1)th round, and surviving replacement in the ith round. This is (k/(i-1)) * ((i-1)/i)=k/i. Hence, the result holds for i, and is therefore true by induction.
+
+Reservoir with Random Sort[edit]
+A simple reservoir-based algorithm can be designed using random sort[3] and implemented using priority queue data structure. This algorithm assigns random number as keys to each item and maintain k items with minimum value for keys. In essence, this is equivalent to assigning a random number to each item as key, sorting items using these keys and taking top k items. The worse case run time of the algorithm is {\displaystyle O(n\log k)} O(n\log k) while the best case runtime is {\displaystyle O(n)} O(n). Even though the worse case runtime is not as good as Algorithm R, this algorithm can easily be extended to weighted sampling. Note that both algorithms can operate on streams of unspecified lengths.
+
+/*
+  S is a stream of items to sample, R will contain the result
+  S.Current returns current item in stream
+  S.Next advances stream to next position
+  max-priority-queue supports:
+    Count -> number of items in priority queue
+    Maximum() -> returns maximum key value of all items
+    Extract-Max() -> Remove the item with max key
+    Insert(key, Item) -> Adds item with specified key
+*/
+ReservoirSample(S[1..?], R[1..k])
+  H = new max-priority-queue
+  while S has data
+    r = Random(0,1)  // important: inclusive range
+    if H.Count < k
+      H.Insert(r, S.Current)
+    else
+      if H.Maximum > r
+        H.Extract-Max()
+        H.Insert(r, S.Current)
+    S.Next
+Weighted Random Sampling using Reservoir[edit]
+In many applications sampling is required to be according to the weights that are assigned to each items available in set. For example, it might be required to sample queries in a search engine with weight as number of times they were performed so that the sample can be analyzed for overall impact on user experience. There are two ways to interpret weights assigned to each item in the set:[4]
+
+Let the weight of each item be {\displaystyle w_{i}} w_{i} and sum of all weights be {\displaystyle W} W. We can convert weight to probability of item getting selected in sample as {\displaystyle P_{i}=w_{i}/W} P_{i}=w_{i}/W.
+Let the weight of two items {\displaystyle i} i and {\displaystyle j} j be {\displaystyle w_{i}} w_{i} and {\displaystyle w_{j}} w_{j}. Let the probability of item {\displaystyle i} i getting selected in sample be {\displaystyle p_{i}} p_{i}, then we give {\displaystyle p_{j}=p_{i}\max(1,w_{j}/w_{i})} p_{j}=p_{i}\max(1,w_{j}/w_{i}).
+Algorithm A-Res[edit]
+The following algorithm was given by Efraimidis and Spirakis that uses interpretation 1:[4]
+
+/*
+  S is a stream of items to sample, R will contain the result
+  S.Current returns current item in stream
+  S.Weight  returns weight of current item in stream
+  S.Next advances stream to next position
+  The power operator is represented by ^
+  min-priority-queue supports:
+    Count -> number of items in priority queue
+    Minimum() -> returns minimum key value of all items
+    Extract-Min() -> Remove the item with minimum key
+    Insert(key, Item) -> Adds item with specified key
+*/
+ReservoirSample(S[1..?], R[1..k])
+  H = new min-priority-queue
+  while S has data
+    r = Random(0,1) ^ (1/S.Weight)  // important: inclusive range
+    if H.Count < k
+      H.Insert(r, S.Current)
+    else
+      if H.Minimum < r
+        H.Extract-Min()
+        H.Insert(r, S.Current)
+    S.Next
+This algorithm is identical to the algorithm given in Reservoir Sampling with Random Sort except for the line how we generate the key using random number generator. The algorithm is equivalent to assigning each item a key {\displaystyle r^{1/w_{i}}} r^{1/w_{i}} where {\displaystyle r} r is the random number and then sort items using these keys and finally select top k items for the sample.
+
+Algorithm A-Chao[edit]
+Following algorithm was given by M. T. Chao uses interpretation 2:[5]
+
+/*
+  S has items to sample, R will contain the result
+  S[i].Weight contains weight for each item
+*/
+WeightedReservoir-Chao(S[1..n], R[1..k])
+  WSum = 0
+  // fill the reservoir array
+  for i = 1 to k
+      R[i] := S[i]
+      WSum = WSum + S[i].Weight/k
+  for i = k+1 to n
+    WSum = WSum + S[i].Weight/k
+    p = S[i].Weight / WSum // probability for this item
+    j := random(0, 1);     // important: inclusive range
+    if j <= p              // select item according to probability
+        R[random(1,k)] := S[i]  //uniform selection in reservoir for replacement
+For each item, its relative weight is calculated and used to randomly decide if the item will be added into the reservoir. If the item is selected, then one of the existing items of the reservoir is uniformly selected and replaced with the new item. The trick here is that, if the probabilities of all items in the reservoir are already proportional to their weights, then by selecting uniformly which item to replace, the probabilities of all items remain proportional to their weight after the replacement.
+
+Distributed Reservoir Sampling[edit]
+In many applications, amount of data from which a small sample is needed is too large and it is desirable to distribute sampling tasks among many machines in parallel to speed up the process. A simple approach that is often used, although less performant, is to assign a random number as key to each item and then perform a distributed sort and finally obtain a sample of desired size from top k items. If weighted sample is desired then key is computed using {\displaystyle r^{1/w_{i}}} r^{1/w_{i}} where {\displaystyle r} r is the random number and {\displaystyle w_{i}} w_{i} is the weight of an item. The inefficiency in this approach obviously arises from required distributed sort on very large amount of data.
+
+Another more efficient approach for distributed weighted random sampling is as follows:[6]
+
+Distribute data among m machines.
+Each machine does its own weighted sampling using key {\displaystyle r^{1/w_{i}}} r^{1/w_{i}} as described in previous section and produces a sample of size <= k items.
+Collects all m samples of size <= k. We should have total items {\displaystyle n'<=mk} n'<=mk.
+Now sample k items from {\displaystyle n'} n' items from step 3 using key that was already computed in Step 2. This means instead of re-generating key using random number generator in sampling algorithm, we use the key we already had assigned in step 2.
+The Step 4 uses keys from Step 2 because we might have unbalanced data distribution on machines. For example, lets say k = 1, machine m1 only gets 1 item with weight 10 while machine m2 gets 2 items each with weight 100. Intuitively probability for items from m1 getting in final sample is 10/210. In Step 3, we will get 1 item from m1 as well as m2. If we recalculate keys in step 4 then the probability that item from m1 will be in final sample is 10/110 instead of required 10/210. Now observe that weighted reservoir sampling algorithm from previous section decreases max key value in priority queue as it processes more items. Therefore, items sampled from machine with larger chunk will have lower key values and thus higher chance of getting selected.
+
+Relation to Fisher-Yates shuffle[edit]
+Suppose one wanted to draw k random cards from a deck of playing cards (i.e., n=52). A natural approach would be to shuffle the deck and then take the top k cards. In the general case, the shuffle also needs to work even if the number of cards in the deck is not known in advance, a condition which is satisfied by the inside-out version of the Fisher-Yates shuffle:
+
+To initialize an array a of n elements to a randomly shuffled copy of S, both 0-based:
+   a[0] ← S[0]
+   for i from 1 to n - 1 do
+       r ← random (0 .. i)
+       a[i] ← a[r]
+       a[r] ← S[i]
+
+Note that although the rest of the cards are shuffled, only the top k are important in the present context. Therefore, the array a need only track the cards in the top k positions while performing the shuffle, reducing the amount of memory needed. Truncating a to length k, the algorithm is modified accordingly:
+
+To initialize an array a to k random elements of S (which is of length n), both 0-based:
+   a[0] ← S[0]
+   for i from 1 to k - 1 do
+       r ← random (0 .. i)
+       a[i] ← a[r]
+
+       a[r] ← S[i]
+   for i from k to n - 1 do
+       r ← random (0 .. i)
+       if (r < k) then a[r] ← S[i]
+
+Since the order of the first k cards is immaterial, the first loop can be removed and a can be initialized to be the first k items of S. This yields Algorithm R.
+
+Fast Approximation[edit]
+A fast approximation to reservoir sampling.[7] Uses a good-quality approximation to the sampling-gap distribution to skip over the gaps; i.e. consecutive runs of data that are not sampled.
+
+/*
+  S has items to sample, R will contain the result
+  The reservoir size is (k)
+*/
+FastApproximateReservoirSample(S[1..n], R[1..k])
+  // fill the reservoir array
+  for i = 1 to k
+      R[i] := S[i]
+
+  // Threshold (t) determines when to start fast sampling logic
+  // The optimal value for (t) may vary depending on RNG performance characteristics
+  t := 4 * k
+
+  // Normal reservoir sampling is fastest up to (t) samples
+  i := 1 + k
+  while (i <= n  &&  i <= t)
+    j := random(1, i)  // integer from 1 to i, inclusive
+    if j <= k
+        R[j] := S[i]
+    i := i + 1
+
+  // Once gap sizes become significant, it pays to use
+  // fast sampling using an approximate sampling gap distribution
+  while (i <= n)
+    // draw gap size (g) from geometric distribution with probability p = k / i
+    p := k / i
+    u := randomFloat() // random float > 0.0 and <= 1.0
+    g := floor(log(u) / log(1-p))
+    // advance over the gap, and assign next element to the reservoir
+    i := i + g
+    if (i <= n)
+      j := random(1, k)  // integer 1 to k, inclusive
+      R[j] := S[i]
+      i := i + 1
+Example implementation[edit]
+The following is a simple implementation of the algorithm in Python that samples the set of English Wikipedia page titles:
+
+import random
+SAMPLE_COUNT = 10
+
+# Force the value of the seed so the results are repeatable
+random.seed(12345)
+
+sample_titles = []
+for index, line in enumerate(open("enwiki-20091103-all-titles-in-ns0")):
+        # Generate the reservoir
+        if index < SAMPLE_COUNT:
+                sample_titles.append(line)
+        else:
+                # Randomly replace elements in the reservoir
+                # with a decreasing probability.
+                # Choose an integer between 0 and index (inclusive)
+                r = random.randint(0, index)
+                if r < SAMPLE_COUNT:
+                        sample_titles[r] = line
+print sample_titles
+Statistical properties[edit]
+Probabilities of selection of the reservoir methods are discussed in Chao (1982)[5] and Tillé (2006).[8] While the first-order selection probabilities are equal to k/n (or, in case of Chao's procedure, to an arbitrary set of unequal probabilities), the second order selection probabilities depend on the order in which the records are sorted in the original reservoir. The problem is overcome by the cube sampling method of Deville and Tillé (2004).[9]
+
+Limitations[edit]
+Reservoir sampling makes the assumption that the desired sample fits into main memory, often implying that k is a constant independent of n. In applications where we would like to select a large subset of the input list (say a third, i.e. k=n/3), other methods need to be adopted. Distributed implementations for this problem have been proposed.[10]
