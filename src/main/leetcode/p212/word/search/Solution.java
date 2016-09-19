@@ -61,9 +61,12 @@ public class Solution {
 
     public static void main(String[] args) {
         char[][] board = {
-                {'a', 'a'}, {'a', 'b'}};
+                {'o', 'a', 'a', 'n'},
+                {'e', 't', 'a', 'e'},
+                {'i', 'h', 'k', 'r'},
+                {'i', 'f', 'l', 'v'},};
 
-        String[] words = {"aba", "baa", "bab", "aaab", "aaa", "aaaa", "aaba"};
+        String[] words = {"oath", "pea", "eat", "rain"};
         System.out.println(findWords(board, words));
     }
 }
