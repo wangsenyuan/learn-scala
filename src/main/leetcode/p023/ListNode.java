@@ -1,4 +1,4 @@
-package merge.k.sorted.lists.p023;
+package p023;
 
 /**
  * Created by senyuanwang on 15/4/23.
