@@ -13,17 +13,21 @@ public class Solution {
     }
 
     public static int lastRemaining(int n) {
-        return find(1, 1, n);
+        int start = 1;
+        int step = 1;
+        int cnt = n;
+
+        while (cnt > 1) {
+            if ((cnt & 1) == 1) {
+                start += (cnt - 2) * step;
+            } else {
+                start += (cnt - 1) * step;
+            }
+            cnt >>= 1;
+            step *= -2;
+        }
+
+        return start;
     }
 
-    private static int find(int start, int step, int cnt) {
-        if (cnt == 1) {
-            return start;
-        }
-        if (cnt % 2 == 1) {
-            return find(start + (cnt - 2) * step, -2 * step, (cnt - 1) / 2);
-        } else {
-            return find(start + (cnt - 1) * step, -2 * step, cnt / 2);
-        }
-    }
 }
