@@ -4,56 +4,37 @@ package p234.palindrome.list;
  * Created by senyuanwang on 15/7/11.
  */
 public class Solution {
-    private int size(ListNode head) {
-        int n = 0;
-        ListNode tmp = head;
-        while(tmp != null) {
-            n += 1;
-            tmp = tmp.next;
-        }
-        return n;
-    }
-
-    private ListNode reverse(ListNode head) {
-        ListNode a = head, b = head.next;
-        while(b != null) {
-            ListNode c = b.next;
-            b.next = a;
-            a = b;
-            b = c;
-        }
-        head.next = null;
-        return a;
-    }
 
     public boolean isPalindrome(ListNode head) {
-        if(head == null || head.next == null) {
+        if (head == null || head.next == null) {
             return true;
         }
 
-        int n = size(head);
-
-        n = n / 2;
-
-        ListNode a = head, b = head;
-        for(int i = 0; i < n; i++) {
-            b = b.next;
+        ListNode slow = head, fast = head;
+        ListNode rev = null;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            ListNode tmp = slow.next;
+            slow.next = rev;
+            rev = slow;
+            slow = tmp;
         }
 
-        ListNode d = reverse(b);
+        if (fast != null) {
+            slow = slow.next;
+        }
 
-        b = d;
+        head = slow;
 
         boolean check = true;
-
-        while(a != null && b != null && check) {
-            check = a.val == b.val;
-            a = a.next;
-            b = b.next;
+        while (rev != null) {
+            check = check && rev.val == slow.val;
+            ListNode tmp = rev.next;
+            rev.next = head;
+            head = rev;
+            rev = tmp;
+            slow = slow.next;
         }
-
-        reverse(d);
-
 
         return check;
     }
