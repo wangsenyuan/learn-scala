@@ -1,7 +1,8 @@
-package lca.p236;
+package p236;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 /**
  * Created by senyuanwang on 15/7/13.
@@ -35,37 +36,40 @@ public class Solution {
 
         List<TreeNode> qAncestors = ancestors(root, q);
 
+        if (pAncestors.size() < qAncestors.size()) {
+            return lca(pAncestors, qAncestors.subList(qAncestors.size() - pAncestors.size(), qAncestors.size()));
+        }
+        return lca(pAncestors.subList(pAncestors.size() - qAncestors.size(), pAncestors.size()), qAncestors);
+    }
+
+    private TreeNode lca(List<TreeNode> as, List<TreeNode> bs) {
         int i = 0;
-        for(; i < pAncestors.size() && i < qAncestors.size(); i++) {
-            TreeNode pAncestor = pAncestors.get(i);
-            TreeNode qAncestor = qAncestors.get(i);
-            if(pAncestor != qAncestor) {
-                return pAncestors.get(i - 1);
+        int j = as.size();
+        while (i <= j) {
+            int k = i + (j - i) / 2;
+            if (as.get(k) == bs.get(k)) {
+                j = k - 1;
+            } else {
+                i = k + 1;
             }
         }
-        if(i == pAncestors.size()) {
-            return pAncestors.get(i - 1);
-        } else if(i == qAncestors.size()) {
-            return qAncestors.get(i - 1);
-        }
-        return null;
+        return as.get(j + 1);
     }
 
     private List<TreeNode> ancestors(TreeNode root, TreeNode p) {
         List<TreeNode> pAncestors = new ArrayList<>();
         findNode(root, p, pAncestors);
         pAncestors.add(root);
-        pAncestors = reverse(pAncestors);
         return pAncestors;
     }
 
-    private <T> List<T> reverse(List<T> list) {
-        List<T> result = new ArrayList<>(list.size());
 
-        for(int i = list.size() - 1; i >= 0; i--) {
-            result.add(list.get(i));
-        }
-        return result;
+
+    public static void main(String[] args) {
+        TreeNode a = new TreeNode(2);
+        TreeNode b = new TreeNode(1);
+        b.right = a;
+        System.out.println(new Solution().lowestCommonAncestor(b, a, b).val);
     }
 }
 
