@@ -1,4 +1,4 @@
-package word.distance.p244;
+package p244;
 
 import java.util.ArrayList;
 import java.util.HashMap;
