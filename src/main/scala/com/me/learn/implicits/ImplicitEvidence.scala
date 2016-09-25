@@ -1,4 +1,4 @@
-package com.me.learn
+package com.me.learn.implicits
 
 /**
   * Created by senyuanwang on 16/9/24.
