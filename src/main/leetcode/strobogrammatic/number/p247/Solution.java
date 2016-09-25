@@ -11,53 +11,42 @@ import java.util.List;
 public class Solution {
 
     public List<String> findStrobogrammatic(int n) {
-        List<String> result = recFind(n);
-        if (n > 1) {
-            for (Iterator<String> iter = result.iterator(); iter.hasNext(); ) {
-                String str = iter.next();
-                if (str.charAt(0) == '0') {
-                    iter.remove();
-                }
-            }
+        List<String> res = new ArrayList<>();
+        if (n == 1) {
+            res.add("0");
+            res.add("1");
+            res.add("8");
+        } else {
+            recFind(n - 2, "1", "1", res);
+            recFind(n - 2, "8", "8", res);
+            recFind(n - 2, "9", "6", res);
+            recFind(n - 2, "6", "9", res);
         }
 
-        return result;
+        return res;
     }
 
-    public List<String> recFind(int n) {
-        if (n < 0) {
-            return Collections.emptyList();
-        }
-
-        List<String> result = new ArrayList<>();
-
+    public void recFind(int n, String left, String right, List<String> res) {
         if (n == 0) {
-            result.add("");
-            return result;
+            res.add(left + right);
+            return;
         }
 
         if (n == 1) {
-            result.add("0");
-            result.add("1");
-            result.add("8");
-            return result;
+            res.add(left + "0" + right);
+            res.add(left + "1" + right);
+            res.add(left + "8" + right);
+            return;
         }
-
-        List<String> subResult = recFind(n - 2);
-
-        for (String sub : subResult) {
-            result.add("0" + sub + "0");
-            result.add("1" + sub + "1");
-            result.add("8" + sub + "8");
-            result.add("6" + sub + "9");
-            result.add("9" + sub + "6");
-        }
-
-        return result;
+        recFind(n - 2, left + "0", "0" + right, res);
+        recFind(n - 2, left + "1", "1" + right, res);
+        recFind(n - 2, left + "8", "8" + right, res);
+        recFind(n - 2, left + "6", "9" + right, res);
+        recFind(n - 2, left + "9", "6" + right, res);
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.findStrobogrammatic(2));
+        System.out.println(solution.findStrobogrammatic(4));
     }
 }
