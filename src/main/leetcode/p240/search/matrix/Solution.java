@@ -27,6 +27,6 @@ public class Solution {
         int[][] matrix = {{-5}};
 
         Solution solution = new Solution();
-        System.out.println(solution.searchMatrix(matrix, -5));
+        System.out.println(solution.searchMatrix(matrix, -2));
     }
 }
