@@ -122,9 +122,9 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.nthUglyNumber(8));
-        for (int i = 1; i <= 13; i++) {
-            System.out.println(solution.nthUglyNumber(i));
+        System.out.println(solution.nthUglyNumber2(20));
+        for (int i = 1; i <= 20; i++) {
+            System.out.println(solution.nthUglyNumber2(i));
         }
 
     }
