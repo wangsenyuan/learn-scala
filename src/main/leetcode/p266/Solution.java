@@ -1,4 +1,4 @@
-package palindrom.permutation.p266;
+package p266;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,25 +9,27 @@ import java.util.Map;
 public class Solution {
     public boolean canPermutePalindrome(String s) {
         Map<Character, Integer> counts = new HashMap<>();
+
         for (char c : s.toCharArray()) {
-            if (!counts.containsKey(c)) {
-                counts.put(c, 0);
+            if (counts.containsKey(c)) {
+                counts.put(c, counts.get(c) + 1);
+            } else {
+                counts.put(c, 1);
             }
-            counts.put(c, counts.get(c) + 1);
+        }
+        boolean odd = false;
+        for (int cnt : counts.values()) {
+            if (cnt % 2 == 1) {
+                if (!odd) {
+                    odd = true;
+                } else {
+                    return false;
+                }
+            }
         }
 
-        int oddChar = 0;
-        for (char c : counts.keySet()) {
-            int v = counts.get(c);
-            if (v % 2 == 0) {
-                continue;
-            }
-            oddChar += 1;
-            if (oddChar > 1) {
-                return false;
-            }
-        }
-        return true;
+        return (s.length() % 2 == 1 && odd) || !odd;
+
     }
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package palindrom.permutation.p267;
+package p267;
 
 import java.util.*;
 
