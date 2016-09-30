@@ -63,7 +63,7 @@ public class Solution {
     }
 
     private boolean order(List<char[]> words, int start, Map<Character, List<Character>> graph) {
-        List<char[]> left = new ArrayList<>();
+        List<char[]> left = new ArrayList<>(words.size());
         for (int i = 0; i < words.size(); i++) {
             char[] word = words.get(i);
             char h = word[start];
