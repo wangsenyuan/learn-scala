@@ -1,11 +1,6 @@
 package p269;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * Created by wangsenyuan on 9/30/16.
@@ -13,8 +8,8 @@ import java.util.PriorityQueue;
 public class Solution {
 
     public static void main(String[] args) {
-        //String[] words = {"wrt", "wrf", "er", "ett", "rftt"};
-        String[] words = {"z", "z"};
+        String[] words = {"wrt", "wrf", "er", "ett", "rftt"};
+        //String[] words = {"z", "z"};
         //        String[] words = {"a", "b", "a"};
         //String[] words = {"wrtkj", "wrt"};
         Solution solution = new Solution();
@@ -23,7 +18,12 @@ public class Solution {
 
     public String alienOrder(String[] words) {
         Map<Character, List<Character>> graph = new HashMap<>();
-        if (!order(Arrays.asList(words), graph)) {
+        List<char[]> wordCharArray = new ArrayList<>();
+        for (String word : words) {
+            wordCharArray.add(word.toCharArray());
+        }
+
+        if (!order(wordCharArray, 0, graph)) {
             return "";
         }
 
@@ -62,42 +62,42 @@ public class Solution {
         return sb.toString();
     }
 
-    private boolean order(List<String> words, Map<Character, List<Character>> graph) {
-        List<String> left = new ArrayList<>();
+    private boolean order(List<char[]> words, int start, Map<Character, List<Character>> graph) {
+        List<char[]> left = new ArrayList<>();
         for (int i = 0; i < words.size(); i++) {
-            String word = words.get(i);
-            char h = word.charAt(0);
+            char[] word = words.get(i);
+            char h = word[start];
 
             if (!graph.containsKey(h)) {
                 graph.put(h, new ArrayList<>());
             }
 
-            if (i > 0 && h == words.get(i - 1).charAt(0)) {
-                if (word.length() == 1 && left.size() > 0) {
+            if (i > 0 && h == words.get(i - 1)[start]) {
+                if (word.length == start + 1 && left.size() > 0) {
                     return false;
                 }
-                if (word.length() > 1) {
-                    left.add(word.substring(1));
+                if (word.length > start + 1) {
+                    left.add(word);
                 }
                 continue;
             }
             if (left.size() > 0) {
-                if (!order(left, graph)) {
+                if (!order(left, start + 1, graph)) {
                     return false;
                 }
             }
             left.clear();
-            if (word.length() > 1) {
-                left.add(word.substring(1));
+            if (word.length > start + 1) {
+                left.add(word);
             }
             if (i == 0) {
                 continue;
             }
 
-            graph.get(words.get(i - 1).charAt(0)).add(h);
+            graph.get(words.get(i - 1)[start]).add(h);
         }
         if (left.size() > 0) {
-            return order(left, graph);
+            return order(left, start + 1, graph);
         }
         return true;
     }
