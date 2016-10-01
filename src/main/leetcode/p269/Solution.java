@@ -8,97 +8,96 @@ import java.util.*;
 public class Solution {
 
     public static void main(String[] args) {
-        String[] words = {"wrt", "wrf", "er", "ett", "rftt"};
+        //String[] words = {"wrt", "wrf", "er", "ett", "rftt"};
         //String[] words = {"z", "z"};
-        //        String[] words = {"a", "b", "a"};
-        //String[] words = {"wrtkj", "wrt"};
+        //String[] words = {"a", "b", "a"};
+        String[] words = {"wrtkj", "wrt"};
         Solution solution = new Solution();
         System.out.println(solution.alienOrder(words));
     }
 
     public String alienOrder(String[] words) {
         Map<Character, List<Character>> graph = new HashMap<>();
-        List<char[]> wordCharArray = new ArrayList<>();
-        for (String word : words) {
-            wordCharArray.add(word.toCharArray());
-        }
-
-        if (!order(wordCharArray, 0, graph)) {
+        if (!order(words, graph)) {
             return "";
         }
 
-        Map<Character, Integer> d = new HashMap<>();
-        for (Character c : graph.keySet()) {
-            if (!d.containsKey(c)) {
-                d.put(c, 0);
+        int[] d = new int[26];
+        Arrays.fill(d, -1);
+
+        for (String word : words) {
+            for (char c : word.toCharArray()) {
+                d[c - 'a'] = 0;
             }
-            for (Character x : graph.get(c)) {
-                if (d.containsKey(x)) {
-                    d.put(x, d.get(x) + 1);
-                } else {
-                    d.put(x, 1);
-                }
+        }
+
+        for (char v : graph.keySet()) {
+            for (char w : graph.get(v)) {
+                d[w - 'a']++;
+            }
+        }
+
+        int wordCnt = 0;
+        for (int x : d) {
+            if (x >= 0) {
+                wordCnt++;
             }
         }
 
         StringBuilder sb = new StringBuilder();
-        while (d.size() > 0) {
-            char selected = '\0';
-            for (Character c : d.keySet()) {
-                if (d.get(c) == 0) {
-                    selected = c;
+
+        while (wordCnt > 0) {
+            int x = -1;
+            for (int i = 0; i < d.length; i++) {
+                if (d[i] == 0) {
+                    x = i;
                     break;
                 }
             }
-            if (selected == '\0') {
-                return "";
+            if (x < 0) {
+                break;
             }
-            d.remove(selected);
-            sb.append(selected);
-            for (Character x : graph.get(selected)) {
-                d.put(x, d.get(x) - 1);
+            d[x]--;
+            char v = (char) (x + 'a');
+            wordCnt--;
+            sb.append(v);
+            if (!graph.containsKey(v)) {
+                continue;
+            }
+            for (char w : graph.get(v)) {
+                d[w - 'a']--;
             }
         }
+
+        if (wordCnt > 0) {
+            return "";
+        }
+
         return sb.toString();
     }
 
-    private boolean order(List<char[]> words, int start, Map<Character, List<Character>> graph) {
-        List<char[]> left = new ArrayList<>(words.size());
-        for (int i = 0; i < words.size(); i++) {
-            char[] word = words.get(i);
-            char h = word[start];
-
-            if (!graph.containsKey(h)) {
-                graph.put(h, new ArrayList<>());
+    private boolean order(String[] words, Map<Character, List<Character>> graph) {
+        for (int i = 1; i < words.length; i++) {
+            String word = words[i];
+            String prev = words[i - 1];
+            int j = 0;
+            while (j < word.length() && j < prev.length() && prev.charAt(j) == word.charAt(j)) {
+                j++;
             }
-
-            if (i > 0 && h == words.get(i - 1)[start]) {
-                if (word.length == start + 1 && left.size() > 0) {
-                    return false;
-                }
-                if (word.length > start + 1) {
-                    left.add(word);
-                }
+            if (j < prev.length() && j == word.length()) {
+                return false;
+            }
+            if (j == prev.length()) {
                 continue;
             }
-            if (left.size() > 0) {
-                if (!order(left, start + 1, graph)) {
-                    return false;
-                }
+            char a = prev.charAt(j);
+            char b = word.charAt(j);
+            if (!graph.containsKey(a)) {
+                graph.put(a, new ArrayList<>());
             }
-            left.clear();
-            if (word.length > start + 1) {
-                left.add(word);
-            }
-            if (i == 0) {
-                continue;
-            }
+            graph.get(a).add(b);
+        }
 
-            graph.get(words.get(i - 1)[start]).add(h);
-        }
-        if (left.size() > 0) {
-            return order(left, start + 1, graph);
-        }
         return true;
     }
 }

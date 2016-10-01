@@ -1,4 +1,4 @@
-package closest.search.tree.value.p270;
+package p270;
 
 import closest.search.tree.value.TreeNode;
 
