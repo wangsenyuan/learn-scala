@@ -1,6 +1,6 @@
 package p337.house.robber
 
-import closest.search.tree.value.TreeNode
+import p272.TreeNode
 
 /**
   * Created by wangsenyuan on 4/1/16.

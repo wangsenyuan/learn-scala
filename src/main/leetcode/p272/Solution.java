@@ -1,6 +1,4 @@
-package closest.search.tree.value.p272;
-
-import closest.search.tree.value.TreeNode;
+package p272;
 
 import java.util.ArrayList;
 import java.util.Arrays;

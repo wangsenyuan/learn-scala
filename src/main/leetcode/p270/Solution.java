@@ -1,6 +1,6 @@
 package p270;
 
-import closest.search.tree.value.TreeNode;
+import p272.TreeNode;
 
 /**
  * Created by senyuanwang on 15/8/27.
