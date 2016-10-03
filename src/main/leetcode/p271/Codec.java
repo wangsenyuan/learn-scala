@@ -1,4 +1,4 @@
-package encode.decode.strings.p271;
+package p271;
 
 import java.util.ArrayList;
 import java.util.List;
