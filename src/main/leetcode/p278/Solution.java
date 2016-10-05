@@ -1,4 +1,4 @@
-package first.bad.version.p278;
+package p278;
 
 /**
  * Created by senyuanwang on 15/9/7.
