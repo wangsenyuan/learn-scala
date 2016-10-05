@@ -1,4 +1,4 @@
-package hindex.p274;
+package p274;
 
 import java.util.Arrays;
 
