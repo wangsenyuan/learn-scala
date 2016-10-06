@@ -15,46 +15,34 @@ public class Solution {
     }
 
     public List<String> addOperators(String num, int target) {
-        List<String> rst = new ArrayList<String>();
-        if (num == null || num.length() == 0)
-            return rst;
-        char[] cs = num.toCharArray();
-        long x = 0;
-
-        for (int j = 0; j < cs.length; j++) {
-            if (j > 0 && cs[j] == '0') {
-                break;
-            }
-            x = x * 10 + cs[j] - '0';
-            if (x > Integer.MAX_VALUE || x < Integer.MIN_VALUE) {
-                break;
-            }
-            int y = (int) x;
-            addOperators(rst, "" + y, cs, j + 1, target, y, y);
+        char[] digit = num.toCharArray(), path = new char[num.length() * 2];
+        List<String> ans = new ArrayList();
+        long pureNum = 0;
+        for (int i = 0; i < digit.length; i++) {
+            pureNum = pureNum * 10 + (digit[i] - '0');
+            path[i] = digit[i];
+            dfs(i + 1, i + 1, 0, pureNum, path, digit, target, ans);
+            if (pureNum == 0) break; // not allow number with 0 prefix, except zero itself;
         }
-        return rst;
+        return ans;
     }
 
-    public void addOperators(List<String> res, String path, char[] num, int i, int target, int got, int mul) {
-        if (i == num.length) {
-            if (got == target) {
-                res.add(path);
-            }
+    private void dfs(int ip, int id, long toAdd, long toMult, char[] path, char[] digit, int target, List<String> ans) {
+        if (id == digit.length && toAdd + toMult == target) {
+            ans.add(String.valueOf(path, 0, ip));
             return;
         }
-        long x = 0;
-        for (int j = i; j < num.length; j++) {
-            if (j > i && num[i] == '0') {
-                break;
-            }
-            x = x * 10 + num[j] - '0';
-            if (x > Integer.MAX_VALUE || x < Integer.MIN_VALUE) {
-                break;
-            }
-            int y = (int) x;
-            addOperators(res, path + "+" + x, num, j + 1, target, got + y, y);
-            addOperators(res, path + "-" + x, num, j + 1, target, got - y, -y);
-            addOperators(res, path + "*" + x, num, j + 1, target, got - mul + mul * y, mul * y);
+        long pureNum = 0;
+        for (int i = 0; id + i < digit.length; i++) {
+            pureNum = pureNum * 10 + (digit[id + i] - '0');
+            path[ip + i + 1] = digit[id + i];
+            path[ip] = '+';
+            dfs(ip + i + 2, id + i + 1, toAdd + toMult, pureNum, path, digit, target, ans);
+            path[ip] = '-';
+            dfs(ip + i + 2, id + i + 1, toAdd + toMult, -pureNum, path, digit, target, ans);
+            path[ip] = '*';
+            dfs(ip + i + 2, id + i + 1, toAdd, toMult * pureNum, path, digit, target, ans);
+            if (pureNum == 0) break; // not allow number with 0 prefix, except zero itself;
         }
     }
 }

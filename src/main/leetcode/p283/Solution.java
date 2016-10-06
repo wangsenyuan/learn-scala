@@ -1,21 +1,20 @@
-package move.zeros.p283;
+package p283;
 
 /**
  * Created by senyuanwang on 15/9/20.
  */
 public class Solution {
     public void moveZeroes(int[] nums) {
-        int j = 0;
+        int p = 0;
         for (int i = 0; i < nums.length; i++) {
-            while (j < nums.length && nums[j] != 0) {
-                j += 1;
+            if (nums[i] == 0) {
+                continue;
             }
+            nums[p++] = nums[i];
+        }
 
-            if (i > j && nums[i] != 0) {
-                int tmp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = tmp;
-            }
+        for (int i = p; i < nums.length; i++) {
+            nums[i] = 0;
         }
 
     }
