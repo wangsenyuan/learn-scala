@@ -1,4 +1,4 @@
-package binary.tree.preorder.verify.p255;
+package p255;
 
 /**
  * Created by senyuanwang on 15/8/27.
