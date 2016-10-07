@@ -12,51 +12,48 @@ public class Solution {
     }
 
     public boolean wordPatternMatch(String pattern, String str) {
-        char[] pChar = pattern.toCharArray();
-        char[] sChar = str.toCharArray();
-        return isMatch(pChar, 0, sChar, 0, new String[26], new HashSet<>());
+        return isMatch(pattern.toCharArray(), 0, str.toCharArray(), 0, new String[26], new HashSet<>());
     }
 
-    public boolean isMatch(char[] pChar, int pStart, char[] sChar, int sStart, String[] pMap,
-        HashSet<String> visitSet) {
-        if (pStart > pChar.length - 1 && sStart > sChar.length - 1) {
+    public boolean isMatch(char[] pattern, int p, char[] str, int s, String[] map, HashSet<String> visitSet) {
+        if (p > pattern.length - 1 && s > str.length - 1) {
             return true;
         }
-        if (pStart > pChar.length - 1 || sStart > sChar.length - 1) {
+        if (p > pattern.length - 1 || s > str.length - 1) {
             return false;
         }
 
-        if (pMap[pChar[pStart] - 'a'] == null) {
+        if (map[pattern[p] - 'a'] == null) {
             // -----------------------------I added these 4 lines--------------------------
-            int endPoint = sChar.length - 1;
-            for (int i = pChar.length - 1; i > pStart; i--) {
-                endPoint -= pMap[pChar[i] - 'a'] == null ? 1 : pMap[pChar[i] - 'a'].length();
+            int endPoint = str.length - 1;
+            for (int i = pattern.length - 1; i > p; i--) {
+                endPoint -= map[pattern[i] - 'a'] == null ? 1 : map[pattern[i] - 'a'].length();
             }
             //-----------------------------------------------------------------------------------
-            for (int i = sStart; i <= endPoint; ++i) {
-                String ts = new String(sChar, sStart, i - sStart + 1);
+            for (int i = s; i <= endPoint; ++i) {
+                String ts = new String(str, s, i - s + 1);
                 if (visitSet.contains(ts)) {
                     continue;
                 }
-                pMap[pChar[pStart] - 'a'] = ts;
+                map[pattern[p] - 'a'] = ts;
                 visitSet.add(ts);
-                if (isMatch(pChar, pStart + 1, sChar, i + 1, pMap, visitSet)) {
+                if (isMatch(pattern, p + 1, str, i + 1, map, visitSet)) {
                     return true;
                 }
-                pMap[pChar[pStart] - 'a'] = null;
+                map[pattern[p] - 'a'] = null;
                 visitSet.remove(ts);
             }
 
             return false;
         }
 
-        String vString = pMap[pChar[pStart] - 'a'];
-        if (sStart + vString.length() > sChar.length) {
+        String vString = map[pattern[p] - 'a'];
+        if (s + vString.length() > str.length) {
             return false;
         }
-        String ts = new String(sChar, sStart, vString.length());
+        String ts = new String(str, s, vString.length());
         if (vString.equals(ts)) {
-            return isMatch(pChar, pStart + 1, sChar, sStart + vString.length(), pMap, visitSet);
+            return isMatch(pattern, p + 1, str, s + vString.length(), map, visitSet);
         }
 
         return false;
