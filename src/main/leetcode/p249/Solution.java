@@ -1,4 +1,4 @@
-package group.shifted.strings.p249;
+package p249;
 
 import java.util.*;
 

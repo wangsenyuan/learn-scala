@@ -1,4 +1,4 @@
-package count.univalue.subtree.p250;
+package p250;
 
 /**
  * Created by senyuanwang on 15/8/23.
