@@ -1,10 +1,5 @@
-package count.univalue.subtree.p250;
+package p250;
 
-
-import geeks.lca.Tree;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by senyuanwang on 15/8/23.
