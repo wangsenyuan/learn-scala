@@ -1,4 +1,4 @@
-package game.life.p289;
+package p289;
 
 /**
  * Created by senyuanwang on 15/10/8.

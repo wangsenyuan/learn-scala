@@ -1,4 +1,4 @@
-package word.pattern.p290;
+package p290;
 
 import java.util.HashMap;
 import java.util.Map;

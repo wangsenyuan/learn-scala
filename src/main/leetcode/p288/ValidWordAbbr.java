@@ -1,4 +1,4 @@
-package unique.word.abbreviation.p288;
+package p288;
 
 import java.util.ArrayList;
 import java.util.HashMap;
