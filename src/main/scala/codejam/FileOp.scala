@@ -5,8 +5,8 @@ import java.io.File
 import scala.io.Source
 
 /**
- * Created by senyuanwang on 14/11/29.
- */
+  * Created by senyuanwang on 14/11/29.
+  */
 trait FileOp {
 
   val filePrefix = ""
@@ -25,7 +25,17 @@ trait FileOp {
       pw => sa.foreach(pw.write)
     )
 
-  lazy val file = Source.fromFile(s"$filePrefix.in").getLines()
+  def writeToOutput(sa: Vector[String]) =
+    printToFile(new File((s"$filePrefix.out")))(
+      pw => sa.foreach(pw.write)
+    )
+
+  lazy val file = {
+    val f = new File(s"$filePrefix.in")
+    //println(f.getAbsolutePath())
+    val fileContent = Source.fromFile(f)
+    fileContent.getLines()
+  }
 
 
 }
