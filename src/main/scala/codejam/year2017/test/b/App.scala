@@ -36,17 +36,17 @@ object App extends App with FileOp {
     val X = xor(A, B)
     val Y = xor(C, D).sorted
 
-    X.map(_ ^ K).map(find(Y, _)).sum
+    X.map(_ ^ K).map(binarySearch(Y, _)).sum
   }
 
-  def find(arr: Array[Long], target: Long): Long = {
-    val i = find(arr.length)(arr(_) >= target)
-    val j = find(arr.length)(arr(_) > target)
+  def binarySearch(arr: Array[Long], target: Long): Long = {
+    val i = binarySearch(arr.length)(arr(_) >= target)
+    val j = binarySearch(arr.length)(arr(_) > target)
 
     return j - i
   }
 
-  def find(len: Int)(f: Int => Boolean): Int = {
+  def binarySearch(len: Int)(f: Int => Boolean): Int = {
     var i = 0;
     var j = len - 1
     while (i <= j) {
