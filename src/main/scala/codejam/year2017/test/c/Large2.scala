@@ -42,7 +42,7 @@ object Large2 extends App with FileOp {
         val d = rand.nextInt(100)
         if (d < a) {
           sample(n - 1, x & k)
-        } else if (d > a + b) {
+        } else if (d >= a + b) {
           sample(n - 1, x ^ k)
         } else {
           sample(n - 1, x | k)
@@ -50,7 +50,7 @@ object Large2 extends App with FileOp {
       }
     }
 
-    val times = 10000000
+    val times = 100000000
 
     val sum = (0 until times).map(_ => sample(n, x)).sum
     1.0d * sum / times
