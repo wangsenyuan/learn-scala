@@ -9,7 +9,7 @@ import scala.io.StdIn
 object Large extends App {
 
 
-  val INF = 1e10
+  val INF: Double = 1e10
   val PRECISION: Double = 1e-5
 
   //println(INF)
@@ -35,23 +35,23 @@ object Large extends App {
 
     val r = jump(asteroids, s)
 
-    println(f"Case #$t: $r%.8f")
+    println(f"Case #$t: $r%.6f")
 
     t += 1
   }
 
-  case class Asteroid(x: Int, y: Int, z: Int, vx: Int, vy: Int, vz: Int)
+  case class Asteroid(x: Long, y: Long, z: Long, vx: Long, vy: Long, vz: Long)
 
   object Asteroid {
     def apply(str: String): Asteroid = {
-      val parts = str.split("\\s+").map(_.toInt)
+      val parts = str.split("\\s+").map(_.toLong)
       Asteroid(parts(0), parts(1), parts(2), parts(3), parts(4), parts(5))
     }
   }
 
-  implicit class IntOp(val x: Int) extends AnyVal {
+  implicit class LongOp(val x: Long) extends AnyVal {
     def **(power: Int) = {
-      var i = 1
+      var i = 1L
       var y = x
       while (i < power) {
         y *= x
@@ -78,13 +78,14 @@ object Large extends App {
         val dv = Vector(pi.vx - pj.vx, pi.vy - pj.vy, pi.vz - pj.vz)
         val a = dv(0) ** 2 + dv(1) ** 2 + dv(2) ** 2
         val b = 2 * (dv(0) * dp(0) + dv(1) * dp(1) + dv(2) * dp(2))
-        val c = dp(0) ** 2 + dp(1) ** 2 + dp(2) ** 2
-        val d = 1.0d * (b ** 2 - 4 * a * (c - x))
+        val c = dp(0) ** 2 + dp(1) ** 2 + dp(2) ** 2 - x
+        val d = 1.0d * (b ** 2 - 4 * a * c)
         open(i)(j) = INF
-        close(i)(j) = INF
-        if (a == 0) {
-          if (c <= x) {
+        close(i)(j) = -INF
+        if (a < 1e-9) {
+          if (c < 0) {
             open(i)(j) = 0.0d
+            close(i)(j) = INF
           }
         } else if (d >= 0) {
           open(i)(j) = (-b - Math.sqrt(d)) / 2.0 / a
@@ -100,40 +101,37 @@ object Large extends App {
       calculateOpenAndCloseTime(x)
 
       val stayBegin = Array.fill(n)(INF)
-      val stayEnd = Array.fill(n)(INF)
+      val stayEnd = Array.fill(n)(-INF)
       stayBegin(0) = 0.0d
       stayEnd(0) = s
       val q = new mutable.Queue[Int]()
       q.enqueue(0)
-      var reachDestination = false
-      while (!q.isEmpty && !reachDestination) {
+      while (!q.isEmpty) {
         val i = q.dequeue()
-        reachDestination = i == 1
-        if (!reachDestination) {
-          for {
-            j <- 0 until n
-            if i != j && open(i)(j) < close(i)(j)
-            left = stayBegin(i) max open(i)(j)
-            right = stayEnd(i) min close(i)(j)
-            if left <= right
-          } {
-            if (j == 1) {
-              q.enqueue(j)
-            } else if (left < stayBegin(j) || close(i)(j) + s > stayEnd(j)) {
-              stayBegin(j) = left min stayBegin(j)
-              stayEnd(j) = close(i)(j) + s max stayEnd(j)
-              q.enqueue(j)
+        var j = 0
+        while (j < n) {
+          if (i != j && open(i)(j) < close(i)(j)) {
+            val left = stayBegin(i) max open(i)(j)
+            val right = stayEnd(i) min close(i)(j)
+            if (left < right) {
+              if (left < stayBegin(j) || close(i)(j) + s > stayEnd(j)) {
+                stayBegin(j) = left min stayBegin(j)
+                stayEnd(j) = (close(i)(j) + s) max stayEnd(j)
+                q enqueue j
+              }
             }
           }
+
+          j += 1
         }
       }
 
-      reachDestination
+      stayBegin(1) <= stayEnd(1)
     }
 
     var left = 0.0d
-    var right = INF
-    val times = math.log10((right - left) / PRECISION / PRECISION) / math.log10(2)+ 1
+    var right = 3.0d * 1e6
+    val times = math.log10((right - left) / (PRECISION * PRECISION)) / math.log10(2) + 1
 
     var i = 0
     while (i < times) {
