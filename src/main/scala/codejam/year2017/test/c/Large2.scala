@@ -50,7 +50,7 @@ object Large2 extends App with FileOp {
       }
     }
 
-    val times = 100000000
+    val times = 1000000
 
     val sum = (0 until times).map(_ => sample(n, x)).sum
     1.0d * sum / times
