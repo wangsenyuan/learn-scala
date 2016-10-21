@@ -1,4 +1,4 @@
-package codejam.year2016.roundw.a
+package codejam.year2016.roundwomen.a
 
 import scala.io.StdIn
 

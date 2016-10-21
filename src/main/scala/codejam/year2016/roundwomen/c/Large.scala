@@ -1,5 +1,6 @@
-package codejam.year2016.roundw.c
+package codejam.year2016.roundwomen.c
 
+import scala.annotation.tailrec
 import scala.io.StdIn
 
 /**
@@ -16,18 +17,17 @@ object Large extends App {
     */
 
   def play(c: Int, v: Int, l: Int): Long = {
-    val ws = Array.fill(l + 1)(1L)
 
-    ws(0) = 1
-    ws(1) = v
-
-    for {
-      i <- 2 to l
-    } {
-      ws(i) = (v * ws(i - 1) + c * v * ws(i - 2)) % MASK
+    @tailrec
+    def go(i: Int, a: Long, b: Long): Long = {
+      if (i == l) {
+        a
+      } else {
+        go(i + 1, b, (v * b + c * v * a) % MASK)
+      }
     }
 
-    ws(l)
+    go(0, 1, v)
   }
 
   val t = StdIn.readInt()
