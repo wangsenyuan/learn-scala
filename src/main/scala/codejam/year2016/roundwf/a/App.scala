@@ -24,92 +24,111 @@ object App {
     }
   }
 
-  val ç = '\0'
+  case class Edge(from: Int, to: Int, op: Int)
 
-  class State {
-    var transitions = Map.empty[Char, List[State]]
-
-    def transit(op: Char, next: State) = {
-      transitions.get(op) match {
-        case None => transitions += op -> List(next)
-        case Some(xs) => transitions += op -> (next :: xs)
-      }
+  class NFA(var n: Int, var edges: Vector[Edge]) {
+    def transit(v: Int, op: Int): Vector[Int] = {
+      edges.filter(e => e.from == v && e.op == op).map(_.to)
     }
 
-    def reach(op: Char): Option[State] = {
-      transitions.get(ç) match {
-        case None =>
-          transitions.get(op) match {
-            case Some(xs) =>
-              xs match {
-                case h :: Nil => Some(h)
-                case _ => None
-              }
-            case None => None
-          }
-        case Some(ys) =>
-          var res: Option[State] = None
-          for {
-            y <- ys
-            if res.isEmpty
-            z <- y.reach(op)
-          } {
-            res = Some(z)
-          }
-          res
-      }
+    def transitEmpty(v: Int, op: Int): Vector[Int] = {
+      transit(v, op) ++ transit(v, -1).flatMap(w => transitEmpty(w, op))
     }
   }
 
-  class NFA(r: String) {
-    val start = new State
-    val end = new State
-    val n = r.length
+  object NFA {
+    def digit(d: Int): NFA = new NFA(2, Vector(Edge(0, 1, d)))
 
-    private def build(): Unit = {
-      if (n == 1) {
-        start.transit(r(0), end)
-      } else if (n > 3 && r(0) == '(' && r(n - 1) == '*') {
-        val sub = new NFA(r.substring(1, n - 2))
-        sub.end.transit(ç, sub.start)
-        start.transit(ç, sub.start)
-        sub.end.transit(ç, this.end)
-      } else if (n > 2 && r(0) == '(' && r(n - 1) == ')') {
-        val xs = r.substring(1, n - 1).split("|")
-        xs.foreach {
-          x =>
-            val sub = new NFA(x)
-            start.transit(ç, sub.start)
-            sub.end.transit(ç, this.end)
+    def concat(a: NFA, b: NFA): NFA = {
+      a.edges ++= b.edges.map(e => e.copy(from = e.from + a.n - 1, to = e.to + a.n - 1))
+      a.n += b.n - 1
+      a
+    }
+
+    def union(a: NFA, b: NFA): NFA = {
+      val edges0 = {
+        val (left, right) = a.edges.partition(_.to < a.n - 1)
+        left ++ right.map(e => e.copy(to = a.n + b.n - 3))
+      }
+      val edges1 = {
+        val (left, right) = b.edges.partition(_.from == 0)
+        left.map(e => e.copy(to = e.to + a.n - 2)) ++ right.map(e => e.copy(from = e.from + a.n - 2, to = e.to + a.n - 2))
+      }
+
+      a.edges = edges0 ++ edges1
+      a.n += b.n - 2
+      a
+    }
+
+    def kleine(a: NFA): NFA = {
+      val edges = a.edges.map(e => e.copy(from = e.from + 1, to = e.to + 1))
+      a.n += 2
+      a.edges = Edge(0, 1, -1) +: Edge(0, a.n - 1, -1) +: Edge(a.n - 2, a.n - 1, -1) +: Edge(a.n - 2, 1, -1) +: edges
+      a
+    }
+
+    private def pair(s: String): Int = {
+      def go(i: Int, level: Int): Int = {
+        if (i == s.length) {
+          -1
+        } else s(i) match {
+          case '(' => go(i + 1, level + 1)
+          case ')' if level == 1 => i
+          case ')' => go(i + 1, level - 1)
+          case _ => go(i + 1, level)
         }
+      }
+
+      go(0, 0)
+    }
+
+    private def split(s: String): Vector[String] = {
+      def go(i: Int, j: Int, level: Int, res: Vector[String]): Vector[String] = {
+        if (i == s.length) {
+          res :+ s.substring(j, i)
+        } else s(i) match {
+          case '(' => go(i + 1, j, level + 1, res)
+          case ')' => go(i + 1, j, level - 1, res)
+          case '|' if level == 0 => go(i + 1, i + 1, 0, res :+ s.substring(j, i))
+          case _ => go(i + 1, j, level, res)
+        }
+      }
+      go(0, 0, 0, Vector())
+    }
+
+    def apply(r: String): NFA = {
+      if (r.length == 0) {
+        new NFA(1, Vector())
       } else {
-        val xs = r.toCharArray
-        var prev = this.start
-        xs.foreach {
-          x =>
-            val sub = new NFA("" + x)
-            prev.transit(ç, sub.start)
-            prev = sub.end
+        var x: NFA = null
+        if (r(0) == '(') {
+          var i = pair(r)
+          if (i < r.length - 1 && r(i + 1) == '*') {
+            x = kleine(apply(r.substring(1, i)))
+            i += 1
+          } else {
+            val ss = split(r.substring(1, i))
+            x = ss.map(apply(_)).reduce(union(_, _))
+          }
+          concat(x, apply(r.substring(i + 1)))
+        } else {
+          concat(digit(r(0) - '0'), apply(r.substring(1)))
         }
-        prev.transit(ç, this.end)
       }
     }
-
-    build()
   }
-
 
   def play(r: String, a: Long, b: Long): Long = {
-    val nfa = new NFA(r)
+    val nfa = NFA(r)
 
     def matchNFA(x: Long): Long = {
       val s = x.toString
 
-      var countState = Map((true, true, Set(nfa.start)) -> 1)
+      var countState = Map((true, true, Set(0)) -> 1L)
 
       var i = 0
       while (i < s.length) {
-        var newCountState = Map((true, false, Set(nfa.start)) -> 1)
+        var newCountState = Map((true, false, Set(0)) -> 1L)
 
         for {
           ((isEmpty, isPrefix, states), count) <- countState
@@ -117,21 +136,19 @@ object App {
           if !isEmpty || newDigit != 0
           if !isPrefix || newDigit <= (s(i) - '0')
         } {
-          var newPossibleStates = Set.empty[State]
+          var newPossibleStates = Set.empty[Int]
 
           for {
             state <- states
-            newState <- state.reach(s(i))
+            newState <- nfa.transitEmpty(state, newDigit)
           } {
             newPossibleStates += newState
           }
 
-          if (newPossibleStates.size > 0) {
-            val key = (false, isPrefix && newDigit == (s(i) - '0'), newPossibleStates)
-            newCountState.get(key) match {
-              case None => newCountState += key -> count
-              case Some(x) => newCountState += key -> (count + x)
-            }
+          val key = (false, isPrefix && newDigit == (s(i) - '0'), newPossibleStates)
+          newCountState.get(key) match {
+            case None => newCountState += key -> count
+            case Some(x) => newCountState += key -> (count + x)
           }
         }
 
@@ -143,8 +160,10 @@ object App {
       var countMatch = 0L
 
       for {
-        ((_, _, states), count) <- countState
-        if states(nfa.end)
+        ((isEmpty, _, states), count) <- countState
+        if !isEmpty
+        state <- states
+        if state == nfa.n - 1 || nfa.transitEmpty(state, -1).exists(_ == nfa.n - 1)
       } {
         countMatch += count
       }
