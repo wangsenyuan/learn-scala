@@ -1,7 +1,4 @@
-package longest.increasing.seq.p300;
-
-import java.util.Arrays;
-import java.util.Stack;
+package p300;
 
 /**
  * Created by senyuanwang on 15/11/3.

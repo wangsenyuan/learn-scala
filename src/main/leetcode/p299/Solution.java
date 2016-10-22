@@ -1,6 +1,4 @@
-package bulls.cows.p299;
-
-import java.util.Arrays;
+package p299;
 
 /**
  * Created by senyuanwang on 15/10/31.
