@@ -1,5 +1,6 @@
 package codejam.year2016.roundwf.a
 
+import scala.annotation.tailrec
 import scala.io.StdIn
 
 /**
@@ -27,12 +28,24 @@ object App {
   case class Edge(from: Int, to: Int, op: Int)
 
   class NFA(var n: Int, var edges: Vector[Edge]) {
-    def transit(v: Int, op: Int): Vector[Int] = {
-      edges.filter(e => e.from == v && e.op == op).map(_.to)
+    def transit(v: Int, op: Int): Set[Int] = {
+      edges.filter(e => e.from == v && e.op == op).map(_.to).toSet
     }
 
-    def transitEmpty(v: Int, op: Int): Vector[Int] = {
-      transit(v, op) ++ transit(v, -1).flatMap(w => transitEmpty(w, op))
+    def transitEmpty(v: Int, op: Int): Set[Int] = {
+      @tailrec
+      def go(vs: Set[Int], res: Set[Int]): Set[Int] = {
+        if (vs.isEmpty) {
+          res
+        } else {
+          val cur = vs.flatMap(v => transit(v, op))
+          val ws = vs.flatMap(v => transit(v, -1))
+          go(ws, cur ++ res)
+        }
+      }
+
+      //transit(v, op) ++ transit(v, -1).flatMap(w => transitEmpty(w, op))
+      go(Set(v), Set())
     }
   }
 
@@ -140,9 +153,8 @@ object App {
 
           for {
             state <- states
-            newState <- nfa.transitEmpty(state, newDigit)
           } {
-            newPossibleStates += newState
+            newPossibleStates ++= nfa.transitEmpty(state, newDigit)
           }
 
           val key = (false, isPrefix && newDigit == (s(i) - '0'), newPossibleStates)
