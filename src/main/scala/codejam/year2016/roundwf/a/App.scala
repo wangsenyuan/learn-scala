@@ -27,7 +27,7 @@ object App {
 
   case class Edge(from: Int, to: Int, op: Int)
 
-  class NFA(var n: Int, var edges: Vector[Edge]) {
+  class NFA(var n: Int, var edges: Vector[Edge], var klein: Boolean = false) {
     def transit(v: Int, op: Int): Set[Int] = {
       edges.filter(e => e.from == v && e.op == op).map(_.to).toSet
     }
@@ -53,9 +53,14 @@ object App {
     def digit(d: Int): NFA = new NFA(2, Vector(Edge(0, 1, d)))
 
     def concat(a: NFA, b: NFA): NFA = {
-      a.edges ++= b.edges.map(e => e.copy(from = e.from + a.n - 1, to = e.to + a.n - 1))
-      a.n += b.n - 1
-      a
+      if (b.n == 1) {
+        a
+      } else {
+        a.edges ++= b.edges.map(e => e.copy(from = e.from + a.n - 1, to = e.to + a.n - 1))
+        a.n += b.n - 1
+        a.klein = false
+        a
+      }
     }
 
     def union(a: NFA, b: NFA): NFA = {
@@ -70,14 +75,20 @@ object App {
 
       a.edges = edges0 ++ edges1
       a.n += b.n - 2
+      a.klein = false
       a
     }
 
     def kleine(a: NFA): NFA = {
-      val edges = a.edges.map(e => e.copy(from = e.from + 1, to = e.to + 1))
-      a.n += 2
-      a.edges = Edge(0, 1, -1) +: Edge(0, a.n - 1, -1) +: Edge(a.n - 2, a.n - 1, -1) +: Edge(a.n - 2, 1, -1) +: edges
-      a
+      if (a.klein) {
+        a
+      } else {
+        val edges = a.edges.map(e => e.copy(from = e.from + 1, to = e.to + 1))
+        a.n += 2
+        a.edges = Edge(0, 1, -1) +: Edge(0, a.n - 1, -1) +: Edge(a.n - 2, a.n - 1, -1) +: Edge(a.n - 2, 1, -1) +: edges
+        a.klein = true
+        a
+      }
     }
 
     private def pair(s: String): Int = {
