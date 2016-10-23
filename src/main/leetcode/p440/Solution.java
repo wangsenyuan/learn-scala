@@ -9,27 +9,56 @@ import java.util.List;
 public class Solution {
 
     public static void main(String[] args) {
-   /*     for (int i = 1; i < 13; i++) {
-            System.out.println(findKthNumber(13, i));
-        }*/
-        System.out.println(findKthNumber(681692778, 351251360));
+
+        Solution solution = new Solution();
+
+        System.out.println(solution.findKthNumber(13, 6));
+
+        System.out.println(solution.findKthNumber(681692778, 351251360));
     }
 
-    public static int findKthNumber(int n, int k) {
-        long current = 1;
-        for (int i = 1; i < k; i++) {
-            if (current * 10 <= n) {
-                current *= 10;
-            } else if (current < n && current % 10 < 9) {
-                current++;
-            } else {
-                while ((current / 10) % 10 == 9) {
-                    current /= 10;
-                }
-                current = current / 10 + 1;
-            }
-        }
+    int index = 0;
+    int ans = 0;
 
-        return (int) current;
+    public int findKthNumber(int n, int k) {
+        for (int i = 1; i <= 9; i++) {
+            int c = count(n, i, "");
+            if (k > c + index) {
+                index += c;
+                continue;
+            }
+            if (helper(n, k, "" + i)) break;
+        }
+        return ans;
+    }
+
+    public boolean helper(int n, int k, String cur) {
+        index++;
+        if (index == k) {
+            ans = Integer.valueOf(cur);
+            return true;
+        }
+        for (int i = 0; i <= 9; i++) {
+            int c = count(n, i, cur);
+            if (k > c + index) {
+                index += c;
+                continue;
+            }
+            if (Integer.valueOf(cur + i) <= n) if (helper(n, k, cur + i)) return true;
+        }
+        return false;
+    }
+
+    public int count(int n, int i, String prefix) {
+        long cur = Long.valueOf(prefix + i);
+        int ans = 0;
+        int number = 1;
+        while (cur <= n) {
+            ans += number;
+            cur *= 10;
+            number *= 10;
+        }
+        if (n < (cur / 10 + number / 10 - 1)) ans -= cur / 10 + number / 10 - 1 - n;
+        return ans;
     }
 }
