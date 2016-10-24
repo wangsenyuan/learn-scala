@@ -1,4 +1,4 @@
-package smallest.rectangle.enclosing.black.pixels.p302;
+package p302;
 
 /**
  * Created by senyuanwang on 15/11/8.
@@ -12,8 +12,6 @@ public class Solution {
         int n = image[0].length;
 
         int[] cords = new int[4];
-        boolean[][] visited = new boolean[m][n];
-
         cords[0] = x;
         cords[1] = y;
         cords[2] = x;
@@ -21,9 +19,8 @@ public class Solution {
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                visited[i][j] = true;
                 if (image[i][j] == '1') {
-                    findCords(image, i, j, cords, visited);
+                    findCords(image, i, j, cords);
                     break;
                 }
             }
@@ -32,9 +29,8 @@ public class Solution {
         return (cords[2] - cords[0] + 1) * (cords[3] - cords[1] + 1);
     }
 
-    private void findCords(char[][] image, int i, int j, int[] cords, boolean[][] visited) {
-        visited[i][j] = true;
-
+    private void findCords(char[][] image, int i, int j, int[] cords) {
+        image[i][j] = '2';
         if (i < cords[0]) {
             cords[0] = i;
         }
@@ -63,12 +59,8 @@ public class Solution {
                 continue;
             }
 
-            if (visited[x][y]) {
-                continue;
-            }
-
             if (image[x][y] == '1') {
-                findCords(image, x, y, cords, visited);
+                findCords(image, x, y, cords);
             }
         }
 
@@ -77,11 +69,7 @@ public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        char[][] image = {
-                "0010".toCharArray(),
-                "0110".toCharArray(),
-                "0100".toCharArray()
-        };
+        char[][] image = {"0010".toCharArray(), "0110".toCharArray(), "0100".toCharArray()};
 
         System.out.println(solution.minArea(image, 0, 2));
     }
