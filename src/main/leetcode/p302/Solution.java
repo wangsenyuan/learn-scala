@@ -17,14 +17,7 @@ public class Solution {
         cords[2] = x;
         cords[3] = y;
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (image[i][j] == '1') {
-                    findCords(image, i, j, cords);
-                    break;
-                }
-            }
-        }
+        findCords(image, x, y, cords);
 
         return (cords[2] - cords[0] + 1) * (cords[3] - cords[1] + 1);
     }
