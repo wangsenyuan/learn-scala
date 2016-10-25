@@ -17,13 +17,13 @@ public class Solution {
         cords[2] = x;
         cords[3] = y;
 
+        image[x][y] = '2';
         findCords(image, x, y, cords);
 
         return (cords[2] - cords[0] + 1) * (cords[3] - cords[1] + 1);
     }
 
     private void findCords(char[][] image, int i, int j, int[] cords) {
-        image[i][j] = '2';
         if (i < cords[0]) {
             cords[0] = i;
         }
@@ -53,10 +53,10 @@ public class Solution {
             }
 
             if (image[x][y] == '1') {
+                image[x][y] = '2';
                 findCords(image, x, y, cords);
             }
         }
-
     }
 
     public static void main(String[] args) {
