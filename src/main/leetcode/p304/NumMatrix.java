@@ -1,4 +1,4 @@
-package rang.sum.query.p304;
+package p304;
 
 /**
  * Created by senyuanwang on 15/11/12.

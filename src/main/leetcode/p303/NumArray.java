@@ -1,4 +1,4 @@
-package rang.sum.query.p303;
+package p303;
 
 /**
  * Created by senyuanwang on 15/11/10.
