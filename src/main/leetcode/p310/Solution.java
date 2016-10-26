@@ -8,7 +8,7 @@ import java.util.*;
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        //int[][] edges = {{0, 3}, {1, 3}, {2, 3}, {4, 3}, {5, 4}};
+        int[][] edges = {{0, 3}, {1, 3}, {2, 3}, {4, 3}, {5, 4}};
         solution.findMinHeightTrees(6, edges).forEach(System.out::println);
     }
 
