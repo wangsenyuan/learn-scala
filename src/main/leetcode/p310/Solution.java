@@ -8,7 +8,9 @@ import java.util.*;
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[][] edges = {{0, 3}, {1, 3}, {2, 3}, {4, 3}, {5, 4}};
+        //int[][] edges = {{0, 3}, {1, 3}, {2, 3}, {4, 3}, {5, 4}};
+        //int[][] edges = {{1, 0}, {1, 2}, {1, 3}};
+        int[][] edges = {{0, 1}, {0, 2}, {0, 3}, {3, 4}, {4, 5}};
         solution.findMinHeightTrees(6, edges).forEach(System.out::println);
     }
 
@@ -16,102 +18,47 @@ public class Solution {
         if (n < 2) {
             return Arrays.asList(0);
         }
-        Map<Integer, List<Integer>> graph = new HashMap<>();
 
+        List<Integer>[] graph = new List[n];
+        int[] degree = new int[n];
         for (int[] edge : edges) {
             int a = edge[0];
             int b = edge[1];
-
-            graph.putIfAbsent(a, new ArrayList<>());
-            graph.get(a).add(b);
-
-            graph.putIfAbsent(b, new ArrayList<>());
-            graph.get(b).add(a);
+            if (graph[a] == null) {
+                graph[a] = new ArrayList<>();
+            }
+            graph[a].add(b);
+            degree[a]++;
+            if (graph[b] == null) {
+                graph[b] = new ArrayList<>();
+            }
+            graph[b].add(a);
+            degree[b]++;
         }
 
-        Map<Integer, Integer>[] height = new Map[n];
+        List<Integer> current = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            height[i] = new HashMap<>();
-        }
-        dfs(-1, 0, graph, height);
-
-        for (int w : graph.get(0)) {
-            int h = 1;
-            for (int x : height[0].keySet()) {
-                if (x == w) {
-                    continue;
-                }
-                if (height[0].get(x) > h) {
-                    h = height[0].get(x);
-                }
-            }
-            updateHeight(0, w, h + 1, graph, height);
-        }
-
-        int minHeight = Integer.MAX_VALUE;
-
-        for (Map<Integer, Integer> h : height) {
-            int maxHeight = 0;
-            for (int x : h.values()) {
-                if (x > maxHeight) {
-                    maxHeight = x;
-                }
-            }
-            if (maxHeight < minHeight) {
-                minHeight = maxHeight;
+            if (degree[i] == 1) {
+                current.add(i);
             }
         }
 
-        List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            Map<Integer, Integer> h = height[i];
-            int maxHeight = 0;
-            for (int x : h.values()) {
-                if (x > maxHeight) {
-                    maxHeight = x;
+        int left = n;
+        while (left > 2) {
+            List<Integer> next = new ArrayList<>(left);
+            for (Integer x : current) {
+                left--;
+                for (int y : graph[x]) {
+                    graph[y].remove(x);
+                    degree[y]--;
+                    if (degree[y] == 1) {
+                        next.add(y);
+                    }
                 }
             }
-            if (maxHeight == minHeight) {
-                result.add(i);
-            }
+            current = next;
         }
-        return result;
+
+        return current;
     }
-
-    private int dfs(int p, int v, Map<Integer, List<Integer>> graph, Map<Integer, Integer>[] height) {
-        int h = 1;
-
-        for (int w : graph.get(v)) {
-            if (w == p) {
-                continue;
-            }
-            int wh = dfs(v, w, graph, height);
-            height[v].put(w, wh);
-            if (wh > h) {
-                h = wh;
-            }
-        }
-        return h + 1;
-    }
-
-    private void updateHeight(int v, int w, int h, Map<Integer, List<Integer>> graph, Map<Integer, Integer>[] height) {
-        height[w].put(v, h);
-
-        for (int y : graph.get(w)) {
-            if (y == v) {
-                continue;
-            }
-            int hh = h;
-            for (int x : height[w].keySet()) {
-                if (y == x) {
-                    continue;
-                }
-                if (height[w].get(x) > hh) {
-                    hh = height[w].get(x);
-                }
-            }
-            updateHeight(w, y, hh + 1, graph, height);
-        }
-    }
-
 }
