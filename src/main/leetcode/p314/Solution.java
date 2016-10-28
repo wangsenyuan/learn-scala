@@ -1,4 +1,4 @@
-package binary.tree.vertical.order.traversal.p314;
+package p314;
 
 import java.util.*;
 
