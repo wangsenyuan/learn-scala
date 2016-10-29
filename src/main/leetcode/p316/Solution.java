@@ -1,4 +1,4 @@
-package remove.duplicate.letters.p316;
+package p316;
 
 import java.util.LinkedList;
 
