@@ -1,4 +1,4 @@
-package strobogrammatic.number.p248;
+package p248;
 
 import java.util.*;
 
