@@ -1,4 +1,4 @@
-package generalized.abbreviation.p320
+package p320
 
 import org.scalatest._
 import Matchers._

@@ -1,4 +1,4 @@
-package generalized.abbreviation.p320;
+package p320;
 
 import java.util.ArrayList;
 import java.util.Arrays;
