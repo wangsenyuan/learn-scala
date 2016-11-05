@@ -1,4 +1,4 @@
-package flattern.vector.p251;
+package p251;
 
 import java.util.List;
 
