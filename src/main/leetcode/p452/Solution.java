@@ -28,7 +28,7 @@ public class Solution {
             }
         });
 
-        int overlap = 1;
+        int shot = 1;
         int[] first = points[0];
 
         for (int i = 1; i < points.length; i++) {
@@ -36,10 +36,10 @@ public class Solution {
             if (first[1] >= point[0]) {
                 continue;
             }
-            overlap++;
+            shot++;
             first = point;
         }
 
-        return overlap;
+        return shot;
     }
 }
