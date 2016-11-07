@@ -32,7 +32,7 @@ public class Main {
 		if(v1 > 0) {
 			System.out.println(v1 + " " + v2);
 		} else {
-			System.out.println("No Solution");
+			System.out.println("No Solution1");
 			
 		}
 	}

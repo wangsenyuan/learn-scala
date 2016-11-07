@@ -1,4 +1,4 @@
-package wiggle.sort.p324;
+package p324;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by wangsenyuan on 12/31/15.
  */
-public class Solution {
+public class Solution1 {
     public void wiggleSort(int[] nums) {
         if (nums == null || nums.length == 0) return;
 

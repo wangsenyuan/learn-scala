@@ -1,4 +1,4 @@
-package power.of.three.p326;
+package p326;
 
 /**
  * Created by wangsenyuan on 1/8/16.
@@ -64,11 +64,20 @@ public class Solution {
         return false;
     }
 
+    public boolean isPowerOfThree2(int n) {
+        return Integer.toString(n, 3).matches("^10*$");
+    }
+
+    public boolean isPowerOfThree3(int n) {
+        double error = 0.0000000001;
+        return ((Math.log(n) / Math.log(3)) + error) % 1 <= 2 * error;
+    }
+
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        for(int i = 1; i < 30000; i++) {
-            if(solution.isPowerOfThree(i) != solution.isPowerOfThreeCorrect(i)) {
+        for (int i = 1; i < 30000; i++) {
+            if (solution.isPowerOfThree(i) != solution.isPowerOfThreeCorrect(i)) {
                 System.out.println(i + " not correct");
             }
         }

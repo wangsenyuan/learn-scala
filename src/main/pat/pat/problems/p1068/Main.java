@@ -36,7 +36,7 @@ public class Main {
 				}
 				System.out.println();
 			} else {
-				System.out.println("No Solution");
+				System.out.println("No Solution1");
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
