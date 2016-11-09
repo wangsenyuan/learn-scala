@@ -1,4 +1,4 @@
-package verify.binary.tree.serialization.p331;
+package p331;
 
 /**
  * Created by senyuanwang on 16/2/4.

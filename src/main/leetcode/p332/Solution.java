@@ -1,6 +1,4 @@
-package reconstruct.ltinerary.p332;
-
-import geeks.max.flow.Graph;
+package p332;
 
 import java.util.*;
 
@@ -20,8 +18,9 @@ public class Solution {
     }
 
     void visit(String airport, Map<String, PriorityQueue<String>> targets, List<String> route) {
-        while (targets.containsKey(airport) && !targets.get(airport).isEmpty())
+        while (targets.containsKey(airport) && !targets.get(airport).isEmpty()) {
             visit(targets.get(airport).poll(), targets, route);
+        }
         route.add(0, airport);
     }
 

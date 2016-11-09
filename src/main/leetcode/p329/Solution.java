@@ -1,4 +1,4 @@
-package longest.increasing.path.in.matrix.p329;
+package p329;
 
 /**
  * Created by wangsenyuan on 1/20/16.

@@ -1,4 +1,4 @@
-package patching.array.p330;
+package p330;
 
 /**
  * Created by wangsenyuan on 1/28/16.
