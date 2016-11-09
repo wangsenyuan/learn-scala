@@ -1,4 +1,4 @@
-package largest.binary.search.tree.p333
+package p333
 
 /**
   * Created by senyuanwang on 16/2/13.
