@@ -8,9 +8,11 @@ import java.util.*;
 public class Solution {
     public List<List<Integer>> palindromePairs(String[] words) {
         List<List<Integer>> ret = new ArrayList<>();
-        if (words == null || words.length < 2) return ret;
+        if (words == null || words.length < 2)
+            return ret;
         Map<String, Integer> map = new HashMap<String, Integer>();
-        for (int i = 0; i < words.length; i++) map.put(words[i], i);
+        for (int i = 0; i < words.length; i++)
+            map.put(words[i], i);
         for (int i = 0; i < words.length; i++) {
             // System.out.println(words[i]);
             for (int j = 0; j <= words[i].length(); j++) { // notice it should be "j <= words[i].length()"
@@ -46,13 +48,14 @@ public class Solution {
         int left = 0;
         int right = str.length() - 1;
         while (left <= right) {
-            if (str.charAt(left++) != str.charAt(right--)) return false;
+            if (str.charAt(left++) != str.charAt(right--))
+                return false;
         }
         return true;
     }
 
     public static void main(String[] args) {
-        String[] words = {"a", ""};
+        String[] words = {"abcd", "dcba", "lls", "s", "sssll"};
         List<List<Integer>> result = new Solution().palindromePairs(words);
         System.out.println(result);
     }
