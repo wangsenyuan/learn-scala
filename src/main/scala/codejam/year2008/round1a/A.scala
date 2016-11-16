@@ -1,12 +1,13 @@
-package codejam.year2008.round1
+package codejam.year2008.round1a
 
 import scala.io.Source
 
+
 /**
- * Created by senyuanwang on 14/11/23.
- */
+  * Created by senyuanwang on 14/11/23.
+  */
 object A extends App {
-  val file = Source.fromFile("src/main/scala/codejam/year2008/round1/A-large-practice.in").getLines()
+  val file = Source.fromFile("src/main/scala/codejam/year2008/round1a/A-large-practice.in").getLines()
   val T = file.next().toInt
 
   def process(t: Int): Unit = {
