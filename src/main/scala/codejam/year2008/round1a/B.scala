@@ -2,6 +2,8 @@ package codejam.year2008.round1a
 
 import codejam.FileOp
 
+import scala.annotation.tailrec
+
 /**
   * Problem
   * *
@@ -71,6 +73,7 @@ object B extends App with FileOp {
       }
     }
 
+    @tailrec
     def play(as: Vector[Customer]): Boolean = {
       as match {
         case Vector() => true
