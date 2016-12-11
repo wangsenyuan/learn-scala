@@ -20,72 +20,29 @@ public class Solution {
     }
 
     public int findMaxForm(String[] strs, int m, int n) {
-        Item[] items = new Item[strs.length];
-        for (int i = 0; i < strs.length; i++) {
+        int[][] dp = new int[m + 1][n + 1];
+
+        for (String str : strs) {
             int a = 0;
             int b = 0;
-            for (int j = 0; j < strs[i].length(); j++) {
-                if ('0' == strs[i].charAt(j)) {
+            for (int j = 0; j < str.length(); j++) {
+                if (str.charAt(j) == '0') {
                     a++;
                 } else {
                     b++;
                 }
             }
-            items[i] = new Item(a, b);
-        }
 
-        Arrays.sort(items, Comparator.comparing(Item::getA));
-
-        PriorityQueue<Item> pq = new PriorityQueue<>((Item x, Item y) -> {
-            if (x.b > y.b) {
-                return -1;
-            } else if (x.b < y.b) {
-                return 1;
-            } else if (x.a > y.a) {
-                return -1;
-            } else if (x.a < y.a) {
-                return 1;
-            } else {
-                return 0;
-            }
-        });
-
-        int a = 0;
-        int b = 0;
-        int ans = 0;
-        for (int i = 0; i < items.length; i++) {
-            if (items[i].a + a > m) {
-                break;
-            }
-            pq.offer(items[i]);
-            a += items[i].a;
-            b += items[i].b;
-            ans++;
-            while (b > n && pq.size() > 0) {
-                Item pop = pq.poll();
-                a -= pop.a;
-                b -= pop.b;
-                ans--;
+            for (int i = m; i >= a; i--) {
+                for (int j = n; j >= b; j--) {
+                    if (1 + dp[i - a][j - b] > dp[i][j]) {
+                        dp[i][j] = 1 + dp[i - a][j - b];
+                    }
+                }
             }
         }
-        return ans;
+
+        return dp[m][n];
     }
 
-    static class Item {
-        final int a;
-        final int b;
-
-        public Item(int a, int b) {
-            this.a = a;
-            this.b = b;
-        }
-
-        public int getA() {
-            return a;
-        }
-
-        public int getB() {
-            return b;
-        }
-    }
 }
