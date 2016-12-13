@@ -23,30 +23,23 @@ object Main {
   def choose(sticks: Array[Int]): Int = {
     val sorted = sticks.sorted
     var res = 0
-    for {
-      i <- 0 until sorted.length
-      x = sorted(i)
-      j <- i + 1 until sorted.length
-      y = sorted(j)
-      k = binarySearch(sorted, x + y)
-    } {
-      res += sorted.length - k
+    var i = sorted.length - 1
+    while (i > 1) {
+      var j = 0
+      var k = i - 1
+      while (j < k) {
+        if (sorted(j) + sorted(k) < sorted(i)) {
+          res += k - j
+          j += 1
+        } else {
+          k -= 1
+        }
+      }
+
+      i -= 1
     }
 
     res
   }
 
-  def binarySearch(arr: Array[Int], x: Int): Int = {
-    var i = 0
-    var j = arr.length
-    while (i < j) {
-      val k = i + (j - i) / 2
-      if (arr(k) <= x) {
-        i = k + 1
-      } else {
-        j = i - 1
-      }
-    }
-    i
-  }
 }
