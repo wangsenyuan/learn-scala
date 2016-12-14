@@ -26,7 +26,7 @@ object Main {
   def count(leaves: Array[Long]): Boolean = {
 
     def go(i: Int, stemsFromPrevLevel: Long): Boolean = {
-      if (i == leaves.length) {
+      if (i == leaves.length || stemsFromPrevLevel < 0) {
         stemsFromPrevLevel == 0
       } else if (i < leaves.length - 1 && stemsFromPrevLevel == 0) {
         false
