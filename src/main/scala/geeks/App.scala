@@ -13,11 +13,13 @@ object App extends App {
 
   addFour(6)
 
-  val n = 100000
+  val n = 100000L
 
   val m = (n + 1) * n
 
   println(m)
 
   println(Int.MaxValue)
+
+  println(1000000000)
 }
