@@ -1,9 +1,9 @@
 package geeks
 
 /**
- * Created by senyuanwang on 15/10/29.
- */
-object App {
+  * Created by senyuanwang on 15/10/29.
+  */
+object App extends App {
 
   def makeAdder(x: Int) = (y: Int) => x + y
 
@@ -12,4 +12,12 @@ object App {
   addFour(5)
 
   addFour(6)
+
+  val n = 100000
+
+  val m = (n + 1) * n
+
+  println(m)
+
+  println(Int.MaxValue)
 }
