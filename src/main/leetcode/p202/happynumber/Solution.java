@@ -1,9 +1,5 @@
 package p202.happynumber;
 
-import scalaz.Alpha;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by senyuanwang on 15/4/22.

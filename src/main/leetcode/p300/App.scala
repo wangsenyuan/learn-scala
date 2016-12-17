@@ -1,7 +1,5 @@
 package p300
 
-import scalaz.syntax.std.VectorOps
-
 /**
   * Created by senyuanwang on 2016/10/22.
   */
