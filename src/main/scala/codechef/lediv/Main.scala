@@ -39,6 +39,7 @@ object Main {
 
       println(ans)
     }
+
   }
 
   def search(nums: Array[Int], ps: Array[Int]): Int = {
