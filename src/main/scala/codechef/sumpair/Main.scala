@@ -1,5 +1,6 @@
 package codechef.sumpair
 
+import scala.annotation.tailrec
 import scala.io.StdIn
 
 /**
@@ -11,6 +12,7 @@ object Main {
     if (n < 2) {
       0
     } else {
+      @tailrec
       def go(i: Int, a: Long, b: Long): Long = {
         if (i == n) {
           a
@@ -27,7 +29,7 @@ object Main {
         if (nums(1) - nums(0) < d) {
           0L + nums(1) + nums(0)
         } else 0L
-      //f(n - 1)
+
       go(2, a, 0)
     }
   }
