@@ -7,6 +7,8 @@ import scala.io.StdIn
   */
 object Main {
 
+  val INF = 1000000;
+
   def findShortestMoves(digits: Array[Int]): Int = {
     val n = digits.length
     if (n <= 1) {
@@ -15,10 +17,10 @@ object Main {
       1
     } else {
       val first = Array.fill(10)(-1)
-      val last = Array.fill(10)(-n - 1)
-      val dist = Array.fill(10, 10)(n + 1)
+      val last = Array.fill(10)(-INF)
+      val dist = Array.fill(10, 10)(INF)
       val best = Array.fill(10, 10)(-1)
-      val cost = Array.fill(10)(n + 1)
+      val cost = Array.fill(10)(INF)
 
       var i = 0
       while (i < n) {
@@ -30,7 +32,8 @@ object Main {
         last(x) = i
         var y = 0
         while (y < 10) {
-          if (i - last(y) < dist(x)(y)) {
+          val d = i - last(y)
+          if (d < INF && d <= dist(x)(y)) {
             dist(x)(y) = i - last(y)
             dist(y)(x) = i - last(y)
             best(x)(y) = i
@@ -44,8 +47,10 @@ object Main {
       val jumpTo = Array.fill(10)(-1)
       val visited = Array.fill(10)(false)
       var cur = digits(0)
-      visited(cur) = true
-      while (cur != digits(n - 1)) {
+      val lastDigit = digits(n - 1)
+      while (cur != lastDigit) {
+        visited(cur) = true
+
         var x = 0
         while (x < 10) {
           if (!visited(x) && cost(x) >= cost(cur) + dist(cur)(x) + 1) {
@@ -56,7 +61,7 @@ object Main {
         }
 
         var y = -1
-        var minCost = n + 1
+        var minCost = INF
         x = 0
         while (x < 10) {
           if (!visited(x) && cost(x) < minCost) {
@@ -65,15 +70,14 @@ object Main {
           }
           x += 1
         }
-
-        visited(y) = true
         cur = y
       }
 
-      if (first(digits(n - 1)) == n - 1 || best(digits(n - 1))(jumpTo(digits(n - 1))) == n - 1) {
-        cost(digits(n - 1)) - 1
+
+      if (first(lastDigit) == n - 1 || (jumpTo(lastDigit) >= 0 && best(lastDigit)(jumpTo(lastDigit)) == n - 1)) {
+        cost(lastDigit) - 1
       } else {
-        cost(digits(n - 1))
+        cost(lastDigit)
       }
     }
   }
