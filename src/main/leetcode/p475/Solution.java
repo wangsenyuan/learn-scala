@@ -28,15 +28,14 @@ public class Solution {
             }
             if (heaters[j] < houses[i]) { // corner cases if j is 0 or there is no more heaters
                 ans = Math.max(ans, houses[i] - heaters[j]);
-                i++;
-                continue;
+            } else {
+                int dist = heaters[j] - houses[i];
+                if (j > 0) {
+                    dist = Math.min(dist, houses[i] - heaters[j - 1]);
+                }
+                ans = Math.max(ans, dist);
             }
 
-            int dist = heaters[j] - houses[i];
-            if (j > 0) {
-                dist = Math.min(dist, houses[i] - heaters[j - 1]);
-            }
-            ans = Math.max(ans, dist);
             i++;
         }
 
