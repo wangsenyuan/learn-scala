@@ -12,8 +12,8 @@ object Main {
     var res = 1
     var i = 1
     var j = 0
-    while (i < sorted.length) {
-      if (sorted(i) != sorted(i - 1)) {
+    while (i <= sorted.length) {
+      if (i == sorted.length || sorted(i) != sorted(i - 1)) {
         res = res max (i - j)
         j = i
       }
