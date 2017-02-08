@@ -22,56 +22,36 @@ object Main {
 
   def makeStacks(nums: Array[Int]) = {
     var idx = 0
-    var root: Node = null
     var i = 0
+    val res = Array.fill(nums.length)(0)
     while (i < nums.length) {
-      if (findPos(root, nums(i))) {
+      val j = search(idx, res(_) > nums(i))
+      if (j < idx) {
+        res(j) = nums(i)
+      } else {
+        res(idx) = nums(i)
         idx += 1
       }
-
-      root = addNode(root, nums(i), idx)
-
       i += 1
     }
 
-    val res = Array.fill(idx + 1)(0)
-
-    collect(root, res)
-
-    res
+    res.take(idx)
   }
 
-  case class Node(i: Int, v: Int, left: Node, right: Node)
+  def search(n: Int, f: Int => Boolean): Int = {
+    var i = 0
+    var j = n
 
-  def findPos(root: Node, v: Int): Boolean = {
-    if (root == null) {
-      false
-    } else if (v < root.v) {
-      true
-    } else {
-      findPos(root.right, v)
-    }
-  }
-
-  def addNode(root: Node, v: Int, idx: Int): Node = {
-    if (root == null) {
-      Node(idx, v, null, null)
-    } else if (v < root.v) {
-      if (findPos(root.left, v)) {
-        root.copy(left = addNode(root.left, v, idx))
+    while (i < j) {
+      val k = i + (j - i) / 2
+      if (f(k)) {
+        j = k
       } else {
-        root.copy(v = v)
+        i = k + 1
       }
-    } else {
-      root.copy(right = addNode(root.right, v, idx))
     }
+
+    i
   }
 
-  def collect(root: Node, res: Array[Int]): Unit = {
-    if (root != null) {
-      res(root.i) = root.v
-      collect(root.left, res)
-      collect(root.right, res)
-    }
-  }
 }
