@@ -14,7 +14,7 @@ object Main {
       val sorted = nums.sorted.takeWhile(_ < 0)
       val n = sorted.length
 
-      if (n < x || x == 1) {
+      if (n < x) {
         sorted.foldLeft(0L)((r, x) => r - x)
       } else {
         val pivot = -sorted(x - 1)
