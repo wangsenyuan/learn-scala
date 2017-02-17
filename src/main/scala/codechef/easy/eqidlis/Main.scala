@@ -35,14 +35,7 @@ object Main {
       if (av == bv) {
         res
       } else {
-        val x = (bv - av) / 2
-        val y =
-          if (x * 2 < bv - av) {
-            x + 1
-          } else {
-            x
-          }
-
+        val x = (bv - av + 1) / 2
         go(set - a - b + a.copy(num = av + x) + b.copy(num = bv - x), res + 1)
       }
     }
