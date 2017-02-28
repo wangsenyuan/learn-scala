@@ -19,7 +19,7 @@ object Main {
       if (cur > max) {
         max = cur
       }
-      
+
       res(i) = max
 
       if (cur < 0) {
@@ -33,15 +33,15 @@ object Main {
   }
 
 
-  def cookMoreDelicious(B: Array[Long], A: Array[Long], n: Int): Long = {
+  def prepare(B: Array[Long], A: Array[Long], n: Int): Long = {
     var j = 0
     var res = Long.MinValue
 
     while (j < n - 1) {
       val a = A(j)
       val b = B(j + 1)
-      if (b - a > res) {
-        res = b - a
+      if ((b - a).abs > res) {
+        res = (b - a).abs
       }
       j += 1
     }
@@ -49,20 +49,6 @@ object Main {
     res
   }
 
-  def cookLessDelicious(B: Array[Long], A: Array[Long], n: Int): Long = {
-    var j = 0
-    var res = Long.MinValue
-    while (j < n - 1) {
-      val a = A(j)
-      val b = B(j + 1)
-      if (a - b > res) {
-        res = a - b
-      }
-      j += 1
-    }
-
-    res
-  }
 
   def main(args: Array[String]): Unit = {
     val t = StdIn.readInt()
@@ -81,8 +67,8 @@ object Main {
         val D = calculateMaxArray(mds.reverse, n).reverse.map(x => -x)
 
 
-        val x = cookMoreDelicious(B, C, n)
-        val y = cookLessDelicious(D, A, n)
+        val x = prepare(B, C, n)
+        val y = prepare(D, A, n)
 
         val r = x max y
 
