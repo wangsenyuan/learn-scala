@@ -1,6 +1,5 @@
 package codechef.easy.chefst
 
-import scala.annotation.tailrec
 import scala.io.StdIn
 
 /**
@@ -8,31 +7,34 @@ import scala.io.StdIn
   */
 object Main {
 
-  def calculate(m: Long, n: Long): Long = {
-    val a = 1L
-    val b = -1L
-    val c = 2 * n - m * m + m
-    if (b * b < 4 * a * c) {
-      1L
-    } else {
-      val x = math.sqrt(b * b - 4 * a * c)
-      val y = (x + 1) * 0.5
-      val t = y.toLong
-      if (y - t > 10e-7) {
-        t + 1
+  /*  def calculate(m: Long, n: Long): Long = {
+      val a = 1L
+      val b = -1L
+      val c = 2 * n - m * m + m
+      if (b * b < 4 * a * c) {
+        1L
       } else {
-        t
+        val x = math.sqrt(b * b - 4 * a * c)
+        val y = (x + 1) * 0.5
+        val t = y.toLong
+        if (y - t > 10e-7) {
+          t + 1
+        } else {
+          t
+        }
       }
-    }
-  }
+    }*/
 
   def solve() = {
     val line = StdIn.readLine().split("\\s+").map(_.toLong)
-    val n1 = line(0) min line(1)
-    val n2 = line(0) max line(1)
+    val n1 = line(0)
+    val n2 = line(1)
     val m = line(2)
+    val k = m * (m + 1)
 
-    @tailrec
+    val res = (n1 + n2 - k) max (n1 - n2) max (n2 - n1)
+
+    /*@tailrec
     def go(m: Long, n: Long): Long = {
       if (m >= n) {
         0L
@@ -46,8 +48,8 @@ object Main {
     }
 
     val k = go(m, n1)
-    val sum = k + n2 - (n1 - k)
-    println(sum)
+    val sum = k + n2 - (n1 - k)*/
+    println(res)
   }
 
   def main(args: Array[String]): Unit = {
