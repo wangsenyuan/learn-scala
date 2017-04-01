@@ -1,6 +1,5 @@
 package codechef.easy.lemusic
 
-import scala.collection.mutable
 import scala.io.StdIn
 
 /**
@@ -21,14 +20,29 @@ object Main {
       i += 1
     }
 
-    val sorted = songs.sortBy(_._2)
-
+    val sorted = songs.sortWith(
+      (a, b) => (a._1 < b._1 || (a._1 == b._1 && a._2 < b._2))
+    )
+    var first = Vector.empty[Long]
     var ans = 0L
-    val band = mutable.Set.empty[Long]
+
     i = 0
     while (i < n) {
-      band += sorted(i)._1
-      ans += (band.size) * sorted(i)._2
+      if (i == 0 || sorted(i)._1 > sorted(i - 1)._1) {
+        first :+= sorted(i)._2
+      } else {
+        ans += sorted(i)._2
+      }
+      i += 1
+    }
+
+    val m = first.size
+    ans *= m
+
+    val sf = first.sorted
+    i = 0
+    while (i < m) {
+      ans += (i + 1) * sf(i)
       i += 1
     }
 
