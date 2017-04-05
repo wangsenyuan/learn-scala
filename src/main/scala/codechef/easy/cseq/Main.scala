@@ -25,7 +25,7 @@ object Main {
 
   def solve(fact: Array[Int], inv: Array[Int]) = {
     val line = StdIn.readLine().split("\\s+").map(_.toInt)
-    val n = line(0) + 1
+    val n = line(0)
     val l = line(1)
     val r = line(2)
     val k = r - l + 1
@@ -38,7 +38,7 @@ object Main {
       }
     }
 
-    val ret = 1L * comb((n + k - 1) / MOD, (n - 1) / MOD) * comb((n + k - 1) % MOD, (n - 1) % MOD)
+    val ret = 1L * comb((n + k) / MOD, n / MOD) * comb((n + k) % MOD, n % MOD)
 
     println((ret - 1 + MOD) % MOD)
   }
