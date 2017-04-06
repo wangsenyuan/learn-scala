@@ -9,9 +9,12 @@ object Main {
 
   val MOD = 1000003
 
+  val fact = Array.fill(MOD)(1)
+  val inv = Array.fill(MOD)(1)
+
   def fastPow(a: Int, n: Int): Int = {
     if (n == 0) {
-      a
+      1
     } else {
       val b = fastPow(a, n >> 1)
       val c = (1l * b * b) % MOD
@@ -44,8 +47,8 @@ object Main {
   }
 
   def main(args: Array[String]): Unit = {
-    val fact = Array.fill(MOD)(1)
-    val inv = Array.fill(MOD)(1)
+    fact(0) = 1
+    inv(0) = 1
     var i = 1
     while (i < MOD) {
       fact(i) = ((1l * fact(i - 1) * i) % MOD).toInt
