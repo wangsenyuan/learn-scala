@@ -23,14 +23,14 @@ object Main {
     var i = 0
     while (i < n) {
       val x = nums(i)
-      if (x < x0) {
+      if (x <= x0) {
         x1 = x0
         x0 = x
       } else if (x < x1) {
         x1 = x
       }
 
-      if (x > y0) {
+      if (x >= y0) {
         y1 = y0
         y0 = x
       } else if (x > y1) {
@@ -42,9 +42,9 @@ object Main {
     }
 
     val res =
-      if (calculateSum(x1, y0, n - 1) + x0 == sum) {
+      if (x0 + 1 < x1) {
         x0
-      } else if (calculateSum(x0, y1, n - 1) + y0 == sum) {
+      } else if (y0 - 1 > y1) {
         y0
       } else {
         sum - calculateSum(x0, y0, n - 1)
