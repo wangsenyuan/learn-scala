@@ -7,29 +7,7 @@ import scala.io.StdIn
   */
 object Main {
 
-  def findDir(s: String) = s match {
-    case "U" => 0
-    case "D" => 2
-    case "R" => 1
-    case _ => 3
-  }
-
-  case class Planet(x: Int, y: Int, dir: Int) {
-    def isMovingAlongY(): Boolean = {
-      dir == 0 || dir == 2
-    }
-
-    def isMovingAlongX(): Boolean = {
-      !isMovingAlongY()
-    }
-
-    def sign: Int = {
-      if (dir == 0 || dir == 1) {
-        1
-      } else {
-        -1
-      }
-    }
+  case class Planet(x: Int, y: Int, dir: Char) {
   }
 
   object Planet {
@@ -38,47 +16,37 @@ object Main {
       val x = parts(0).toInt
       val y = parts(1).toInt
       val d = parts(2)
-      Planet(x, y, findDir(d))
+      Planet(x, y, d(0))
     }
   }
 
-  def whenCollide(earth: Planet, asteroid: Planet): Double = {
-    if (earth.dir == asteroid.dir) {
-      -1.0
-    } else if (earth.isMovingAlongY() && asteroid.isMovingAlongY()) {
-      if (earth.x != asteroid.x) {
-        -1.0
-      } else if (earth.y > asteroid.y && earth.sign > 0) {
-        -1.0
-      } else if (earth.y < asteroid.y && earth.sign < 0) {
-        -1.0
-      } else {
-        0.5 * (earth.y - asteroid.y).abs
-      }
-    } else if (earth.isMovingAlongX() && asteroid.isMovingAlongX()) {
-      if (earth.y != asteroid.y) {
-        -1.0
-      } else if (earth.x > asteroid.x && earth.sign > 0) {
-        -1.0
-      } else if (earth.x < asteroid.x && earth.sign < 0) {
-        -1.0
-      } else {
-        0.5 * (earth.x - asteroid.x).abs
-      }
-    } else if (earth.isMovingAlongY()) {
-      val t = asteroid.sign * (earth.x - asteroid.x)
-      if (t > 0 && earth.y + earth.sign * t == asteroid.y) {
-        t.toDouble
+  def whenCollide(a: Planet, b: Planet): Double = {
+    if (a.dir == 'U' && b.dir == 'D' && a.x == b.x && a.y < b.y) {
+      0.5 * (b.y - a.y)
+    } else if (a.dir == 'D' && b.dir == 'U' && a.x == b.x && a.y > b.y) {
+      0.5 * (a.y - b.y)
+    } else if (a.dir == 'R' && b.dir == 'L' && a.y == b.y && a.x < b.x) {
+      0.5 * (b.x - a.x)
+    } else if (a.dir == 'L' && b.dir == 'R' && a.y == b.y && a.x > b.x) {
+      0.5 * (a.x - b.x)
+    } else if ((a.x - b.x).abs == (a.y - b.y).abs) {
+      if ((a.dir == 'R' && b.x > a.x) || (a.dir == 'L' && b.x < a.x)) {
+        if ((b.dir == 'U' && a.y > b.y) || (b.dir == 'D' && a.y < b.y)) {
+          (a.x - b.x).abs.toDouble
+        } else {
+          -1.0
+        }
+      } else if ((a.dir == 'U' && b.y > a.y) || (a.dir == 'D' && b.y < a.y)) {
+        if ((b.dir == 'R' && b.x < a.x) || (b.dir == 'L' && b.x > a.x)) {
+          (b.y - a.y).abs.toDouble
+        } else {
+          -1.0
+        }
       } else {
         -1.0
       }
     } else {
-      val t = asteroid.sign * (earth.y - asteroid.y)
-      if (t > 0 && earth.x + earth.sign * t == asteroid.x) {
-        t.toDouble
-      } else {
-        -1.0
-      }
+      -1.0
     }
   }
 
@@ -90,7 +58,7 @@ object Main {
     while (i < n) {
       val asteroid = Planet(StdIn.readLine())
       val tmp = whenCollide(earth, asteroid)
-      if (res < 0 || tmp < res) {
+      if (res < 0 || (tmp > 0 && tmp < res)) {
         res = tmp
       }
 
