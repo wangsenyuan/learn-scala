@@ -8,6 +8,8 @@ import scala.io.StdIn
   */
 object Main {
 
+  import scala.language.postfixOps
+
   val MOD = 1000000007
 
   def sumWays(fs: Array[Int], x: Int, k: Int): Int = {

@@ -30,6 +30,8 @@ object Main {
         }
     }
 
+    import scala.language.postfixOps
+
     while (m > 0) {
       val x = StdIn.readInt() - 1
       val y = nums(x)
