@@ -24,6 +24,7 @@ object Main {
 
     var i = 0
     while (i < n) {
+      println(n)
       invite(i, 0)
       i += 1
     }
