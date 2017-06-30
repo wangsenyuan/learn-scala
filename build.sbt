@@ -2,7 +2,9 @@ import sbt.Keys._
 
 name := "ALG-S"
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.12.2"
+
+autoScalaLibrary := false
 
 ivyScala := ivyScala.value map {
   _.copy(overrideScalaVersion = true)
@@ -19,6 +21,9 @@ libraryDependencies ++= List(
   //"org.scalaz" %% "scalaz-typelevel" % "7.2.0",
   "org.scalaz" %% "scalaz-scalacheck-binding" % "7.2.8" % "test"
 )
+
+libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.0"
+
 
 unmanagedSourceDirectories in Compile <++= baseDirectory { base =>
   Seq(
