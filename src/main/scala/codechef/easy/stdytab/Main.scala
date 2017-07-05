@@ -37,17 +37,35 @@ object Main {
     val n = firstLine(0)
     val m = firstLine(1)
 
-    def go(i: Int, x: Int): Long = {
-      if (i == n + 1) {
-        1
-      } else if (x > m) {
-        0
-      } else {
-        (go(i + 1, x) * C(x + m - 1)(m - 1) + go(i, x + 1)) % MOD
-      }
-    }
+    val dp = Array.fill(n + 1, m + 1)(0)
+    dp(0)(0) = 1
 
-    val ans = go(1, 0)
+    var i = 1
+    while (i <= n) {
+      var tmp = 0
+      var j = 0
+      while (j <= m) {
+        tmp += dp(i - 1)(j)
+        if (tmp >= MOD) {
+          tmp -= MOD
+        }
+
+        dp(i)(j) = (1l * tmp * C(j + m - 1)(m - 1) % MOD) toInt
+
+        j += 1
+      }
+
+      i += 1
+    }
+    var ans = 0
+    i = 0
+    while (i <= m) {
+      ans += dp(n)(i)
+      if (ans >= MOD) {
+        ans -= MOD
+      }
+      i += 1
+    }
 
     println(ans)
   }
