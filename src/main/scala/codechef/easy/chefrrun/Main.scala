@@ -1,6 +1,6 @@
 package codechef.easy.chefrrun
 
-import scala.annotation.tailrec
+import scala.collection.mutable
 import scala.io.StdIn
 
 object Main {
@@ -20,18 +20,24 @@ object Main {
 
     val checked = Array.fill(n)(0)
 
-    @tailrec
-    def check(i: Int): Unit = {
-      if (checked(i) < 2) {
-        checked(i) += 1
-        check((i + dishes(i) + 1) % n)
-      }
-    }
 
     var i = 0
     while (i < n) {
       if (checked(i) == 0) {
-        check(i)
+        var path = mutable.Set.empty[Int]
+        var j = i
+        while (checked(j) == 0) {
+          checked(j) += 1
+          path += j
+          j = (j + dishes(j) + 1) % n
+        }
+        if (path.contains(j)) {
+          // a new loop
+          while (checked(j) < 2) {
+            checked(j) += 1
+            j = (j + dishes(j) + 1) % n
+          }
+        }
       }
 
       i += 1
