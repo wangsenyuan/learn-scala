@@ -15,9 +15,9 @@ object Main {
     }
   }
 
-  def preComputeComb(n: Int): Array[Array[Long]] = {
-    val c = Array.fill(n + 1, n + 1)(0L)
-    c(0)(0) = 1
+  def preComputeComb(n: Int): Array[Array[Double]] = {
+    val c = Array.fill(n + 1, n + 1)(0.0d)
+    c(0)(0) = 1.0
 
     var i = 1
     while (i <= n) {
@@ -38,14 +38,14 @@ object Main {
     c
   }
 
-  def solve(comb: Array[Array[Long]]): Unit = {
+  def solve(comb: Array[Array[Double]]): Unit = {
     val line = StdIn.readLine().split("\\s+").map(_.toInt)
     val s = line(0)
     val n = line(1)
     val m = line(2)
     val k = line(3)
 
-    var num = 0L
+    var num = 0.0d
 
     var x = k max (n - 1 + m - s)
     while (x <= ((n - 1) min (m - 1))) {
