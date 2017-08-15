@@ -17,42 +17,33 @@ object Main {
     val firstLine = StdIn.readLine().split("\\s+").map(_.toInt)
     val n = firstLine(0)
     val k = firstLine(1)
-    val ingredients = Array.fill(k)(0)
-
-    var redudent = false
+    val islands = Array.fill[Array[Int]](n)(null)
+    val cnts = Array.fill(k)(0)
     var i = 0
     while (i < n) {
       val line = StdIn.readLine().split("\\s+").map(_.toInt)
-      val p = line(0)
+      islands(i) = line.tail
 
-      var tmpRedudent = true
-      var j = 0
-      while (j < p) {
-        val x = line(j + 1)
-
-        if (ingredients(x - 1) == 0) {
-          tmpRedudent = false
-        }
-
-        ingredients(x - 1) += 1
-
-        j += 1
+      islands(i) foreach {
+        x => cnts(x - 1) += 1
       }
-
-      redudent = redudent || tmpRedudent
 
       i += 1
     }
 
-    val sad = ingredients.exists(_ == 0)
+    val sad = cnts.exists(_ == 0)
 
     if (sad) {
       println("sad")
     } else {
-      if (redudent) {
-        println("some")
-      } else {
+      val mustGo = islands.count(island => {
+        island.exists(x => cnts(x - 1) == 1)
+      })
+
+      if (mustGo == n) {
         println("all")
+      } else {
+        println("some")
       }
     }
   }
