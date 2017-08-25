@@ -44,30 +44,37 @@ object Main {
       }
     }
 
-    def addSite(site: String, i: Int, blocked: Boolean): Unit = {
-      state = updateState(blocked)
+    def addUnBlockSite(site: String, i: Int): Unit = {
+      state = updateState(false)
 
       if (i < site.length) {
         val c = site(i)
         if (children(c - 'a') == null) {
           children(c - 'a') = new Trie
         }
-        children(c - 'a').addSite(site, i + 1, blocked)
+        children(c - 'a').addUnBlockSite(site, i + 1)
       }
     }
 
-    def hasSolution: Boolean = {
-      if (state == PartBlocked) {
-        val blockPrefixUnblock = children.filter(_ != null).foldLeft(true)((res, child) => res && (child.state == NoSite || child.state == AllUnBlocked))
-        if (blockPrefixUnblock) {
+    def addBlockSite(site: String, i: Int): Boolean = {
+      val originState = state
+      state = updateState(true)
+
+      if (i == site.length) {
+        if (originState == AllUnBlocked || originState == PartBlocked) {
           false
         } else {
-          children.filter(_ != null).foldLeft(true)((res, child) => res && child.hasSolution)
+          true
         }
       } else {
-        children.filter(_ != null).foldLeft(true)((res, child) => res && child.hasSolution)
+        val c = site(i)
+        if (children(c - 'a') == null) {
+          children(c - 'a') = new Trie
+        }
+        children(c - 'a').addBlockSite(site, i + 1)
       }
     }
+
 
     def findBlockedFilters(path: String, res: ListBuffer[String]): Unit = {
       state match {
@@ -94,17 +101,32 @@ object Main {
 
     val trie = new Trie
 
+    val sites = ListBuffer.empty[String]
+
     var i = 0
     while (i < n) {
       val line = StdIn.readLine().split("\\s+")
 
       val blocked = line(0) == "-"
-      trie.addSite(line(1), 0, blocked)
+      if (blocked) {
+        sites += line(1)
+      } else {
+        trie.addUnBlockSite(line(1), 0)
+      }
 
       i += 1
     }
 
-    if (trie.hasSolution) {
+    var hasSolution = true
+    i = 0
+    while (i < sites.size && hasSolution) {
+
+      hasSolution = trie.addBlockSite(sites(i), 0)
+
+      i += 1
+    }
+
+    if (hasSolution) {
       val res = ListBuffer.empty[String]
       trie.findBlockedFilters("", res)
 
