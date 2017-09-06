@@ -19,6 +19,34 @@ object Main {
     }
   }
 
+
+  def slidingWindow(A: Array[Long], n: Int, k: Int): Array[Long] = {
+    val B = Array.fill(n)(Long.MaxValue)
+    val stack = Array.fill(n)(0L)
+    var head = 0
+    var tail = 0
+    var i = 0
+    while (i < n) {
+      val x = A(i)
+      while (tail > head && stack(tail - 1) > x) {
+        tail -= 1
+      }
+
+      stack(tail) = x
+      tail += 1
+
+      if (i >= k && stack(head) == A(i - k)) {
+        head += 1
+      }
+
+      B(i) = stack(head)
+
+      i += 1
+    }
+
+    B
+  }
+
   val MOD = 1000000007
 
   def main(args: Array[String]): Unit = {
@@ -44,7 +72,9 @@ object Main {
 
     fillA(a, b, c, d, e, f, r, s, t, m, A, n)
 
-    val rmp = new RMQ(A)
+    val minEleArr = slidingWindow(A, n, k)
+
+    //    val rmp = new RMQ(A)
 
     val thirdLine = StdIn.readLine().split("\\s+").map(_.toInt)
     var L1 = thirdLine(0)
@@ -66,7 +96,9 @@ object Main {
       val L = L1 + 1
       val R = (L + k - 1 + D1) min n
 
-      val minEle = rmp.query(L - 1, R - 1)
+      val minEle = minEleArr(L + k - 2) min minEleArr(R - 1)
+
+      //      val minEle = rmp.query(L - 1, R - 1)
       sum += minEle
       prod = (prod * minEle) % MOD
 
