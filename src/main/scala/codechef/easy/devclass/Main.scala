@@ -35,37 +35,40 @@ object Main {
     println(ans)
   }
 
-  def play(seed: String, last: String, tp: Int, str: String): Int = {
+  def play(seed: String, last: String, tp: Int, str: String): Long = {
     val n = str.length
     val res = seed * (n / 2) + last
 
-    val cs = str.toCharArray
-
-    var j = 0
-    var k = 0
-    var ans = 0
-
-
-
-    ans
+    if (tp == 0) {
+      playType0(res, str)
+    } else {
+      playTypeN(res, str, tp)
+    }
   }
 
-  def cost(d: Int, tp: Int): Int = {
-    def go(n: Int): Int = {
-      if (n == 0) {
-        1
-      } else {
-        val x = go(n / 2)
-        val y = x * x
-        if (n % 2 == 1) {
-          d * y
-        } else {
-          y
+  def playType0(res: String, str: String): Long = {
+    res.zip(str).count(x => x._1 != x._2) / 2
+  }
+
+  def playTypeN(res: String, str: String, tp: Int): Long = {
+
+    def letterPositionDiffSum(letter: Char): Long = {
+      var i = 0
+      var j = 0
+      var ans = 0L
+      while (i < res.length) {
+        if (res(i) == letter) {
+          while (str(j) != letter) {
+            j += 1
+          }
+          ans += (j - i).abs
+          j += 1
         }
+        i += 1
       }
+      ans
     }
 
-    go(tp)
+    (letterPositionDiffSum('B') + letterPositionDiffSum('G')) / 2
   }
-
 }
