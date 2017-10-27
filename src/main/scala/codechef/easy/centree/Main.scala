@@ -17,7 +17,9 @@ object Main {
     val firstLine = StdIn.readLine().split("\\s+").map(_.toInt)
     val n = firstLine(0)
     val b = firstLine(1)
-    if (n == 2 && b == 1) {
+    if (n == 2 && b == 0) {
+      println("NO")
+    } else if (n == 2 && b == 1) {
       println("YES")
       println("1 2")
     } else if (4 * b > n) {
