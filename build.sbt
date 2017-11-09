@@ -2,15 +2,18 @@ import sbt.Keys._
 
 name := "ALG-S"
 
-scalaVersion := "2.12.2"
+scalaVersion := "2.12.4"
+
+scalaVersion in ThisBuild := "2.12.4"
 
 autoScalaLibrary := false
 
-ivyScala := ivyScala.value map {
+/* ivyScala := ivyScala.value map {
   _.copy(overrideScalaVersion = true)
-}
+} */
 
 //resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
+//resolvers += Classpaths.typesafeResolver
 
 libraryDependencies ++= List(
   "org.scalactic" %% "scalactic" % "3.0.1",
@@ -24,21 +27,15 @@ libraryDependencies ++= List(
 
 libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.0"
 
-
-unmanagedSourceDirectories in Compile <++= baseDirectory { base =>
-  Seq(
-    base / "src/main/pat",
-    base / "src/main/s99",
-    base / "src/test/s99",
-    base / "src/main/fp",
-    base / "src/main/jisuanke",
-    base / "src/main/leetcode",
-    base / "src/test/leetcode"
-  )
-}
+unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/main/pat" ).value
+unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/main/s99" ).value
+unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/test/s99" ).value
+unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/main/fp" ).value
+unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/main/jisuanke" ).value
+unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/main/leetcode" ).value
+unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/test/leetcode" ).value
 
 unmanagedClasspath in Test += baseDirectory.value / "src/test/scala"
-
 unmanagedClasspath in Test += baseDirectory.value / "src/test/leetcode"
 
 
