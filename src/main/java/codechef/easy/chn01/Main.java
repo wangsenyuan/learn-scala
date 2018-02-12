@@ -10,12 +10,36 @@ public class Main {
             int t = readInt(inputStream);
             for (int i = 0; i < t; i++) {
                 int[] nums = readNNums(inputStream, 3);
-                int res = (nums[0] + nums[1] + nums[2]) / 3;
-                System.out.println(res);
+                System.out.println(solve(nums[0], nums[1], nums[2]));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static int solve(int e, int m, int h) {
+        int left = 0;
+        int right = m + 1;
+        while (right - left > 1) {
+            int mid = left + (right - left) / 2;
+            if (check(mid, e, m, h)) {
+                left = mid;
+            } else {
+                right = mid;
+            }
+        }
+        return left;
+    }
+
+    private static boolean check(int x, int e, int m, int h) {
+        return min(e - x, (x + 1) / 2) + min(m - x, (x + 1) / 2) + min(h, (x + 1) / 2) >= x;
+    }
+
+    private static int min(int a, int b) {
+        if (a <= b) {
+            return a;
+        }
+        return b;
     }
 
     private static int[] readNNums(BufferedInputStream inputStream, int n) throws IOException {
