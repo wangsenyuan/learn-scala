@@ -74,7 +74,7 @@ public class Main {
         int[] idx = new int[n + 1];
         int p = 0;
         stack[p] = 0;
-        idx[p] = 0;
+        idx[p] = -1;
         p++;
         long sum = 0;
         int ans = Integer.MAX_VALUE;
