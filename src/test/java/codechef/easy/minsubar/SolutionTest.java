@@ -1,7 +1,7 @@
 package codechef.easy.minsubar;
 
+import org.junit.Assert;
 import org.junit.Test;
-import org.testng.Assert;
 
 public class SolutionTest {
 

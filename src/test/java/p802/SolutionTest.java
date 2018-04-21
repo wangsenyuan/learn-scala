@@ -1,7 +1,7 @@
 package p802;
 
+import org.junit.Assert;
 import org.junit.Test;
-import org.testng.Assert;
 
 import java.util.Arrays;
 import java.util.List;
