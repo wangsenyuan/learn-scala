@@ -55,7 +55,7 @@ object B extends App with FileOp {
     walls
   }
 
-  case class State(dist: Int, walls: Set[(Int, Int)])
+  case class State(dist: Int, portals: Set[(Int, Int)])
 
   def loop(grid: Array[Array[Char]], c: Char, row: Int): (Int, Int) = {
     val col = grid(row).indexOf(c)
@@ -70,7 +70,7 @@ object B extends App with FileOp {
     loop(grid, 'O', 0)
   }
 
-  def getWalls(sx: Int, sy: Int, walls: Array[Array[Array[Int]]]): Set[(Int, Int)] = {
+  def getPortals(sx: Int, sy: Int, walls: Array[Array[Array[Int]]]): Set[(Int, Int)] = {
     val top = walls(sx)(sy)(0) + 1
     val right = walls(sx)(sy)(1) - 1
     val bottom = walls(sx)(sy)(2) - 1
@@ -94,7 +94,7 @@ object B extends App with FileOp {
     var end = 0
     val (sx, sy) = findStarting(grid)
     val (ex, ey) = findEnding(grid)
-    states(sx)(sy) = State(0, getWalls(sx, sy, walls))
+    states(sx)(sy) = State(0, getPortals(sx, sy, walls))
     que(end) = sx * c + sy
 
     def visitNeighbors(x: Int, y: Int, cur: State): Unit = {
@@ -104,7 +104,7 @@ object B extends App with FileOp {
         val j = y + dd(k + 1)
 
         if (i >= 0 && i < r && j >= 0 && j < c && grid(i)(j) != '#' && states(i)(j) == null) {
-          states(i)(j) = State(cur.dist + 1, cur.walls ++ getWalls(i, j, walls))
+          states(i)(j) = State(cur.dist + 1, cur.portals ++ getPortals(i, j, walls))
           que(end) = i * c + j
           end += 1
         }
@@ -113,7 +113,7 @@ object B extends App with FileOp {
       }
     }
 
-    def visitWalls(x: Int, y: Int, curState: State): Unit = {
+    def visitPortals(x: Int, y: Int, curState: State): Unit = {
       var besideWall = false
       var k = 0
       while (k < 4 && !besideWall) {
@@ -125,10 +125,10 @@ object B extends App with FileOp {
         k += 1
       }
       if (besideWall) {
-        curState.walls.foreach {
+        curState.portals.foreach {
           case (i, j) =>
             if (states(i)(j) == null) {
-              states(i)(j) = State(curState.dist + 1, getWalls(i, j, walls))
+              states(i)(j) = State(curState.dist + 1, getPortals(i, j, walls))
               que(end) = i * c + j
               end += 1
             }
@@ -148,7 +148,7 @@ object B extends App with FileOp {
         found = true
       } else {
         visitNeighbors(x, y, curState)
-        visitWalls(x, y, curState)
+        visitPortals(x, y, curState)
       }
     }
 
