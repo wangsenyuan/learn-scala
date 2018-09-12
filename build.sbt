@@ -27,13 +27,13 @@ libraryDependencies ++= List(
 
 libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.0"
 
-unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/main/pat" ).value
-unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/main/s99" ).value
-unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/test/s99" ).value
-unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/main/fp" ).value
-unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/main/jisuanke" ).value
-unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/main/leetcode" ).value
-unmanagedSourceDirectories in Compile += baseDirectory( _ / "src/test/leetcode" ).value
+unmanagedSourceDirectories in Compile += baseDirectory(_ / "src/main/pat").value
+unmanagedSourceDirectories in Compile += baseDirectory(_ / "src/main/s99").value
+unmanagedSourceDirectories in Compile += baseDirectory(_ / "src/test/s99").value
+unmanagedSourceDirectories in Compile += baseDirectory(_ / "src/main/fp").value
+unmanagedSourceDirectories in Compile += baseDirectory(_ / "src/main/jisuanke").value
+unmanagedSourceDirectories in Compile += baseDirectory(_ / "src/main/leetcode").value
+unmanagedSourceDirectories in Compile += baseDirectory(_ / "src/test/leetcode").value
 
 unmanagedClasspath in Test += baseDirectory.value / "src/test/scala"
 unmanagedClasspath in Test += baseDirectory.value / "src/test/leetcode"
@@ -42,5 +42,6 @@ unmanagedClasspath in Test += baseDirectory.value / "src/test/leetcode"
 retrieveManaged := true
 
 scalacOptions += "-feature"
+scalacOptions += "-target:jvm-1.8"
 
 //initialCommands in console := "import scalaz._, Scalaz._"
