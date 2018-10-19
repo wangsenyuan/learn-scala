@@ -1,4 +1,4 @@
-package p004;
+package set000.set000.p004;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -6,7 +6,7 @@ import static java.lang.Math.min;
 /**
  * Created by wangsenyuan on 6/15/16.
  */
-public class Solution {
+public class JSolution {
 
     public double findMedianSortedArrays(int A[], int B[]) {
         int K = A.length + B.length;
