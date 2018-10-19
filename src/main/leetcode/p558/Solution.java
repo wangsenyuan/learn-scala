@@ -30,27 +30,40 @@ public class Solution {
         if (quadTree1.isLeaf && quadTree2.isLeaf) {
             return new Node(quadTree1.val || quadTree2.val, true, null, null, null, null);
         }
+        Node topLeft = null, topRight = null, bottomLeft = null, bottomRight = null;
         if (quadTree1.isLeaf) {
-            return intersect(quadTree2, quadTree1.val);
+            if (quadTree1.val) {
+                Node res = new Node();
+                res.isLeaf = true;
+                res.val = true;
+                return res;
+            }
+            topLeft = quadTree2.topLeft;
+            topRight = quadTree2.topRight;
+            bottomLeft = quadTree2.bottomLeft;
+            bottomRight = quadTree2.bottomRight;
+        } else if (quadTree2.isLeaf) {
+            if (quadTree2.val) {
+                Node res = new Node();
+                res.isLeaf = true;
+                res.val = true;
+                return res;
+            }
+            topLeft = quadTree1.topLeft;
+            topRight = quadTree1.topRight;
+            bottomLeft = quadTree1.bottomLeft;
+            bottomRight = quadTree1.bottomRight;
+        } else {
+            topLeft = intersect(quadTree1.topLeft, quadTree2.topLeft);
+            topRight = intersect(quadTree1.topRight, quadTree2.topRight);
+            bottomLeft = intersect(quadTree1.bottomLeft, quadTree2.bottomLeft);
+            bottomRight = intersect(quadTree1.bottomRight, quadTree2.bottomRight);
         }
-        if (quadTree2.isLeaf) {
-            return intersect(quadTree1, quadTree2.val);
-        }
 
-        Node topLeft = intersect(quadTree1.topLeft, quadTree2.topLeft);
-        Node topRight = intersect(quadTree1.topRight, quadTree2.topRight);
-        Node bottomLeft = intersect(quadTree1.bottomLeft, quadTree2.bottomLeft);
-        Node bottomRight = intersect(quadTree1.bottomRight, quadTree2.bottomRight);
-
-        return new Node(true, false, topLeft, topRight, bottomLeft, bottomRight);
-    }
-
-    public Node intersect(Node node, boolean mask) {
-        if (mask) {
-            // all will be true
+        if (topLeft.val && topLeft.isLeaf && topRight.val && topRight.isLeaf && bottomLeft.val && bottomLeft.isLeaf && bottomRight.val && bottomRight.isLeaf) {
             return new Node(true, true, null, null, null, null);
         }
-        // when mask is false, the original node will no change
-        return node;
+
+        return new Node(true, false, topLeft, topRight, bottomLeft, bottomRight);
     }
 }
