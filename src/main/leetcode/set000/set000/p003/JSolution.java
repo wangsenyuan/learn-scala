@@ -1,4 +1,4 @@
-package p003;
+package set000.set000.p003;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by wangsenyuan on 6/15/16.
  */
-public class Solution {
+public class JSolution {
     public int lengthOfLongestSubstring(String s) {
         if (s == null || s.length() == 0) {
             return 0;
@@ -31,7 +31,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        JSolution solution = new JSolution();
 
         System.out.println(solution.lengthOfLongestSubstring("pwwkew"));
 

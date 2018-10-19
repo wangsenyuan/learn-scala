@@ -52,7 +52,7 @@ public class WordBreak {
 	// }
 	// }
 	public ArrayList<String> wordBreak(String s, Set<String> dict) {
-		// Note: The Solution object is instantiated only once and is reused by
+		// Note: The JSolution object is instantiated only once and is reused by
 		// each test case.
 		ArrayList<String> result = new ArrayList<String>();
 		LinkedList<String> segment = new LinkedList<String>();
@@ -110,7 +110,7 @@ public class WordBreak {
 																		// broke
 																		// or
 																		// not
-		// Note: The Solution object is instantiated only once and is reused by
+		// Note: The JSolution object is instantiated only once and is reused by
 		// each test case.
 		for (int i = 0; i < s.length(); i++)
 			dp[i][i] = dict.contains(s.substring(i, i + 1));
