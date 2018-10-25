@@ -1,4 +1,4 @@
-package codechef.easy.minsubar;
+package codechef.easy.section1.minsubar;
 
 import java.io.BufferedReader;
 import java.io.IOException;

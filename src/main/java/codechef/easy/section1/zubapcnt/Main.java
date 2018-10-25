@@ -1,4 +1,4 @@
-package codechef.easy.zubapcnt;
+package codechef.easy.section1.zubapcnt;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,13 +1,12 @@
-package codechef.easy.bearseg;
+package codechef.easy.section1.laughmen;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Map;
 import java.util.StringTokenizer;
-import java.util.TreeMap;
 
 public class Main {
+
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
@@ -55,52 +54,48 @@ public class Main {
         int t = reader.nextInt();
         while (t-- > 0) {
             int n = reader.nextInt();
-            int p = reader.nextInt();
-            int[] A = new int[n];
+            int[] J = new int[n];
             for (int i = 0; i < n; i++) {
-                A[i] = reader.nextInt();
+                J[i] = reader.nextInt();
             }
-            solve(n, p, A);
-        }
-    }
+            int[] L = new int[n];
+            for (int i = 0; i < n; i++) {
+                L[i] = reader.nextInt();
+            }
 
-    public static void solve(int n, int p, int[] A) {
-        long[] sum = new long[n + 1];
-        for (int i = 0; i < n; i++) {
-            sum[i + 1] = (sum[i] + A[i]) % p;
-        }
-
-        TreeMap<Long, Integer> map = new TreeMap<>();
-
-        long best = sum[0];
-        int cnt = 1;
-        long tmp = 0;
-        map.put(sum[0], 1);
-        for (int i = 1; i <= n; i++) {
-            long x = sum[i];
-            Map.Entry<Long, Integer> gt = map.ceilingEntry(x + 1);
-            if (gt == null) {
-                gt = map.firstEntry();
-            }
-            long y = gt.getKey();
-            int yc = gt.getValue();
-            tmp = (x - y + p) % p;
-            if (tmp > best) {
-                best = tmp;
-                cnt = 0;
-            }
-            if (tmp == best) {
-                cnt += yc;
-            }
-            if (map.containsKey(x)) {
-                map.put(x, map.get(x) + 1);
+            if (solve(n, J, L)) {
+                System.out.println("#laughing_arjun");
             } else {
-                map.put(x, 1);
+                System.out.println("#itsnot_arjun");
+            }
+        }
+    }
+
+    public static boolean solve(int n, int[] J, int[] L) {
+        int[] ar = new int[n];
+        int p = 0;
+        for (int i = 0; i < n; i++) {
+            if (J[i] < 0) {
+                continue;
+            }
+            ar[p++] = L[i];
+        }
+
+        int c = 0;
+        int d = 0;
+
+        for (int i = 0; i < p - 2; i++) {
+            if (ar[i] > ar[i + 2]) {
+                c++;
             }
         }
 
-        System.out.printf("%d %d", best, cnt);
+        for (int i = 0; i < p - 1; i++) {
+            if (ar[i] > ar[i + 1]) {
+                d++;
+            }
+        }
+
+        return c <= 1 && d <= 1;
     }
-
-
 }

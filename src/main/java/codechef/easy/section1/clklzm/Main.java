@@ -1,4 +1,4 @@
-package codechef.easy.clklzm;
+package codechef.easy.section1.clklzm;
 
 import java.io.BufferedReader;
 import java.io.IOException;

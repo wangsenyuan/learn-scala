@@ -1,4 +1,4 @@
-package codechef.easy.chn01;
+package codechef.easy.section1.chn01;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;

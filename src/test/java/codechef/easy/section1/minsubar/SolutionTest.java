@@ -1,4 +1,4 @@
-package codechef.easy.minsubar;
+package codechef.easy.section1.minsubar;
 
 import org.junit.Assert;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package codechef.easy.optcode;
+package codechef.easy.section1.talesqua;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,48 +48,51 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         FastReader reader = new FastReader();
         int t = reader.nextInt();
         while (t-- > 0) {
-            int n = reader.nextInt();
-            int[] X = new int[n];
-            int[] Y = new int[n];
-            for (int i = 0; i < n; i++) {
-                X[i] = reader.nextInt();
-                Y[i] = reader.nextInt();
-            }
-            System.out.println(solve(n, X, Y));
+            int a = reader.nextInt();
+            int k = reader.nextInt();
+            int x1 = reader.nextInt();
+            int x2 = reader.nextInt();
+            int x3 = reader.nextInt();
+            double res = solve(a, k, x1, x2, x3);
+            System.out.printf("%.3f\n", res);
         }
     }
 
-    private static int solve(int n, int[] X, int[] Y) {
-        int y1 = 0;
-        for (int i = 1; i < n; i++) {
-            if (Y[i] > Y[y1]) {
-                y1 = i;
-            }
-        }
+    public static double solve(int a, int k, int x1, int x2, int x3) {
+        int x = min(x1, x2, x3);
+        int y = max(x1, x2, x3);
 
-        int y2 = -1;
-        for (int i = 0; i < n; i++) {
-            if (X[i] != X[y1] && (y2 < 0 || (Y[y2] < Y[i]))) {
-                y2 = i;
-            }
-        }
-        if (y2 < 0) {
+        if (y - x >= 2 * k + a) {
             return 0;
         }
+        if (y - x <= 2 * k) {
+            return a * a;
+        }
+        return (2 * k + a + x - y) * a;
+    }
 
-        int y3 = -1;
-        for (int i = 0; i < n; i++) {
-            if (X[i] != X[y1] && X[i] != X[y2] && (y3 < 0 || Y[y3] < Y[i])) {
-                y3 = i;
-            }
+    public static int min(int a, int b, int c) {
+        if (a < b && a < c) {
+            return a;
         }
-        if (y3 < 0) {
-            return 0;
+
+        if (b < a && b < c) {
+            return b;
         }
-        return Y[y1] + Y[y2] + Y[y3];
+        return c;
+    }
+
+    public static int max(int a, int b, int c) {
+        if (a > b && a > c) {
+            return a;
+        }
+        if (b > a && b > c) {
+            return b;
+        }
+        return c;
     }
 }

@@ -1,4 +1,4 @@
-package codechef.easy.talesqua;
+package codechef.easy.section1.amboxes;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -50,49 +50,38 @@ public class Main {
 
     public static void main(String[] args) {
         FastReader reader = new FastReader();
-        int t = reader.nextInt();
-        while (t-- > 0) {
-            int a = reader.nextInt();
-            int k = reader.nextInt();
-            int x1 = reader.nextInt();
-            int x2 = reader.nextInt();
-            int x3 = reader.nextInt();
-            double res = solve(a, k, x1, x2, x3);
-            System.out.printf("%.3f\n", res);
+        int n = reader.nextInt();
+        int m = reader.nextInt();
+
+        int[] as = new int[n];
+        for (int i = 0; i < n; i++) {
+            as[i] = reader.nextInt();
         }
+
+        long[] xs = new long[m];
+        for (int i = 0; i < m; i++) {
+            xs[i] = reader.nextLong();
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < m; i++) {
+            sb.append(solve(xs[i], n, as));
+            sb.append("\n");
+        }
+        System.out.println(sb.toString());
     }
 
-    public static double solve(int a, int k, int x1, int x2, int x3) {
-        int x = min(x1, x2, x3);
-        int y = max(x1, x2, x3);
+    private static int solve(long x, int n, int[] as) {
+        int ans = 0;
+        int i = 0;
 
-        if (y - x >= 2 * k + a) {
-            return 0;
-        }
-        if (y - x <= 2 * k) {
-            return a * a;
-        }
-        return (2 * k + a + x - y) * a;
-    }
-
-    public static int min(int a, int b, int c) {
-        if (a < b && a < c) {
-            return a;
+        while (x > as[i]) {
+            x = (x + as[i] - 1) / as[i];
+            ans += x;
+            i++;
         }
 
-        if (b < a && b < c) {
-            return b;
-        }
-        return c;
-    }
-
-    public static int max(int a, int b, int c) {
-        if (a > b && a > c) {
-            return a;
-        }
-        if (b > a && b > c) {
-            return b;
-        }
-        return c;
+        return ans + n - i;
     }
 }

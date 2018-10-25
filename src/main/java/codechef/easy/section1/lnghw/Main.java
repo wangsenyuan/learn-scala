@@ -1,4 +1,4 @@
-package codechef.easy.lnghw;
+package codechef.easy.section1.lnghw;
 
 import java.io.DataInputStream;
 import java.io.FileInputStream;

@@ -1,4 +1,4 @@
-package codechef.easy.amboxes;
+package codechef.easy.section1.optcode;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,40 +48,48 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         FastReader reader = new FastReader();
-        int n = reader.nextInt();
-        int m = reader.nextInt();
-
-        int[] as = new int[n];
-        for (int i = 0; i < n; i++) {
-            as[i] = reader.nextInt();
+        int t = reader.nextInt();
+        while (t-- > 0) {
+            int n = reader.nextInt();
+            int[] X = new int[n];
+            int[] Y = new int[n];
+            for (int i = 0; i < n; i++) {
+                X[i] = reader.nextInt();
+                Y[i] = reader.nextInt();
+            }
+            System.out.println(solve(n, X, Y));
         }
-
-        long[] xs = new long[m];
-        for (int i = 0; i < m; i++) {
-            xs[i] = reader.nextLong();
-        }
-
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < m; i++) {
-            sb.append(solve(xs[i], n, as));
-            sb.append("\n");
-        }
-        System.out.println(sb.toString());
     }
 
-    private static int solve(long x, int n, int[] as) {
-        int ans = 0;
-        int i = 0;
-
-        while (x > as[i]) {
-            x = (x + as[i] - 1) / as[i];
-            ans += x;
-            i++;
+    private static int solve(int n, int[] X, int[] Y) {
+        int y1 = 0;
+        for (int i = 1; i < n; i++) {
+            if (Y[i] > Y[y1]) {
+                y1 = i;
+            }
         }
 
-        return ans + n - i;
+        int y2 = -1;
+        for (int i = 0; i < n; i++) {
+            if (X[i] != X[y1] && (y2 < 0 || (Y[y2] < Y[i]))) {
+                y2 = i;
+            }
+        }
+        if (y2 < 0) {
+            return 0;
+        }
+
+        int y3 = -1;
+        for (int i = 0; i < n; i++) {
+            if (X[i] != X[y1] && X[i] != X[y2] && (y3 < 0 || Y[y3] < Y[i])) {
+                y3 = i;
+            }
+        }
+        if (y3 < 0) {
+            return 0;
+        }
+        return Y[y1] + Y[y2] + Y[y3];
     }
 }
