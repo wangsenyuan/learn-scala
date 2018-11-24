@@ -1,4 +1,4 @@
-package p006
+package set000.set000.p006
 
 /**
  * Created by senyuanwang on 15/4/12.

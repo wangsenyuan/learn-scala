@@ -1,9 +1,9 @@
-package p006;
+package set000.set000.p006;
 
 /**
  * Created by senyuanwang on 15/4/12.
  */
-public class Solution {
+public class Solution1 {
 
     public static String convert(String s, int nRows) {
         if (s == null || s.length() == 0) {
