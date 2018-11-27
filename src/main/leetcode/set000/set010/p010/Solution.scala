@@ -11,17 +11,7 @@ object Solution {
       } else {
         p(j) match {
           case c if j < p.length - 1 && p(j + 1) == '*' =>
-            // c*
-            // c repeat 0 time
-            var found = go(i, j + 2)
-            if (!found && i < s.length && canPair(s(i), c)) {
-              var k = i
-              while (k < s.length && !found && canPair(s(k), c)) {
-                found = go(k + 1, j + 2)
-                k += 1
-              }
-            }
-            found
+            (i < s.length && canPair(s(i), c) && go(i + 1, j)) || go(i, j + 2)
           case c if i < s.length && canPair(s(i), c) => go(i + 1, j + 1)
           case _ => false
         }
