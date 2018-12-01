@@ -6,6 +6,48 @@ object Solution {
 
   def threeSum(nums: Array[Int]): List[List[Int]] = {
     if (nums == null || nums.size == 0) {
+      return List.empty
+    } else {
+      val xs = nums.sorted
+      val res = ListBuffer.empty[List[Int]]
+      val n = xs.length
+
+      def twoSum(num: Int, left: Int) = {
+        var i = left + 1
+        var j = n - 1
+        while (i < j) {
+          if (i > left + 1 && xs(i) == xs(i - 1)) {
+            i += 1
+          } else if (j < n - 1 && xs(j) == xs(j + 1)) {
+            j -= 1
+          } else {
+            val sum = xs(i) + xs(j)
+            if (sum > num) {
+              j -= 1
+            } else if (sum < num) {
+              i += 1
+            } else {
+              res += List(-num, xs(i), xs(j))
+              i += 1
+              j -= 1
+            }
+          }
+
+        }
+      }
+
+      for {
+        i <- 0 until n
+        if (i == 0 || xs(i) > xs(i - 1))
+      } {
+        twoSum(-xs(i), i)
+      }
+      res.toList
+    }
+  }
+
+  def threeSum1(nums: Array[Int]): List[List[Int]] = {
+    if (nums == null || nums.size == 0) {
       List.empty
     } else {
       val xs = nums.sorted
@@ -19,16 +61,10 @@ object Solution {
           while (j < xs.length) {
             val s = -(xs(i) + xs(j))
             if (j == i + 1 || xs(j) != xs(j - 1)) {
-              val b = binarySearch(xs.length, xs(_) > s)
-              val a = binarySearch(xs.length, xs(_) >= s)
-              val c = (j + 1) max a
-              var k = c
-              while (k < b) {
-                if (k == c || xs(k) != xs(k - 1)) {
-                  res += List(xs(i), xs(j), xs(k))
-                }
-
-                k += 1
+              //first value that greater than s
+              val k = binarySearch(xs.length, xs(_) > s) - 1
+              if (k < xs.length && k > j && xs(k) == s) {
+                res += List(xs(i), xs(j), xs(k))
               }
             }
             j += 1
