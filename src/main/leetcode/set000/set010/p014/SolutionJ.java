@@ -1,11 +1,11 @@
-package p014;
+package set000.set010.p014;
 
 import java.util.*;
 
 /**
  * Created by senyuanwang on 15/8/16.
  */
-public class Solution {
+public class SolutionJ {
 
     public String longestCommonPrefix(String[] strs) {
         if (strs == null || strs.length == 0) {
@@ -122,7 +122,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        SolutionJ solution = new SolutionJ();
         String[] strs = {"aa", "a"};
         System.out.println(solution.longestCommonPrefix(strs));
     }

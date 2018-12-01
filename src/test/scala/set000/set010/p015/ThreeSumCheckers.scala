@@ -1,4 +1,4 @@
-package three.sum.p015
+package set000.set010.p015
 
 import org.scalatest.junit.JUnitSuite
 import org.scalatest.prop.Checkers
@@ -13,7 +13,7 @@ import scala.collection.mutable.ListBuffer
   * Created by wangsenyuan on 1/2/16.
   */
 class ThreeSumCheckers extends JUnitSuite with Checkers {
-  val solution = new Solution()
+  val solution = new SolutionJ()
 
   implicit val intListOrdering = new Ordering[List[Int]] {
     override def compare(x: List[Int], y: List[Int]): Int = {

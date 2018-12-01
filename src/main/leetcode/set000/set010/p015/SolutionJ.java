@@ -1,4 +1,4 @@
-package three.sum.p015;
+package set000.set010.p015;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by wangsenyuan on 1/2/16.
  */
-public class Solution {
+public class SolutionJ {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         if (nums == null || nums.length < 3) {
@@ -50,7 +50,7 @@ public class Solution {
 
     public static void main(String[] args) {
         int[] nums = {-1, 0, 1, 2, -1, -4};
-        Solution solution = new Solution();
+        SolutionJ solution = new SolutionJ();
         List<List<Integer>> result = solution.threeSum(nums);
         System.out.println(result);
     }

@@ -1,4 +1,4 @@
-package three.sum.p015
+package set000.set010.p015
 
 /**
   * Created by wangsenyuan on 1/2/16.
