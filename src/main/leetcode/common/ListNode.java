@@ -10,4 +10,11 @@ public class ListNode {
     public ListNode(int x) {
         val = x;
     }
+
+    public String toString() {
+        if (next == null) {
+            return "" + val;
+        }
+        return String.format("%d,%s", val, next.toString());
+    }
 }
