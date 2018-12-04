@@ -1,4 +1,4 @@
-package p022
+package set000.set020.p022
 
 import scala.collection.mutable.ListBuffer
 
@@ -25,7 +25,7 @@ object App extends App {
 
     go(n, 0, "", res)
 
-    return res.toList
+    res.toList
   }
 
   generateParenthesis(4).foreach(println)

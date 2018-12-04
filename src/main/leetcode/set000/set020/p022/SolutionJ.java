@@ -1,4 +1,4 @@
-package p022;
+package set000.set020.p022;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by senyuanwang on 16/7/2.
  */
-public class Solution {
+public class SolutionJ {
 
     public List<String> generateParenthesis(int n) {
         List<String> res = new ArrayList<>();
