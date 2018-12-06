@@ -1,4 +1,4 @@
-package p030;
+package set000.set030.p030;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by wangsenyuan on 1/2/16.
  */
-public class Solution {
+public class SolutionJ {
 
     public List<Integer> findSubstring(String s, String[] words) {
         /**
@@ -57,7 +57,7 @@ public class Solution {
 
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        SolutionJ solution = new SolutionJ();
         String[] words = {"foo", "bar", "the"};
         List<Integer> result = solution.findSubstring("barfoofoobarthefoobarman", words);
         System.out.println(result);
