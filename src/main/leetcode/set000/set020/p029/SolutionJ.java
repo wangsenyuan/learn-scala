@@ -1,9 +1,9 @@
-package p029;
+package set000.set020.p029;
 
 /**
  * Created by senyuanwang on 16/7/3.
  */
-public class Solution {
+public class SolutionJ {
 
     public static int divide(int dividend, int divisor) {
         long dvd = dividend;
