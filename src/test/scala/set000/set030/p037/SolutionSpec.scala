@@ -31,7 +31,7 @@ class SolutionSpec extends FlatSpec with Matchers {
   }
 
   def arrayToStr(arr: Array[Array[Char]]): String = {
-    "[" + (arr.map(row => row.map(c => "\"" + c + "\"").mkString(",")).mkString("],[")) + "]"
+    "[[" + (arr.map(row => row.map(c => "\"" + c + "\"").mkString(",")).mkString("],[")) + "]]"
   }
 
   it should "work with example1" in {
