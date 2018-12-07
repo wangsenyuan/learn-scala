@@ -1,11 +1,11 @@
-package p033;
+package set000.set030.p033;
 
 import java.util.Arrays;
 
 /**
  * Created by senyuanwang on 16/7/10.
  */
-public class Solution {
+public class SolutionJ {
 
     public static int search(int[] nums, int target) {
         int i = 0, j = nums.length - 1;

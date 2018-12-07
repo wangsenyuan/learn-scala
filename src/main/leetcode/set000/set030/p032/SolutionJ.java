@@ -1,9 +1,9 @@
-package p032;
+package set000.set030.p032;
 
 /**
  * Created by wangsenyuan on 7/12/16.
  */
-public class Solution {
+public class SolutionJ {
 
     public int longestValidParentheses(String s) {
         int p = 0;
