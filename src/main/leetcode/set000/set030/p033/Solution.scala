@@ -30,7 +30,7 @@ object Solution {
       binarySearch(nums, 0, n, target)
     } else {
       val k = findPeak(0, n - 1)
-      if (nums(0) <= target && target <= nums(k)) {
+      if (nums(0) <= target) {
         binarySearch(nums, 0, k + 1, target)
       } else {
         binarySearch(nums, k + 1, n, target)
