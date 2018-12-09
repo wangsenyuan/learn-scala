@@ -1,9 +1,9 @@
-package p048;
+package set000.set040.p048;
 
 /**
  * Created by wangsenyuan on 7/15/16.
  */
-public class Solution {
+public class Solution1 {
 
     public void rotate(int[][] matrix) {
         doRotate(matrix, matrix.length, 0);

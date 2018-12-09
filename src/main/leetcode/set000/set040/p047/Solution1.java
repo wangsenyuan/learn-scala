@@ -1,4 +1,4 @@
-package p047;
+package set000.set040.p047;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,10 +7,10 @@ import java.util.List;
 /**
  * Created by wangsenyuan on 7/14/16.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         int[] nums = {2, 2, 1, 1};
         List<List<Integer>> ps = solution.permuteUnique(nums);
         for (List<Integer> p : ps) {
