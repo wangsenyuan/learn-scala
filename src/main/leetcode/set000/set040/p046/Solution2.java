@@ -1,4 +1,4 @@
-package p046;
+package set000.set040.p046;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by wangsenyuan on 7/14/16.
  */
-public class Solution {
+public class Solution2 {
     public List<List<Integer>> permute(int[] nums) {
         return doPermute(nums, nums.length);
     }
@@ -32,7 +32,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution2 solution = new Solution2();
         int[] nums = {1, 2, 3};
         List<List<Integer>> ps = solution.permute(nums);
         for (List<Integer> p : ps) {
