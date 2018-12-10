@@ -1,4 +1,4 @@
-package p051;
+package set000.set050.p051;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by wangsenyuan on 7/15/16.
  */
-public class Solution {
+public class Solution1 {
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> result = new ArrayList<>(n);
         int[][] board = new int[n][n];
@@ -68,7 +68,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         List<List<String>> rs = solution.solveNQueens(8);
 
         for (List<String> one : rs) {

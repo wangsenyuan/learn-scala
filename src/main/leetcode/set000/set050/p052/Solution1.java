@@ -1,9 +1,9 @@
-package p052;
+package set000.set050.p052;
 
 /**
  * Created by wangsenyuan on 7/15/16.
  */
-public class Solution {
+public class Solution1 {
     int sum = 0;
     int upperlim = 1;
 
