@@ -1,4 +1,4 @@
-package p057;
+package set000.set050.p057;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by wangsenyuan on 7/15/16.
  */
-public class Solution {
+public class Solution1 {
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         List<Interval> result = new ArrayList<>(intervals.size());
 
@@ -45,4 +45,20 @@ public class Solution {
 
         return result;
     }
+
+    static class Interval {
+        int start;
+        int end;
+
+        Interval() {
+            start = 0;
+            end = 0;
+        }
+
+        Interval(int s, int e) {
+            start = s;
+            end = e;
+        }
+    }
+
 }
