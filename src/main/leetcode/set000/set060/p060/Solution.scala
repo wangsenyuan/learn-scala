@@ -16,14 +16,7 @@ object Solution {
     val fact = getFact(n)
 
     def getAns(res: Vector[Int], mask: Int) = {
-      var ans = res
-      var i = 0
-      while (i < n) {
-        if ((mask & (1 << i)) == 0) {
-          ans :+= (i + 1)
-        }
-        i += 1
-      }
+      val ans = res ++ (findUnUsedNums(mask).map(_ + 1))
       ans.mkString
     }
 
