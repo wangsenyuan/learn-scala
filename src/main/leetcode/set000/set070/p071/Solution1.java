@@ -1,11 +1,11 @@
-package p071;
+package set000.set070.p071;
 
 import java.util.Stack;
 
 /**
  * Created by wangsenyuan on 7/21/16.
  */
-public class Solution {
+public class Solution1 {
     public String simplifyPath(String path) {
         if (path == null) {
             return null;
