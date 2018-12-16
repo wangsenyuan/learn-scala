@@ -1,9 +1,9 @@
-package p075;
+package set000.set070.p075;
 
 /**
  * Created by senyuanwang on 16/7/23.
  */
-public class Solution {
+public class Solution1 {
 
     public void sortColors(int[] nums) {
         int i = 0;
