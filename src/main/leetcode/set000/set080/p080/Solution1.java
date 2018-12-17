@@ -1,9 +1,9 @@
-package p080;
+package set000.set080.p080;
 
 /**
  * Created by senyuanwang on 16/7/23.
  */
-public class Solution {
+public class Solution1 {
 
     public int removeDuplicates(int[] nums) {
         int p = 1;
