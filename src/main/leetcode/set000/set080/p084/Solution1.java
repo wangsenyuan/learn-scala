@@ -1,11 +1,9 @@
-package p084;
-
-import java.util.Stack;
+package set000.set080.p084;
 
 /**
  * Created by senyuanwang on 16/7/28.
  */
-public class Solution {
+public class Solution1 {
     public static int largestRectangleArea(int[] height) {
         int n = height.length;
 
