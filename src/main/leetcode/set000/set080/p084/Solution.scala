@@ -16,17 +16,21 @@ object Solution {
     for {
       i <- 0 until n
     } {
+      best = best max heights(i)
+      // k is the most-left position that can cover column i
       var k = i
       while (p > 0 && heights(stack(p - 1)) > heights(i)) {
         val j = stack(p - 1)
         best = best max heights(j) * (i - j)
-        heights(j) = heights(i)
+        //        heights(j) = heights(i)
         p -= 1
         k = j
       }
+      // if go from last position, column k can only reach to heights(i)
+      heights(k) = heights(i)
+
       stack(p) = k
       p += 1
-      best = best max heights(i)
     }
 
     while (p > 0) {
