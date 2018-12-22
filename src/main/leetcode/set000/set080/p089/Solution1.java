@@ -1,4 +1,4 @@
-package p089;
+package set000.set080.p089;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by senyuanwang on 16/7/31.
  */
-public class Solution {
+public class Solution1 {
     public List<Integer> grayCode(int n) {
         int m = (int) Math.pow(2, n);
         List<Integer> list = new ArrayList<Integer>(m);
