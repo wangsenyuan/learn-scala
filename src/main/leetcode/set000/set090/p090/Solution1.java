@@ -1,4 +1,4 @@
-package p090;
+package set000.set090.p090;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by wangsenyuan on 8/5/16.
  */
-public class Solution {
+public class Solution1 {
     private void subsets(int[] nums, int i, int[] path, int j, int lastPick, List<List<Integer>> result) {
         if (i == nums.length) {
             result.add(toList(path, j));
@@ -39,7 +39,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         List<List<Integer>> rs = solution.subsetsWithDup(new int[] {1, 2, 2});
         for (List<Integer> r : rs) {
             for (int x : r) {
