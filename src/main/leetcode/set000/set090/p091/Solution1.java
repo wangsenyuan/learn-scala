@@ -1,9 +1,9 @@
-package p091;
+package set000.set090.p091;
 
 /**
  * Created by senyuanwang on 16/8/6.
  */
-public class Solution {
+public class Solution1 {
     public int numDecodings(String s) {
         if (s == null || s.length() == 0) {
             return 0;
