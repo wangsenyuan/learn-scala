@@ -1,10 +1,37 @@
-package p117;
+package set100.set110.p117;
 
 /**
  * Created by senyuanwang on 16/8/14.
  */
 public class Solution {
     public void connect(TreeLinkNode root) {
+        if (root == null) {
+            return;
+        }
+        TreeLinkNode next = null;
+        TreeLinkNode tmp = root.next;
+        while (tmp != null && next == null) {
+            if (tmp.left != null) {
+                next = tmp.left;
+            } else if (tmp.right != null) {
+                next = tmp.right;
+            }
+            tmp = tmp.next;
+        }
+        if (root.right != null) {
+            root.right.next = next;
+            if (root.left != null) {
+                root.left.next = root.right;
+            }
+        } else if (root.left != null) {
+            root.left.next = next;
+        }
+
+        connect(root.right);
+        connect(root.left);
+    }
+
+    public void connect1(TreeLinkNode root) {
         TreeLinkNode head = null; //head of the next level
         TreeLinkNode prev = null; //the leading node on the next level
         TreeLinkNode cur = root;  //current node of current level
@@ -43,7 +70,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        TreeLinkNode root = fromArray(new String[]{"1", "2", "3", "4", "#", "#", "5"}, 0);
+        TreeLinkNode root = fromArray(new String[] {"1", "2", "3", "4", "#", "#", "5"}, 0);
         solution.connect(root);
         levelOutput(root, 0);
     }
