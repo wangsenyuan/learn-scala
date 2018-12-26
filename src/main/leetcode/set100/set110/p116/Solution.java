@@ -1,4 +1,4 @@
-package p116;
+package set100.set110.p116;
 
 /**
  * Created by senyuanwang on 16/8/14.
@@ -6,6 +6,25 @@ package p116;
 public class Solution {
 
     public void connect(TreeLinkNode root) {
+        if (root == null) {
+            return;
+        }
+
+        if (root.next != null) {
+            if (root.right != null) {
+                root.right.next = root.next.left;
+            }
+        }
+
+        if (root.left != null) {
+            root.left.next = root.right;
+            connect(root.left);
+        }
+
+        connect(root.right);
+    }
+
+    public void connect1(TreeLinkNode root) {
         if (root == null) {
             return;
         }
@@ -45,7 +64,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        TreeLinkNode root = fromNums(new int[]{-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 0);
+        TreeLinkNode root = fromNums(new int[] {-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 0);
         inOrderOutput(root);
         System.out.println();
         Solution solution = new Solution();
@@ -88,5 +107,18 @@ public class Solution {
         inOrderOutput(root.left);
         inOrderOutput(root.right);
         System.out.print("}");
+    }
+}
+
+
+/**
+ * Definition for binary tree with next pointer.
+ */
+class TreeLinkNode {
+    int val;
+    public TreeLinkNode left, right, next;
+
+    TreeLinkNode(int x) {
+        val = x;
     }
 }
