@@ -1,4 +1,4 @@
-package p120;
+package set100.set120.p120;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by wangsenyuan on 8/16/16.
  */
-public class Solution {
+public class Solution1 {
     public int minimumTotal(List<List<Integer>> triangle) {
         int n = triangle.size();
         int[] fx = new int[n];
@@ -51,7 +51,7 @@ public class Solution {
         triangle.add(Arrays.asList(3, 4));
         triangle.add(Arrays.asList(6, 5, 7));
         triangle.add(Arrays.asList(4, 1, 8, 3));
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         int r = solution.minimumTotal(triangle);
         System.out.println(r);
     }
