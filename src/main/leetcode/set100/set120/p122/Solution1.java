@@ -1,9 +1,9 @@
-package p122;
+package set100.set120.p122;
 
 /**
  * Created by wangsenyuan on 8/16/16.
  */
-public class Solution {
+public class Solution1 {
     public int maxProfit(int[] prices) {
         int profit = 0;
 

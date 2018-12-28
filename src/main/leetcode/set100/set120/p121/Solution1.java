@@ -1,9 +1,9 @@
-package p121;
+package set100.set120.p121;
 
 /**
  * Created by wangsenyuan on 8/16/16.
  */
-public class Solution {
+public class Solution1 {
 
     public int maxProfit(int[] prices) {
         int n = prices.length;
