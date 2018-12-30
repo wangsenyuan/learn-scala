@@ -1,4 +1,4 @@
-package p128;
+package set100.set120.p128;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,9 +7,9 @@ import java.util.TreeMap;
 /**
  * Created by wangsenyuan on 8/18/16.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         //int[] nums = new int[] {100, 4, 200, 1, 3, 2};
         //int[] nums = new int[] {0, -1};
         int[] nums = new int[] {1, 3, 5, 2, 4};
