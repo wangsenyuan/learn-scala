@@ -1,24 +1,19 @@
-package p127;
+package set100.set120.p127;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Queue;
 import java.util.Set;
-import java.util.Stack;
 
 public class WordLadder {
 
     public static void main(String[] args) {
         try (BufferedReader reader = new BufferedReader(
-            new FileReader("src/main/leetcode/p127/word_ladder_dict_3.txt"))) {
+            new FileReader("src/main/leetcode/set100.set120.p127/word_ladder_dict_3.txt"))) {
             HashSet<String> dict = new HashSet<String>();
             String line = "";
             while ((line = reader.readLine()) != null) {
