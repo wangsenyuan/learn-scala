@@ -1,9 +1,9 @@
-package p132;
+package set100.set130.p132;
 
 /**
  * Created by wangsenyuan on 8/18/16.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
         String s = "aabcbaa";
         System.out.println(minCut(s));

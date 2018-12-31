@@ -1,9 +1,9 @@
-package p134;
+package set100.set130.p134;
 
 /**
  * Created by wangsenyuan on 8/19/16.
  */
-public class Solution {
+public class Solution1 {
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int n = gas.length;
         for (int i = 0; i < n; ) {
@@ -31,7 +31,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         int[] gas = {6, 0, 1, 3, 2};
         int[] cost = {4, 5, 2, 5, 5};
         System.out.println(solution.canCompleteCircuit(gas, cost));
