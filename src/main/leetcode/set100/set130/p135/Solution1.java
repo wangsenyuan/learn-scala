@@ -1,9 +1,9 @@
-package p135;
+package set100.set130.p135;
 
 /**
  * Created by wangsenyuan on 8/20/16.
  */
-public class Solution {
+public class Solution1 {
     public int candy(int[] ratings) {
         if (ratings == null || ratings.length == 0)
             return 0;
@@ -35,7 +35,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         //        int[] ratings = {4, 2, 3, 4, 1};
         //int[] ratings = {2, 3, 2};
         //int[] ratings = {1, 2, 4, 4, 3};
