@@ -1,4 +1,4 @@
-package p139;
+package set100.set130.p139;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -7,10 +7,10 @@ import java.util.Set;
 /**
  * Created by senyuanwang on 16/8/20.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
         Set<String> dict = new HashSet<>(Arrays.asList("leet", "code"));
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         String s = "leetcode";
         System.out.println(solution.wordBreak(s, dict));
     }
