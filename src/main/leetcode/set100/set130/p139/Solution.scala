@@ -3,7 +3,29 @@ package set100.set130.p139
 import scala.collection.mutable
 
 object Solution {
+
   def wordBreak(s: String, wordDict: List[String]): Boolean = {
+    val ws = wordDict.toSet
+    val n = s.length
+    val dp = Array.fill(n + 1)(false)
+    dp(0) = true
+
+    var i = 1
+    while (i <= n) {
+      var j = i
+      while (j > 0 && !dp(i)) {
+        dp(i) = ws.contains(s.substring(j - 1, i)) && dp(j - 1)
+        j -= 1
+      }
+
+      i += 1
+    }
+
+
+    dp(n)
+  }
+
+  def wordBreak1(s: String, wordDict: List[String]): Boolean = {
     val ws = wordDict.toSet
 
     val mem = mutable.Map.empty[String, Int].withDefaultValue(0)
