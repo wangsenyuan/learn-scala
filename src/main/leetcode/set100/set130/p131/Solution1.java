@@ -1,4 +1,4 @@
-package p131;
+package set100.set130.p131;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by wangsenyuan on 8/18/16.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
         String s = "abcadac";
         List<List<String>> result = partition(s);
