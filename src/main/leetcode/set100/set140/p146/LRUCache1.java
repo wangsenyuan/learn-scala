@@ -1,4 +1,4 @@
-package p146;
+package set100.set140.p146;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -6,13 +6,13 @@ import java.util.Map;
 /**
  * Created by wangsenyuan on 8/24/16.
  */
-public class LRUCache {
+public class LRUCache1 {
     private int capacity;
     private int actNum = 0;
 
     private Map<Integer, Integer> map;
 
-    public LRUCache(int capacity) {
+    public LRUCache1(int capacity) {
         this.capacity = capacity;
         this.map = new LinkedHashMap<>(capacity);
     }
