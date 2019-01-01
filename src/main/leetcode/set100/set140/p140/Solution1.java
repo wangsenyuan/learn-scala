@@ -1,17 +1,17 @@
-package p140;
+package set100.set140.p140;
 
 import java.util.*;
 
 /**
  * Created by senyuanwang on 16/8/21.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
         String s = "catsanddog";
         Set<String> dict = new HashSet<>(Arrays.asList("cat", "cats", "and", "sand", "dog"));
 
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         List<String> result = solution.wordBreak(s, dict);
         result.forEach(System.out::println);
     }
