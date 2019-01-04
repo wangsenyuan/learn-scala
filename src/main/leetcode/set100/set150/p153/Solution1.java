@@ -1,9 +1,9 @@
-package p153;
+package set100.set150.p153;
 
 /**
  * Created by wangsenyuan on 8/25/16.
  */
-public class Solution {
+public class Solution1 {
 
     public int findMin(int[] nums) {
         int i = 0;
