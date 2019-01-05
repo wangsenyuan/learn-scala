@@ -1,13 +1,12 @@
-package p166;
+package set100.set160.p166;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by wangsenyuan on 8/31/16.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
         System.out.println(fractionToDecimal(1, 6));

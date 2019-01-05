@@ -1,9 +1,9 @@
-package majoritynumber;
+package set100.set160.p169;
 
 /**
  * Created by senyuanwang on 15/3/14.
  */
-public class Solution {
+public class Solution1 {
 
     public int majorityElement(int[] num) {
         int n = num.length;

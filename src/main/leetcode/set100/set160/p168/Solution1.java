@@ -1,4 +1,4 @@
-package excelsheetcolumntitle;
+package set100.set160.p168;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by senyuanwang on 15/3/14.
  */
-public class Solution {
+public class Solution1 {
 
     private static final char[] map = new char[26];
 
@@ -38,6 +38,6 @@ public class Solution {
 
 
     public static void main(String[] args) {
-        System.out.println(convertToTitle(26));
+        System.out.println(convertToTitle(52));
     }
 }

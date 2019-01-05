@@ -1,4 +1,4 @@
-package titletonumber;
+package set100.set170.p170;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by senyuanwang on 15/3/8.
  */
-public class Solution {
+public class Solution1 {
 
     private static Map<Character, Integer> map = new HashMap<>();
 

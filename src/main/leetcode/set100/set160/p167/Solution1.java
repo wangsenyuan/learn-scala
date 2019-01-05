@@ -1,9 +1,9 @@
-package p167.twosum;
+package set100.set160.p167;
 
 /**
  * Created by senyuanwang on 15/8/16.
  */
-public class Solution {
+public class Solution1 {
 
     /**
      * Input: numbers={2, 7, 11, 15}, target=9
