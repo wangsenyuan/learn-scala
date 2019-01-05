@@ -1,4 +1,4 @@
-package p170.two.sum;
+package set100.set170.p170;
 
 import java.util.ArrayList;
 import java.util.List;
