@@ -1,9 +1,9 @@
-package p174;
+package set100.set170.p174;
 
 /**
  * Created by senyuanwang on 15/3/14.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
         /*int[][] test = new int[][]{
                 new int[]{-2, -3, 3},
