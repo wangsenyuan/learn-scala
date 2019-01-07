@@ -1,9 +1,9 @@
-package rotatearray;
+package set100.set190.p190;
 
 /**
  * Created by senyuanwang on 15/2/26.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 5, 6, 7};
