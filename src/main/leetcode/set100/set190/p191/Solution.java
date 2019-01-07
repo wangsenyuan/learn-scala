@@ -1,4 +1,4 @@
-package p191;
+package set100.set190.p191;
 
 /**
  * Created by senyuanwang on 15/3/12.
@@ -10,14 +10,12 @@ public class Solution {
 
     // you need to treat n as an unsigned value
     public static int hammingWeight(int n) {
-        int len = 32;
-        int num = 0;
-        for (int i = 0; i < len; i++) {
-            if (((n >> i) & 1) == 1) {
-                num += 1;
-            }
+        int res = 0;
+        while (n != 0) {
+            res += n & 1;
+            n >>>= 1;
         }
 
-        return num;
+        return res;
     }
 }

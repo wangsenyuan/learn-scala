@@ -1,9 +1,9 @@
-package p190;
+package set100.set190.p190;
 
 /**
  * Created by senyuanwang on 15/3/8.
  */
-public class Solution {
+public class Solution2 {
 
     public static void main(String[] args) {
         int x = 1;
