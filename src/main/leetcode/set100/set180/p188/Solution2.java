@@ -1,9 +1,9 @@
-package p188;
+package set100.set180.p188;
 
 /**
  * Created by senyuanwang on 16/9/4.
  */
-public class Solution {
+public class Solution2 {
 
     public int maxProfit(int k, int[] prices) {
         if (k == 0 || prices.length == 0) {

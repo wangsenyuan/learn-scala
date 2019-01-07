@@ -1,8 +1,4 @@
-package p188;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+package set100.set180.p188;
 
 /**
  * Created by senyuanwang on 15/3/5.

@@ -1,11 +1,11 @@
-package p187;
+package set100.set180.p187;
 
 import java.util.*;
 
 /**
  * Created by senyuanwang on 15/3/14.
  */
-public class Solution {
+public class Solution2 {
 
     public static void main(String[] args) {
         List<String> list = findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT");
