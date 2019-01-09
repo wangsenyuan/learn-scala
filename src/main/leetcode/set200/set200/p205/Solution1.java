@@ -1,4 +1,4 @@
-package p205.isomorphic.strings;
+package set200.set200.p205;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by senyuanwang on 15/4/29.
  */
-public class Solution {
+public class Solution1 {
 
     public boolean isIsomorphic(String s, String t) {
         int i = 0;
