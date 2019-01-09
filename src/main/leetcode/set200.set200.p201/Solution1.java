@@ -1,9 +1,9 @@
-package p201.bitwiseandrange;
+package set200.set200.p201;
 
 /**
  * Created by senyuanwang on 15/4/16.
  */
-public class Solution {
+public class Solution1 {
 
     public static int rangeBitwiseAnd(int m, int n) {
         int cnt = 0;

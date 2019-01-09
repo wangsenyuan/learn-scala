@@ -1,9 +1,9 @@
-package p200;
+package set200.set200.p200;
 
 /**
  * Created by senyuanwang on 15/4/9.
  */
-public class Solution {
+public class Solution2 {
 
     public static void main(String[] args) {
         String input = "11000\n" +

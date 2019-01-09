@@ -1,9 +1,9 @@
-package p198;
+package set100.set190.p198;
 
 /**
  * Created by senyuanwang on 15/4/6.
  */
-public class Solution {
+public class Solution1 {
 
     public static int rob(int[] num) {
         int a = 0;

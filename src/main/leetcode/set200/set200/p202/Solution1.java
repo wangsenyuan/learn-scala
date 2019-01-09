@@ -1,10 +1,10 @@
-package p202.happynumber;
+package set200.set200.p202;
 
 
 /**
  * Created by senyuanwang on 15/4/22.
  */
-public class Solution {
+public class Solution1 {
 
     public static boolean isHappy(int n) {
         while (n != 89) {

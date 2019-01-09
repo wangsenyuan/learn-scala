@@ -1,11 +1,11 @@
-package p204.countprimes;
+package set200.set200.p204;
 
 import java.util.BitSet;
 
 /**
  * Created by senyuanwang on 15/4/27.
  */
-public class Solution {
+public class Solution1 {
     public int countPrimes(int n) {
         BitSet bs = new BitSet(n);
         bs.set(0);
