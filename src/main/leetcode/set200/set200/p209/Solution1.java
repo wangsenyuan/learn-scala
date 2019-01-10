@@ -1,9 +1,9 @@
-package p209.min.subarray.sum;
+package set200.set200.p209;
 
 /**
  * Created by senyuanwang on 15/5/12.
  */
-public class Solution {
+public class Solution1 {
 
     public static int minSubArrayLen(int s, int[] nums) {
         int n = nums.length + 1;

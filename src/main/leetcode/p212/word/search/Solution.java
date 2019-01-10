@@ -1,6 +1,6 @@
 package p212.word.search;
 
-import p208.trie.Trie;
+import set200.set200.p208.Trie;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,13 +12,14 @@ import java.util.Set;
  */
 public class Solution {
 
-    static int[] dx = new int[]{-1, 0, 0, 1};
-    static int[] dy = new int[]{0, -1, 1, 0};
+    static int[] dx = new int[] {-1, 0, 0, 1};
+    static int[] dy = new int[] {0, -1, 1, 0};
 
-    public static void visit(char[][] board, boolean[][] checked, int i, int j, Trie trie, String path, Set<String> result) {
+    public static void visit(char[][] board, boolean[][] checked, int i, int j, Trie trie, String path,
+        Set<String> result) {
         if (trie.search(path)) {
             result.add(path);
-//            return;
+            //            return;
         }
 
         if (!trie.startsWith(path)) {
@@ -60,11 +61,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        char[][] board = {
-                {'o', 'a', 'a', 'n'},
-                {'e', 't', 'a', 'e'},
-                {'i', 'h', 'k', 'r'},
-                {'i', 'f', 'l', 'v'},};
+        char[][] board = {{'o', 'a', 'a', 'n'}, {'e', 't', 'a', 'e'}, {'i', 'h', 'k', 'r'}, {'i', 'f', 'l', 'v'},};
 
         String[] words = {"oath", "pea", "eat", "rain"};
         System.out.println(findWords(board, words));
