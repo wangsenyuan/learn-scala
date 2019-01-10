@@ -1,4 +1,4 @@
-package p207;
+package set200.set200.p207;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 /**
  * Created by wangsenyuan on 9/9/16.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
         int[][] pres = new int[][] {new int[] {1, 0}};
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         System.out.println(solution.canFinish(2, pres));
     }
 
