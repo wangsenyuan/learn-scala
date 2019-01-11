@@ -1,9 +1,9 @@
-package p213.houre.robber;
+package set200.set210.p213;
 
 /**
  * Created by senyuanwang on 15/5/20.
  */
-public class Solution {
+public class Solution1 {
     public static int max(int a, int b) {
         if (a > b) {
             return a;

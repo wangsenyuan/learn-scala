@@ -1,9 +1,9 @@
-package p211;
+package set200.set210.p211;
 
 /**
  * Created by senyuanwang on 16/9/15.
  */
-public class WordDictionary {
+public class WordDictionary1 {
     private Trie trie = new Trie();
 
     // Adds a word into the data structure.
@@ -64,7 +64,7 @@ public class WordDictionary {
     }
 
     public static void main(String[] args) {
-        WordDictionary dict = new WordDictionary();
+        WordDictionary1 dict = new WordDictionary1();
         dict.addWord("bad");
         dict.addWord("mad");
         System.out.println(dict.search("pad"));

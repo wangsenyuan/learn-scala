@@ -1,4 +1,4 @@
-package p212.word.search;
+package set200.set210.p212;
 
 import set200.set200.p208.Trie;
 
@@ -10,7 +10,7 @@ import java.util.Set;
 /**
  * Created by senyuanwang on 15/5/19.
  */
-public class Solution {
+public class Solution1 {
 
     static int[] dx = new int[] {-1, 0, 0, 1};
     static int[] dy = new int[] {0, -1, 1, 0};
