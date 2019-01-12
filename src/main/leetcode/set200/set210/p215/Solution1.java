@@ -1,14 +1,14 @@
-package p215.kth.largest;
+package set200.set210.p215;
 
 /**
  * Created by senyuanwang on 15/5/23.
  */
-public class Solution {
+public class Solution1 {
 
     public static int qsort(int[] nums, int left, int right, int k) {
         if (left + 3 <= right) {
             int pivot = median3(nums, left, right);
-//            int pivot = nums[right];
+            //            int pivot = nums[right];
             int i = left, j = right - 1;
 
             while (i < j) {
@@ -81,7 +81,8 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        int[] nums = {3, 3, 3, 3, 3, 3, 3, 3, 3};
+        int[] nums = {3, 2, 1, 5, 6, 4};
+        //        int[] nums = {3, 3, 3, 3, 3, 3, 3, 3, 3};
         System.out.println(findKthLargest(nums, 8));
     }
 }
