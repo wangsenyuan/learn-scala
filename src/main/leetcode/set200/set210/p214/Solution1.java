@@ -1,9 +1,9 @@
-package p214.shortest.palindrom;
+package set200.set210.p214;
 
 /**
  * Created by senyuanwang on 15/5/23.
  */
-public class Solution {
+public class Solution1 {
 
     public static boolean isPalindrom(char[] str, int s, int e) {
         int i = s;
