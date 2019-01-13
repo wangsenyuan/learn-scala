@@ -1,4 +1,4 @@
-package p217.contains.duplicate;
+package set200.set210.p217;
 
 import java.util.BitSet;
 import java.util.HashSet;
@@ -7,7 +7,7 @@ import java.util.Set;
 /**
  * Created by senyuanwang on 15/5/25.
  */
-public class Solution {
+public class Solution1 {
     public static boolean containsDuplicate(int[] nums) {
         Set<Integer> bs = new HashSet<>(nums.length);
 

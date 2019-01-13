@@ -1,11 +1,11 @@
-package p218.skyline;
+package set200.set210.p218;
 
 import java.util.*;
 
 /**
  * Created by senyuanwang on 15/5/26.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
         int[][] buildings = {{0, 5, 7}, {5, 10, 7}, {5, 10, 12}, {10, 15, 7}, {15, 20, 7}, {15, 20, 12}, {20, 25, 7}};
