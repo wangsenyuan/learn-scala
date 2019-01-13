@@ -23,29 +23,23 @@ object Solution {
       tree.put(A(i), i)
     }
 
-    val mem = Array.fill(n, 2)(0)
-    mem(n - 1)(0) = 1
-    mem(n - 1)(1) = 1
+    val odd = Array.fill(n)(false)
+    val even = Array.fill(n)(false)
 
-    def jump(i: Int, step: Int): Boolean = {
-      if (mem(i)(step) == 0) {
-        val res = if (step == 1 && gt(i) > i) {
-          jump(gt(i), 1 - step)
-        } else if (step == 0 && lt(i) > i) {
-          jump(lt(i), 1 - step)
-        } else {
-          false
-        }
-        mem(i)(step) = if (res) {
-          1
-        } else {
-          -1
-        }
+    odd(n - 1) = true
+    even(n - 1) = true
+
+    for {
+      i <- n - 2 to 0 by -1
+    } {
+      if (gt(i) > i) {
+        odd(i) = even(gt(i))
       }
-
-      mem(i)(step) > 0
+      if (lt(i) > i) {
+        even(i) = odd(lt(i))
+      }
     }
 
-    (0 until n).count(jump(_, 1))
+    (0 until n).count(odd(_))
   }
 }
