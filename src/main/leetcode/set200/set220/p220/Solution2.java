@@ -1,11 +1,11 @@
-package p220.contain.duplicate;
+package set200.set220.p220;
 
 import java.util.Arrays;
 
 /**
  * Created by senyuanwang on 15/6/1.
  */
-public class Solution {
+public class Solution2 {
 
     public static long diffAbs(long a, long b) {
         if (a > b) return a - b;

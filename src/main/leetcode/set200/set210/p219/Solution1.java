@@ -1,4 +1,4 @@
-package p219.contain.duplicate;
+package set200.set210.p219;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Created by senyuanwang on 15/5/29.
  */
-public class Solution {
+public class Solution1 {
 
     public static boolean containsNearbyDuplicate(int[] nums, int k) {
         if (nums.length == 0) {
