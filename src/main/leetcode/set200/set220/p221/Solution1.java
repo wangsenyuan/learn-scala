@@ -1,4 +1,4 @@
-package p221.max.square;
+package set200.set220.p221;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 /**
  * Created by senyuanwang on 15/6/3.
  */
-public class Solution {
+public class Solution1 {
     public static int maximalSquare(char[][] matrix) {
         int m = matrix.length;
         if (m == 0) {
