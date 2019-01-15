@@ -1,9 +1,9 @@
-package p223.rectangle.area;
+package set200.set220.p223;
 
 /**
  * Created by senyuanwang on 15/6/8.
  */
-public class Solution {
+public class Solution1 {
     public static int commonArea(int A, int B, int C, int D, int E, int F, int G, int H) {
         if (E > C && E > A) {
             return 0;
