@@ -2,8 +2,45 @@ package set200.set220.p224
 
 object Solution {
   def calculate(s: String): Int = {
-    cal(s.replace(" ", ""))
+    val n = s.length
+    val m = s.count(_ == '(')
+    val stack = Array.fill(m + 1)(1)
+    var p = 1
+
+    var sign = 1
+    var ans = 0
+    var i = 0
+    while (i < n) {
+      if (s(i) == ' ') {
+
+      } else if (s(i) == '(') {
+        stack(p) = sign
+        p += 1
+      } else if (s(i) == ')') {
+        sign = stack(p - 1)
+        p -= 1
+      } else if (s(i) == '+') {
+        //sign no change
+        sign = stack(p - 1)
+      } else if (s(i) == '-') {
+        sign = -1 * stack(p - 1)
+      } else {
+        var num = 0
+        var j = i
+        while (j < n && isDigit(s(j))) {
+          num = num * 10 + (s(j) - '0')
+          j += 1
+        }
+        ans += sign * num
+        i = j - 1
+      }
+      i += 1
+    }
+
+    ans
   }
+
+  private def isDigit(c: Char) = c >= '0' && c <= '9'
 
   private def cal(s: String): Int = {
     var nums = List.empty[Int]
