@@ -1,4 +1,4 @@
-package p231.power.of.two;
+package set200.set230.p231;
 
 /**
  * Created by senyuanwang on 15/7/7.
