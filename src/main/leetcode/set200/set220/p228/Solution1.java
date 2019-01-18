@@ -1,4 +1,4 @@
-package p228.summary.ranges;
+package set200.set220.p228;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by senyuanwang on 15/6/26.
  */
-public class Solution {
+public class Solution1 {
     public static List<String> summaryRanges(int[] nums) {
         if (nums.length == 0) {
             return new ArrayList<>();

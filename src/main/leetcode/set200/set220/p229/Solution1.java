@@ -1,4 +1,4 @@
-package p229.majority.elements;
+package set200.set220.p229;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by senyuanwang on 15/6/29.
  */
-public class Solution {
+public class Solution1 {
     public static List<Integer> majorityElement(int[] nums) {
         if (nums.length == 0) {
             return Collections.emptyList();
