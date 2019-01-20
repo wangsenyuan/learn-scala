@@ -1,4 +1,4 @@
-package p241.add.parentheses;
+package set200.set240.p241;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 /**
  * Created by senyuanwang on 15/7/27.
  */
-public class Solution {
+public class Solution1 {
     private Map<String, List<Integer>> cache = new HashMap<>();
 
     private List<Integer> diffWaysToCompute(char[] cs, int start, int end) {
@@ -67,7 +67,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         System.out
             .println(solution.diffWaysToCompute("2-4").stream().map(x -> "" + x).collect(Collectors.joining(",")));
     }
