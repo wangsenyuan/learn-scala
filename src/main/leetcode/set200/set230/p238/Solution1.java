@@ -1,9 +1,9 @@
-package p238.product.of.array;
+package set200.set230.p238;
 
 /**
  * Created by senyuanwang on 15/7/16.
  */
-public class Solution {
+public class Solution1 {
     public int[] productExceptSelf(int[] nums) {
         int n = nums.length;
 
@@ -25,7 +25,7 @@ public class Solution {
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4};
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         int[] result = solution.productExceptSelf(nums);
         for (int x : result) {
             System.out.print(x + ", ");
