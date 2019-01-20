@@ -1,9 +1,9 @@
-package p240.search.matrix;
+package set200.set240.p240;
 
 /**
  * Created by senyuanwang on 15/7/23.
  */
-public class Solution {
+public class Solution1 {
 
     public boolean searchMatrix(int[][] matrix, int target) {
         return find(matrix, 0, matrix[0].length - 1, target);
@@ -26,7 +26,7 @@ public class Solution {
     public static void main(String[] args) {
         int[][] matrix = {{-5}};
 
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         System.out.println(solution.searchMatrix(matrix, -2));
     }
 }

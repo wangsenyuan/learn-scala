@@ -1,13 +1,11 @@
-package p239.sliding.window;
+package set200.set230.p239;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 /**
  * Created by senyuanwang on 15/7/18.
  */
-public class Solution {
+public class Solution1 {
     public int[] maxSlidingWindow1(int[] nums, int k) {
         int n = nums.length;
         if (n == 0) {
@@ -183,7 +181,7 @@ public class Solution {
     public static void main(String[] args) {
         int[] nums = {1, -1};
         int k = 1;
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         int[] result = solution.maxSlidingWindow(nums, k);
 
         for (int x : result) {
