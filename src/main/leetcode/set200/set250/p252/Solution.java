@@ -1,4 +1,4 @@
-package p252.meeting.rooms;
+package set200.set250.p252;
 
 import java.util.Arrays;
 import java.util.Comparator;

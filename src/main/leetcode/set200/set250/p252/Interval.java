@@ -1,4 +1,4 @@
-package p252.meeting.rooms;
+package set200.set250.p252;
 
 public class Interval {
     int start;

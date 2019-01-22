@@ -1,9 +1,9 @@
-package p242.word.anagram;
+package set200.set240.p242;
 
 /**
  * Created by senyuanwang on 15/8/1.
  */
-public class Solution {
+public class Solution1 {
     public boolean isAnagram(String s, String t) {
         int[] map = new int[26];
 
