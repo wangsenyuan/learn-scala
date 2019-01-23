@@ -1,9 +1,9 @@
-package p260.single.number;
+package set200.set260.p260;
 
 /**
  * Created by senyuanwang on 15/8/17.
  */
-public class Solution {
+public class Solution1 {
     public int[] singleNumber(int[] nums) {
         // Pass 1 :
         // Get the XOR of the two numbers we need to find
@@ -28,7 +28,7 @@ public class Solution {
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 1, 3, 2, 5};
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         int[] res = solution.singleNumber(nums);
         System.out.println(res[0]);
         System.out.println(res[1]);

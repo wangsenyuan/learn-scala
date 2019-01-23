@@ -1,7 +1,6 @@
-package p259.threesum.smaller;
+package set200.set250.p259;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 /**
  * Created by senyuanwang on 15/8/17.
