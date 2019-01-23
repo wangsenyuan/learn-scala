@@ -1,9 +1,9 @@
-package p258.add.digits;
+package set200.set250.p258;
 
 /**
  * Created by senyuanwang on 15/8/16.
  */
-public class Solution {
+public class Solution1 {
     public int addDigits(int num) {
         if(num < 10) {
             return num;
