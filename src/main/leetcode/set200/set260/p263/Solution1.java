@@ -5,7 +5,7 @@ import java.util.BitSet;
 /**
  * Created by senyuanwang on 15/8/19.
  */
-public class Solution {
+public class Solution1 {
     public boolean isUgly(int num) {
         if (num <= 0) {
             return false;
@@ -121,7 +121,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         System.out.println(solution.nthUglyNumber2(20));
         for (int i = 1; i <= 20; i++) {
             System.out.println(solution.nthUglyNumber2(i));
