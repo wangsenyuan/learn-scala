@@ -1,9 +1,9 @@
-package p268;
+package set200.set260.p268;
 
 /**
  * Created by wangsenyuan on 9/29/16.
  */
-public class Solution {
+public class Solution1 {
     public int missingNumber(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
             int x = nums[i];
@@ -32,7 +32,7 @@ public class Solution {
 
     public static void main(String[] args) {
         int[] nums = {0};
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         System.out.println(solution.missingNumber(nums));
     }
 }
