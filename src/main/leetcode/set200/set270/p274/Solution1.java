@@ -1,11 +1,11 @@
-package p274;
+package set200.set270.p274;
 
 import java.util.Arrays;
 
 /**
  * Created by senyuanwang on 15/9/4.
  */
-public class Solution {
+public class Solution1 {
     public int hIndex(int[] citations) {
         Arrays.sort(citations);
 
@@ -28,7 +28,7 @@ public class Solution {
 
     public static void main(String[] args) {
         int[] citations = {0};
-        Solution solution = new Solution();
-        System.out.println(solution.hIndex(citations));
+        Solution1 solution1 = new Solution1();
+        System.out.println(solution1.hIndex(citations));
     }
 }
