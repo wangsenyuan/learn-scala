@@ -1,6 +1,6 @@
-package p270;
+package set200.set270.p270;
 
-import p272.TreeNode;
+import set200.set270.p272.TreeNode;
 
 /**
  * Created by senyuanwang on 15/8/27.
