@@ -1,9 +1,9 @@
-package p283;
+package set200.set280.p283;
 
 /**
  * Created by senyuanwang on 15/9/20.
  */
-public class Solution {
+public class Solution1 {
     public void moveZeroes(int[] nums) {
         int p = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -21,8 +21,8 @@ public class Solution {
 
     public static void main(String[] args) {
         int[] nums = {0, 1, 0, 3, 12};
-        Solution solution = new Solution();
-        solution.moveZeroes(nums);
+        Solution1 solution1 = new Solution1();
+        solution1.moveZeroes(nums);
         for (int x : nums) {
             System.out.print(x + " ");
         }
