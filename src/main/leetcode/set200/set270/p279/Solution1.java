@@ -1,11 +1,11 @@
-package p279;
+package set200.set270.p279;
 
 import java.util.Arrays;
 
 /**
  * Created by senyuanwang on 2016/10/5.
  */
-public class Solution {
+public class Solution1 {
     public int numSquares(int n) {
         while (n % 4 == 0)
             n /= 4;
@@ -50,10 +50,10 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
         /*for (int i = 1; i <= 100; i++) {
             System.out.println(solution.numSquares1(i));
         }*/
-        System.out.println(solution.numSquares1(12));
+        System.out.println(solution1.numSquares1(12));
     }
 }

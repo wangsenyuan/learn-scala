@@ -1,4 +1,4 @@
-package p282;
+package set200.set280.p282;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 /**
  * Created by senyuanwang on 2016/10/6.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
         String num = "123";
         int target = 6;
-        List<String> res = new Solution().addOperators(num, target);
+        List<String> res = new Solution1().addOperators(num, target);
         res.forEach(System.out::println);
     }
 
