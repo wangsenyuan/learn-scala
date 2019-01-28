@@ -1,9 +1,9 @@
-package p287;
+package set200.set280.p287;
 
 /**
  * Created by senyuanwang on 2016/10/7.
  */
-public class Solution {
+public class Solution1 {
     public int findDuplicate(int[] nums) {
         int fast, slow;
 
