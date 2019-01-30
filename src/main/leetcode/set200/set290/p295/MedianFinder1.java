@@ -1,15 +1,15 @@
-package p295;
+package set200.set290.p295;
 
 /**
  * Created by wangsenyuan on 11/10/2016.
  */
-public class MedianFinder {
+public class MedianFinder1 {
     private Node root;
     private Node medianLeft;
     private Node medianRight;
     private int size;
 
-    public MedianFinder() {
+    public MedianFinder1() {
     }
 
     // Adds a number into the data structure.
@@ -116,13 +116,13 @@ public class MedianFinder {
     }
 
     public static void main(String[] args) {
-        MedianFinder medianFinder = new MedianFinder();
-        medianFinder.addNum(1);
-        medianFinder.addNum(2);
-        System.out.println(medianFinder.findMedian());
-        medianFinder.addNum(3);
-        System.out.println(medianFinder.findMedian());
-        medianFinder.addNum(4);
-        System.out.println(medianFinder.findMedian());
+        MedianFinder1 medianFinder1 = new MedianFinder1();
+        medianFinder1.addNum(1);
+        medianFinder1.addNum(2);
+        System.out.println(medianFinder1.findMedian());
+        medianFinder1.addNum(3);
+        System.out.println(medianFinder1.findMedian());
+        medianFinder1.addNum(4);
+        System.out.println(medianFinder1.findMedian());
     }
 }

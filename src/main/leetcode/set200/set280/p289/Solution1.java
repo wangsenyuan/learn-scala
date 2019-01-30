@@ -1,9 +1,9 @@
-package p289;
+package set200.set280.p289;
 
 /**
  * Created by senyuanwang on 15/10/8.
  */
-public class Solution {
+public class Solution1 {
     private static int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
     private static int[] dy = {-1, 0, 1, -1, 1, -1, 0, 1};
 

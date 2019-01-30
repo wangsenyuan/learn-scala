@@ -1,4 +1,4 @@
-package p290;
+package set200.set290.p290;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by senyuanwang on 15/10/6.
  */
-public class Solution {
+public class Solution1 {
     public boolean wordPattern(String pattern, String str) {
         Map<String, Character> map = new HashMap<>();
         Map<Character, String> reverse = new HashMap<>();
