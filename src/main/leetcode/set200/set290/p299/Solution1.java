@@ -1,9 +1,9 @@
-package p299;
+package set200.set290.p299;
 
 /**
  * Created by senyuanwang on 15/10/31.
  */
-public class Solution {
+public class Solution1 {
 
     public String getHint(String secret, String guess) {
         char[] as = secret.toCharArray();
@@ -42,7 +42,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         String secret = "11";
         String guess = "10";
         System.out.println(solution.getHint(secret, guess));
