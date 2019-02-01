@@ -1,9 +1,9 @@
-package p300;
+package set300.set300.p300;
 
 /**
  * Created by senyuanwang on 15/11/3.
  */
-public class Solution {
+public class Solution1 {
 
     public int lengthOfLIS1(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -74,11 +74,11 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
 
         int[] nums = {2, 5, 3, 7, 11, 8, 10, 13, 6};
 
-        System.out.println(solution.lengthOfLIS(nums));
+        System.out.println(solution1.lengthOfLIS(nums));
     }
 
 }
