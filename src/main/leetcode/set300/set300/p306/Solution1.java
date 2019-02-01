@@ -1,16 +1,16 @@
-package p306;
+package set300.set300.p306;
 
 /**
  * Created by wangsenyuan on 26/10/2016.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
         //System.out.println(solution.isAdditiveNumber("112358"));
         //System.out.println(solution.isAdditiveNumber("199100199"));
         //System.out.println(solution.isAdditiveNumber("10"));
-        System.out.println(solution.isAdditiveNumber("8917"));
+        System.out.println(solution1.isAdditiveNumber("8917"));
     }
 
     public boolean isAdditiveNumber(String num) {

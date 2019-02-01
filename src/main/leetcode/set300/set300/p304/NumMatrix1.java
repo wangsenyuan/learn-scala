@@ -1,12 +1,12 @@
-package p304;
+package set300.set300.p304;
 
 /**
  * Created by senyuanwang on 15/11/12.
  */
-public class NumMatrix {
+public class NumMatrix1 {
     long[][] sumMatrix;
 
-    public NumMatrix(int[][] matrix) {
+    public NumMatrix1(int[][] matrix) {
         int m = matrix.length;
 
         if (m == 0) {
@@ -39,8 +39,8 @@ public class NumMatrix {
                 {1, 0, 3, 0, 5}
         };
 
-        NumMatrix numMatrix = new NumMatrix(grid);
+        NumMatrix1 numMatrix1 = new NumMatrix1(grid);
 
-        System.out.println(numMatrix.sumRegion(2, 1, 4, 3));
+        System.out.println(numMatrix1.sumRegion(2, 1, 4, 3));
     }
 }

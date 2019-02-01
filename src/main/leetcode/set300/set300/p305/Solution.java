@@ -1,4 +1,4 @@
-package p305;
+package set300.set300.p305;
 
 import java.util.ArrayList;
 import java.util.Arrays;
