@@ -1,12 +1,12 @@
-package p303;
+package set300.set300.p303;
 
 /**
  * Created by senyuanwang on 15/11/10.
  */
-public class NumArray {
+public class NumArray1 {
     private long[] sum;
 
-    public NumArray(int[] nums) {
+    public NumArray1(int[] nums) {
         int n = nums.length;
         sum = new long[n + 1];
 
@@ -21,7 +21,7 @@ public class NumArray {
 
     public static void main(String[] args) {
         int[] nums = {-2, 0, 3, -5, 2, -1};
-        NumArray numArray = new NumArray(nums);
+        NumArray1 numArray = new NumArray1(nums);
         System.out.println(numArray.sumRange(0, 2));
         System.out.println(numArray.sumRange(2, 5));
         System.out.println(numArray.sumRange(0, 5));

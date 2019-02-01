@@ -1,4 +1,4 @@
-package p302;
+package set300.set300.p302;
 
 /**
  * Created by senyuanwang on 15/11/8.
