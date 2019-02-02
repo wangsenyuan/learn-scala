@@ -51,14 +51,9 @@ object Solution {
 
       val first = findMaxHeightAt()
 
-      var i = 0
-      while (i < n) {
-        heights(i) = 0
-        i += 1
-      }
+      (0 until n) foreach (heights(_) = 0)
 
       dfs(-1, first, 0)
-
 
       def findMidAt(from: Int, h: Int): Int = {
         var i = from
