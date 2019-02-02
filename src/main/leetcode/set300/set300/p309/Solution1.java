@@ -1,9 +1,9 @@
-package p309;
+package set300.set300.p309;
 
 /**
  * Created by wangsenyuan on 26/10/2016.
  */
-public class Solution {
+public class Solution1 {
     public static int maxProfit(int[] prices) {
         if (prices.length < 2) {
             return 0;

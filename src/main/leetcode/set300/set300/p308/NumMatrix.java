@@ -1,4 +1,4 @@
-package p308;
+package set300.set300.p308;
 
 /**
  * Created by wangsenyuan on 26/10/2016.

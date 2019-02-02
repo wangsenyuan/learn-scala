@@ -1,17 +1,17 @@
-package p310;
+package set300.set310.p310;
 
 import java.util.*;
 
 /**
  * Created by senyuanwang on 2016/10/26.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
         //int[][] edges = {{0, 3}, {1, 3}, {2, 3}, {4, 3}, {5, 4}};
         //int[][] edges = {{1, 0}, {1, 2}, {1, 3}};
         int[][] edges = {{0, 1}, {0, 2}, {0, 3}, {3, 4}, {4, 5}};
-        solution.findMinHeightTrees(6, edges).forEach(System.out::println);
+        solution1.findMinHeightTrees(6, edges).forEach(System.out::println);
     }
 
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
