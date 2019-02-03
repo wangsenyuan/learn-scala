@@ -1,9 +1,9 @@
-package p312;
+package set300.set310.p312;
 
 /**
  * Created by wangsenyuan on 28/10/2016.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
         int[] nums = {3, 1, 5, 8};
         System.out.println(maxCoins(nums));
