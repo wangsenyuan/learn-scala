@@ -1,4 +1,4 @@
-package p315;
+package set300.set310.p315;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by wangsenyuan on 28/10/2016.
  */
-public class Solution {
+public class Solution2 {
 
     public static void main(String[] args) {
         int[] nums =

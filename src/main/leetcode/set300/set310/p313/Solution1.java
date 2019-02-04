@@ -1,11 +1,11 @@
-package p313;
+package set300.set310.p313;
 
 import java.util.PriorityQueue;
 
 /**
  * Created by wangsenyuan on 28/10/2016.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
         int[] primes = {2, 7, 13, 19};
