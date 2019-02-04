@@ -1,11 +1,11 @@
-package p316;
+package set300.set310.p316;
 
 import java.util.LinkedList;
 
 /**
  * Created by senyuanwang on 15/12/13.
  */
-public class Solution {
+public class Solution2 {
 
     public String removeDuplicateLetters(String s) {
         if (s == null || s.length() < 2) {
@@ -62,11 +62,11 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution2 solution2 = new Solution2();
 
 //        System.out.println(solution.removeDuplicateLetters("bcabc"));
 //        System.out.println(solution.removeDuplicateLetters("cbacdcbc"));
-        System.out.println(solution.removeDuplicateLetters("cbac"));
+        System.out.println(solution2.removeDuplicateLetters("cbac"));
 
     }
 }

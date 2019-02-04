@@ -1,9 +1,9 @@
-package p316
+package set300.set310.p316
 
 /**
   * Created by wangsenyuan on 02/11/2016.
   */
-object App {
+object Solution3 {
 
   def main(args: Array[String]): Unit = {
     println(removeDuplicateLetters("bcabc"))
