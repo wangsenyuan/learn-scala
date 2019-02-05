@@ -32,13 +32,14 @@ object Solution {
     } else if (y.length == 0) {
       x(0)(k)
     } else {
+      val cmp = Array.ofDim[Int](k + 1, k + 1)
       var best = ""
       for {
         a <- 0 to (k min nums1.length)
         b = k - a
         if b <= nums2.length
       } {
-        best = max(best, merge(x(0)(a), y(0)(b)))
+        best = max(best, merge(x(0)(a), y(0)(b), cmp))
       }
       best
     }
@@ -46,13 +47,32 @@ object Solution {
     res.map(x => (x - '0')).toArray
   }
 
-  private def merge(a: String, b: String): String = {
+  private def merge(a: String, b: String, cmp: Array[Array[Int]]): String = {
+    val m = a.length
+    val n = b.length
+
+    initCmp(cmp, m, n)
+
+    for {
+      i <- m - 1 to 0 by -1
+      j <- n - 1 to 0 by -1
+    } {
+      cmp(i)(j) = if (a(i) == b(j)) {
+        cmp(i + 1)(j + 1)
+      } else if (a(i) > b(j)) {
+        1
+      } else {
+        -1
+      }
+    }
+
+
     var i = 0
     var j = 0
     var res = ""
 
     while (i < a.length) {
-      while (j < b.length && compare(a.substring(i), b.substring(j)) <= 0) {
+      while (j < b.length && cmp(i)(j) <= 0) {
         res += b(j)
         j += 1
       }
@@ -68,26 +88,20 @@ object Solution {
     res
   }
 
-  private def compare(a: String, b: String): Int = {
-    def go(i: Int, j: Int): Int = {
-      if (i == a.length && j == b.length) {
-        0
-      } else if (i == a.length) {
-        -1
-      } else if (j == b.length) {
-        1
-      } else if (a(i) < b(j)) {
-        -1
-      } else if (a(i) > b(j)) {
-        1
-      } else {
-        go(i + 1, j + 1)
-      }
+  private def initCmp(cmp: Array[Array[Int]], m: Int, n: Int) = {
+    cmp(m)(n) = 0
+
+    for {
+      i <- 0 until m
+    } {
+      cmp(i)(n) = 1
     }
-
-    go(0, 0)
+    for {
+      j <- 0 until n
+    } {
+      cmp(m)(j) = -1
+    }
   }
-
 
   private def max(a: String, b: String): String = {
     if (a.length > b.length) {

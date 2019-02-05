@@ -42,4 +42,13 @@ class SolutionSpec extends FlatSpec with Matchers {
     val res = Solution.maxNumber(num1, num2, k)
     res should equal(Array(7, 3, 8, 2, 5, 6, 4, 4, 0, 6, 5, 7, 6, 2, 0))
   }
+
+
+  "[6,3,9,0,5,6] & [2,2,5,2,1,4,4,5,7,8,9,3,1,6,9,7,0]" should "get [6,3,9,2,2,5,2,1,4,4,5,7,8,9,3,1,6,9,7,0,5,6,0]" in {
+    val num1 = Array(6, 3, 9, 0, 5, 6)
+    val num2 = Array(2, 2, 5, 2, 1, 4, 4, 5, 7, 8, 9, 3, 1, 6, 9, 7, 0)
+    val k = 23
+    val res = Solution.maxNumber(num1, num2, k)
+    res should equal(Array(6, 3, 9, 2, 2, 5, 2, 1, 4, 4, 5, 7, 8, 9, 3, 1, 6, 9, 7, 0, 5, 6, 0))
+  }
 }
