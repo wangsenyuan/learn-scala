@@ -1,9 +1,9 @@
-package p322
+package set300.set320.p322
 
 /**
   * Created by wangsenyuan on 05/11/2016.
   */
-object App {
+object Solution2 {
 
   def main(args: Array[String]): Unit = {
     val coins = Array(186, 419, 83, 408)

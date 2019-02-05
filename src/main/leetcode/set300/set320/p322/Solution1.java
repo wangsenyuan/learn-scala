@@ -1,15 +1,15 @@
-package p322;
+package set300.set320.p322;
 
 import java.util.Arrays;
 
 /**
  * Created by wangsenyuan on 05/11/2016.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
         //int[] coins = {1, 2, 5};
         int[] coins = {186, 419, 83, 408};
-        System.out.println(new Solution().coinChange(coins, 6249));
+        System.out.println(new Solution1().coinChange(coins, 6249));
     }
 
     int total = Integer.MAX_VALUE;
