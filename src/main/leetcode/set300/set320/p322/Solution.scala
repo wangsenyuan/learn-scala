@@ -2,8 +2,8 @@ package set300.set320.p322
 
 object Solution {
   def coinChange(coins: Array[Int], amount: Int): Int = {
-    val cs = coins.filter(_ <= amount).sorted
-    val n = cs.length
+    //    val cs = coins.filter(_ <= amount).sorted
+    val n = coins.length
 
     val INF = 1 << 20
     val dp = Array.fill(amount + 1)(INF)
@@ -12,10 +12,10 @@ object Solution {
 
     for {
       x <- 1 to amount
+      i <- 0 until n
+      if x >= coins(i)
     } {
-      (0 until n).takeWhile(x >= cs(_)).foreach {
-        j => dp(x) = dp(x) min (1 + dp(x - cs(j)))
-      }
+      dp(x) = dp(x) min (1 + dp(x - coins(i)))
     }
 
     val res = dp(amount)
