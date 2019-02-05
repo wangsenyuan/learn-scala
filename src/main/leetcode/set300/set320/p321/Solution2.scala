@@ -1,11 +1,11 @@
-package p321
+package set300.set320.p321
 
 import scala.annotation.tailrec
 
 /**
   * Created by wangsenyuan on 05/11/2016.
   */
-object App {
+object Solution2 {
 
   def main(args: Array[String]): Unit = {
     val nums1: Array[Int] = Array(3, 4, 6, 5)

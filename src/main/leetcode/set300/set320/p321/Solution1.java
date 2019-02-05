@@ -1,11 +1,11 @@
-package p321;
+package set300.set320.p321;
 
 import java.util.Arrays;
 
 /**
  * Created by senyuanwang on 15/12/23.
  */
-public class Solution {
+public class Solution1 {
 
     public int[] maxNumber(int[] nums1, int[] nums2, int k) {
         int n = nums1.length;
@@ -50,8 +50,8 @@ public class Solution {
     public static void main(String[] args) {
         int[] nums1 = {3, 4, 6, 5};
         int[] nums2 = {9, 1, 2, 5, 8, 3};
-        Solution solution = new Solution();
-        int[] result = solution.maxNumber(nums1, nums2, 5);
+        Solution1 solution1 = new Solution1();
+        int[] result = solution1.maxNumber(nums1, nums2, 5);
         System.out.println(Arrays.asList(result));
     }
 }
