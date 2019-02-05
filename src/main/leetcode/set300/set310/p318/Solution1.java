@@ -1,9 +1,9 @@
-package p318;
+package set300.set310.p318;
 
 /**
  * Created by wangsenyuan on 03/11/2016.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
         System.out.println(maxProduct(new String[] {"abcw", "baz", "foo", "bar", "xtfn", "abcdef"}));
