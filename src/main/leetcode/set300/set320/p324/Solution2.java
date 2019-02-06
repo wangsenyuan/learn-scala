@@ -1,4 +1,4 @@
-package p324;
+package set300.set320.p324;
 
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 /**
  * Created by wangsenyuan on 05/11/2016.
  */
-public class Solution {
+public class Solution2 {
 
     public static void main(String[] args) {
         int[] nums = {1, 3, 2, 2, 3, 1};

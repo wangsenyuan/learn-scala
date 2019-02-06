@@ -1,9 +1,9 @@
-package p326;
+package set300.set320.p326;
 
 /**
  * Created by wangsenyuan on 1/8/16.
  */
-public class Solution {
+public class Solution1 {
 
     static int powerThree(int x) {
         return x * x * x;
@@ -74,10 +74,10 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
 
         for (int i = 1; i < 30000; i++) {
-            if (solution.isPowerOfThree(i) != solution.isPowerOfThreeCorrect(i)) {
+            if (solution1.isPowerOfThree(i) != solution1.isPowerOfThreeCorrect(i)) {
                 System.out.println(i + " not correct");
             }
         }

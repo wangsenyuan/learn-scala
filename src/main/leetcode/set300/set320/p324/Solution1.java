@@ -1,4 +1,4 @@
-package p324;
+package set300.set320.p324;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,9 +70,9 @@ public class Solution1 {
 
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution2 solution2 = new Solution2();
         int[] nums = {4, 5, 5, 6};
-        solution.wiggleSort(nums);
+        solution2.wiggleSort(nums);
         for (int i = 0; i < nums.length; i++) {
             System.out.print(nums[i] + " ");
         }
