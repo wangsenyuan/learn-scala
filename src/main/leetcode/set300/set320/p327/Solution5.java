@@ -1,11 +1,11 @@
-package p327;
+package set300.set320.p327;
 
 import java.util.Arrays;
 
 /**
  * Created by senyuanwang on 16/1/17.
  */
-public class Solution {
+public class Solution5 {
 
     public int countRangeSum(int[] nums, int lower, int upper) {
         if (nums == null || nums.length == 0 || lower > upper) {
