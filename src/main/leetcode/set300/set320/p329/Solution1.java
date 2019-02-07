@@ -1,9 +1,9 @@
-package p329;
+package set300.set320.p329;
 
 /**
  * Created by wangsenyuan on 1/20/16.
  */
-public class Solution {
+public class Solution1 {
 
     static int[] dx = {-1, 0, 0, 1};
     static int[] dy = {0, -1, 1, 0};
