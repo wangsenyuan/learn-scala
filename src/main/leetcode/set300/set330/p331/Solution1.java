@@ -1,9 +1,9 @@
-package p331;
+package set300.set330.p331;
 
 /**
  * Created by senyuanwang on 16/2/4.
  */
-public class Solution {
+public class Solution1 {
 
     public boolean isValidSerialization(String preorder) {
         String[] ss = preorder.split(",");
@@ -37,8 +37,8 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.isValidSerialization("9,3,4,#,#,1,#,#,2,#,6,#,#"));
+        Solution1 solution1 = new Solution1();
+        System.out.println(solution1.isValidSerialization("9,3,4,#,#,1,#,#,2,#,6,#,#"));
         //System.out.println(solution.isValidSerialization("#"));
 //        System.out.println(solution.isValidSerialization("1,#,#"));
         //System.out.println(solution.isValidSerialization("3,4,#,#,1,#,#"));
