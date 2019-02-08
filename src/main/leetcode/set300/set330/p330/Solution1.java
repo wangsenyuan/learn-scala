@@ -1,9 +1,9 @@
-package p330;
+package set300.set330.p330;
 
 /**
  * Created by wangsenyuan on 1/28/16.
  */
-public class Solution {
+public class Solution1 {
 
     public int minPatches(int[] nums, int n) {
         long miss = 1;
