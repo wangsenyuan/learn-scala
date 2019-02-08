@@ -7,24 +7,20 @@ object Solution {
     } else {
       val nodes = preorder.split(",")
       val n = nodes.length
-      if (n == 1) {
-        nodes(0) == "#"
-      } else {
-        var i = n - 1
-        var can = true
-        var nulls = 0
-        while (i >= 0 && can) {
-          if (nodes(i) == "#") {
-            nulls += 1
-          } else if (nulls < 2) {
-            can = false
-          } else {
-            nulls -= 1
-          }
-          i -= 1
+      var i = n - 1
+      var can = true
+      var nulls = 0
+      while (i >= 0 && can) {
+        if (nodes(i) == "#") {
+          nulls += 1
+        } else if (nulls < 2) {
+          can = false
+        } else {
+          nulls -= 1
         }
-        can && nulls == 1
+        i -= 1
       }
+      can && nulls == 1
     }
   }
 
