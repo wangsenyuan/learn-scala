@@ -1,13 +1,11 @@
-package p332
+package set300.set330.p332
 
-import java.util
-
-import scala.collection.mutable
 
 /**
   * Created by senyuanwang on 16/2/5.
   */
-object App extends App {
+object Solution1 extends App {
+  import scala.collection.mutable
 
   def visit(targets: mutable.Map[String, mutable.PriorityQueue[String]], from: String): List[String] = {
     var list = List.empty[String]

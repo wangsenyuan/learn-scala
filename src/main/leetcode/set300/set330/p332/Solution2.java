@@ -1,11 +1,11 @@
-package p332;
+package set300.set330.p332;
 
 import java.util.*;
 
 /**
  * Created by senyuanwang on 16/2/5.
  */
-public class Solution {
+public class Solution2 {
 
     public List<String> findItinerary(String[][] tickets) {
         Map<String, PriorityQueue<String>> targets = new HashMap<>();
@@ -26,7 +26,7 @@ public class Solution {
 
     public static void main(String[] args) {
         String[][] tickets = {{"JFK", "KUL"}, {"JFK", "NRT"}, {"NRT", "JFK"}};
-        List<String> result = new Solution().findItinerary(tickets);
+        List<String> result = new Solution2().findItinerary(tickets);
         System.out.println(result);
     }
 }
