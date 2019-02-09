@@ -1,11 +1,11 @@
-package p337.house.robber;
+package set300.set330.p337;
 
 import set200.set270.p272.TreeNode;
 
 /**
  * Created by wangsenyuan on 4/1/16.
  */
-public class Solution {
+public class Solution2 {
     public int rob(TreeNode root) {
         int[] robbed = new int[2];
         rob(root, robbed);
@@ -45,7 +45,7 @@ public class Solution {
         root.left.right = new TreeNode(3);
         root.right = new TreeNode(3);
         root.right.right = new TreeNode(1);
-        int maxRob = new Solution().rob(root);
+        int maxRob = new Solution2().rob(root);
         System.out.println(maxRob);
 
     }

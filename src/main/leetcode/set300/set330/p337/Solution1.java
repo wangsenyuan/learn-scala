@@ -1,4 +1,4 @@
-package p337.house.robber;
+package set300.set330.p337;
 
 import common.TreeNode;
 

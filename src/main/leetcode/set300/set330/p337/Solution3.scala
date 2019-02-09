@@ -1,11 +1,11 @@
-package p337.house.robber
+package set300.set330.p337
 
 import set200.set270.p272.TreeNode
 
 /**
   * Created by wangsenyuan on 4/1/16.
   */
-object App {
+object Solution3 {
 
   def rob(root: TreeNode): Int = {
 
