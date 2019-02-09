@@ -1,9 +1,9 @@
-package p334.increasing.triplet.subsequence;
+package set300.set330.p334;
 
 /**
  * Created by senyuanwang on 16/2/16.
  */
-public class Solution {
+public class Solution2 {
 
     public boolean increasingTriplet(int[] nums) {
         if (nums == null || nums.length < 3) {
@@ -27,7 +27,7 @@ public class Solution {
 
     public static void main(String[] args) {
         int[] nums = {3, 1, 4, 5};
-        Solution solution = new Solution();
-        System.out.println(solution.increasingTriplet(nums));
+        Solution2 solution2 = new Solution2();
+        System.out.println(solution2.increasingTriplet(nums));
     }
 }

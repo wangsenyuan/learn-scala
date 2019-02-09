@@ -1,4 +1,4 @@
-package p334.increasing.triplet.subsequence;
+package set300.set330.p334;
 
 /**
  * Created by wangsenyuan on 10/11/2016.
