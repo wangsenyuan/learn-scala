@@ -1,11 +1,14 @@
-package p336.palindrome.pairs;
+package set300.set330.p336;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by senyuanwang on 16/3/27.
  */
-public class Solution {
+public class Solution1 {
     public List<List<Integer>> palindromePairs(String[] words) {
         List<List<Integer>> ret = new ArrayList<>();
         if (words == null || words.length < 2)
@@ -56,7 +59,7 @@ public class Solution {
 
     public static void main(String[] args) {
         String[] words = {"abcd", "dcba", "lls", "s", "sssll"};
-        List<List<Integer>> result = new Solution().palindromePairs(words);
+        List<List<Integer>> result = new Solution1().palindromePairs(words);
         System.out.println(result);
     }
 }
