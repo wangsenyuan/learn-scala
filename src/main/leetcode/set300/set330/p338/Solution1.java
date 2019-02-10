@@ -1,9 +1,9 @@
-package p338.count.bits;
+package set300.set330.p338;
 
 /**
  * Created by senyuanwang on 16/3/20.
  */
-public class Solution {
+public class Solution1 {
     public int[] countBits1(int num) {
         int[] res = new int[num + 1];
         if (num == 0) {
