@@ -1,20 +1,19 @@
-package leetcode.p347.top.k
+package set300.set340.p347
 
 import org.junit.Test
 import org.scalacheck.Gen
 import org.scalacheck.Prop._
 import org.scalatest.junit.JUnitSuite
 import org.scalatest.prop.Checkers
-import p347.top.k.Solution
 
 import scala.collection.mutable.ListBuffer
-import p347.top.k.App
+
 /**
   * Created by wangsenyuan on 5/3/16.
   */
 class TopKCheckers extends JUnitSuite with Checkers {
 
-  val solution = new Solution
+  val solution = new Solution1
 
   @Test
   def testScalaWayAgainstJavaWay(): Unit = {
@@ -25,7 +24,7 @@ class TopKCheckers extends JUnitSuite with Checkers {
         val k = 30
 
         val javaResult = toScalaList(solution.topKFrequent(list.toArray, k)).map(_.asInstanceOf[Int])
-        val scalaResult = App.topKFrequent(list.toArray, k)
+        val scalaResult = Solution.topKFrequent(list.toArray, k)
 
         javaResult == scalaResult
     }

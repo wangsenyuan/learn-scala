@@ -1,4 +1,4 @@
-package p346.moving.average;
+package set300.set340.p346;
 
 /**
  * Created by wangsenyuan on 5/1/16.

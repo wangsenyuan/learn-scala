@@ -1,4 +1,4 @@
-package p347.top.k;
+package set300.set340.p347;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by wangsenyuan on 5/2/16.
  */
-public class Solution {
+public class Solution1 {
 
     public List<Integer> topKFrequent(int[] nums, int k) {
         if(nums.length < k) {
