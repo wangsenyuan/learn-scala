@@ -1,9 +1,9 @@
-package p342.power.of.four;
+package set300.set340.p342;
 
 /**
  * Created by wangsenyuan on 4/19/16.
  */
-public class Solution {
+public class Solution1 {
     public boolean isPowerOfFour(int num) {
         if (num <= 0) {
             return false;
@@ -23,9 +23,9 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
         for (int num = 1; num < Integer.MAX_VALUE && num > 0; num *= 4) {
-            System.out.println(String.format("%d is power of four? %b", num, solution.isPowerOfFour(num)));
+            System.out.println(String.format("%d is power of four? %b", num, solution1.isPowerOfFour(num)));
         }
     }
 }

@@ -1,4 +1,4 @@
-package p339.nested.list.weight.sum
+package set300.set330.p339
 
 /**
   * Created by wangsenyuan on 3/31/16.

@@ -1,4 +1,4 @@
-package p340.longest.substr.with.atmostk.distict.chars;
+package set300.set340.p340;
 
 /**
  * Created by wangsenyuan on 4/3/16.

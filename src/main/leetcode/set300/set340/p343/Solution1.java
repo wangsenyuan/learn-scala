@@ -1,9 +1,9 @@
-package p343.split.intnum;
+package set300.set340.p343;
 
 /**
  * Created by wangsenyuan on 4/19/16.
  */
-public class Solution {
+public class Solution1 {
     public int integerBreak(int n) {
         if (n <= 3)
             return n - 1;
@@ -18,7 +18,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.integerBreak(3));
+        Solution1 solution1 = new Solution1();
+        System.out.println(solution1.integerBreak(3));
     }
 }

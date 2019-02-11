@@ -1,6 +1,6 @@
 package p364;
 
-import p339.nested.list.weight.sum.NestedInteger;
+import set300.set330.p339.NestedInteger;
 
 import java.util.List;
 

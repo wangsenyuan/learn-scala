@@ -1,6 +1,6 @@
-package p341.flattern.nested.integer.list;
+package set300.set340.p341;
 
-import p339.nested.list.weight.sum.NestedInteger;
+import set300.set330.p339.NestedInteger;
 
 import java.util.ArrayList;
 import java.util.Iterator;
