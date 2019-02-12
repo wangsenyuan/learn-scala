@@ -1,6 +1,4 @@
-package p351;
-
-import java.util.HashSet;
+package set300.set350.p351;
 
 /**
  * Created by wangsenyuan on 5/23/16.
