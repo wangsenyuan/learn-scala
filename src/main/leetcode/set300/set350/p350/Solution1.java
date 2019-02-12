@@ -1,17 +1,17 @@
-package p350;
+package set300.set350.p350;
 
 import java.util.Arrays;
 
 /**
  * Created by wangsenyuan on 5/21/16.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
         int[] nums1 = {1, 2, 2, 1};
         int[] nums2 = {2};
-        int[] nums3 = solution.intersect(nums1, nums2);
+        int[] nums3 = solution1.intersect(nums1, nums2);
         System.out.println(nums3);
     }
 
