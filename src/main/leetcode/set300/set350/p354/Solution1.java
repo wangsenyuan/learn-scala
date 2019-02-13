@@ -1,11 +1,11 @@
-package p354.russian.doll.evelopes;
+package set300.set350.p354;
 
 import java.util.Arrays;
 
 /**
  * Created by wangsenyuan on 6/8/16.
  */
-public class Solution {
+public class Solution1 {
 
     public int maxEnvelopes(int[][] envelopes) {
         Arrays.sort(envelopes, (int[] a, int[] b) -> {
@@ -47,10 +47,10 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.maxEnvelopes(new int[][] {{1, 3}, {3, 5}, {6, 7}, {6, 8}, {8, 4}, {9, 5}}));
-        System.out.println(solution.maxEnvelopes(new int[][] {{5, 4}, {6, 4}, {6, 7}, {2, 3}}));
-        System.out.println(solution.maxEnvelopes(
+        Solution1 solution1 = new Solution1();
+        System.out.println(solution1.maxEnvelopes(new int[][] {{1, 3}, {3, 5}, {6, 7}, {6, 8}, {8, 4}, {9, 5}}));
+        System.out.println(solution1.maxEnvelopes(new int[][] {{5, 4}, {6, 4}, {6, 7}, {2, 3}}));
+        System.out.println(solution1.maxEnvelopes(
             new int[][] {{2, 100}, {3, 200}, {4, 300}, {5, 500}, {5, 400}, {5, 250}, {6, 370}, {6, 360}, {7, 380}}));
     }
 }

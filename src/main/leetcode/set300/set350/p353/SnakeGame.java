@@ -1,4 +1,4 @@
-package p353.snake.game;
+package set300.set350.p353;
 
 import java.util.LinkedList;
 import java.util.List;
