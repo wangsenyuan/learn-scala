@@ -5,7 +5,7 @@ import scala.collection.mutable
 class Twitter() {
   private var time = 0
   /** Initialize your data structure here. */
-  private val tweets = mutable.Map.empty[Int, Vector[(Int, Int)]].withDefault((_) => Vector.empty[(Int, Int)])
+  private val tweets = mutable.Map.empty[Int, List[(Int, Int)]].withDefault((_) => List.empty[(Int, Int)])
   private val following = mutable.Map.empty[Int, Set[Int]].withDefault((_) => Set.empty[Int])
 
   /** Compose a new tweet. */
@@ -16,28 +16,28 @@ class Twitter() {
       ts = ts.init
     }
 
-    tweets += userId -> ((tweetId, time) +: ts)
+    tweets += userId -> ((tweetId, time) :: ts)
   }
 
   /** Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent. */
   def getNewsFeed(userId: Int): List[Int] = {
 
-    def merge(a: Vector[(Int, Int)], b: Vector[(Int, Int)]): Vector[(Int, Int)] = {
+    def merge(a: List[(Int, Int)], b: List[(Int, Int)]): List[(Int, Int)] = {
       (a, b) match {
-        case (Vector(), _) => b
-        case (_, Vector()) => a
+        case (Nil, _) => b
+        case (_, Nil) => a
         case (ah +: at, bh +: bt) =>
           if (ah._2 >= bh._2) {
-            ah +: merge(at, b)
+            ah :: merge(at, b)
           } else {
-            bh +: merge(a, bt)
+            bh :: merge(a, bt)
           }
       }
     }
 
-    def go(ls: Array[Vector[(Int, Int)]]): Vector[(Int, Int)] = {
+    def go(ls: Array[List[(Int, Int)]]): List[(Int, Int)] = {
       if (ls.isEmpty) {
-        Vector.empty
+        Nil
       } else if (ls.size == 1) {
         ls.head
       } else {
@@ -49,7 +49,7 @@ class Twitter() {
 
     val users = following(userId) + userId
 
-    go(users.map(tweets).toArray).map(_._1).toList
+    go(users.map(tweets).toArray).map(_._1)
   }
 
   /** Follower follows a followee. If the operation is invalid, it should be a no-op. */
