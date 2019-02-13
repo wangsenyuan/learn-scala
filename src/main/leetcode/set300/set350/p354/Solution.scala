@@ -2,38 +2,43 @@ package set300.set350.p354
 
 object Solution {
   def maxEnvelopes(envelopes: Array[Array[Int]]): Int = {
-    val ss = envelopes.sortWith((a, b) => {
-      if (a(0) != b(0)) {
-        a(0) < b(0)
-      } else {
-        a(1) > b(1)
-      }
-    })
-
     val n = envelopes.length
-    val stack = Array.fill(n + 1)(-1)
-    var p = 0
-    var best = 0
-    var i = 0
-    while (i < n) {
-      val w = ss(i)(0)
-      val h = ss(i)(1)
-      val j = search(p, k => {
-        val env = ss(stack(k))
-        env(0) >= w || env(1) >= h
+
+    if (n == 0) {
+      0
+    } else {
+      val ss = envelopes.sortWith((a, b) => {
+        if (a(0) != b(0)) {
+          a(0) < b(0)
+        } else {
+          a(1) > b(1)
+        }
       })
 
-      stack(j) = i
-      if (p == j) {
-        p += 1
+      val stack = Array.fill(n + 1)(-1)
+      var p = 0
+      var best = 0
+      var i = 0
+      while (i < n) {
+        val w = ss(i)(0)
+        val h = ss(i)(1)
+        val j = search(p, k => {
+          val env = ss(stack(k))
+          env(0) >= w || env(1) >= h
+        })
+
+        stack(j) = i
+        if (p == j) {
+          p += 1
+        }
+
+        best = best max j
+
+        i += 1
       }
 
-      best = best max j
-
-      i += 1
+      best + 1
     }
-
-    best + 1
   }
 
   private def search(n: Int, fn: Int => Boolean): Int = {
