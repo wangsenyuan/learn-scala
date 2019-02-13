@@ -43,13 +43,13 @@ class Twitter() {
       } else {
         val mid = ls.size / 2
         val (first, second) = ls.splitAt(mid)
-        merge(go(first), go(second))
+        merge(go(first), go(second)).take(10)
       }
     }
 
     val users = following(userId) + userId
 
-    go(users.map(tweets).toArray).take(10).map(_._1).toList
+    go(users.map(tweets).toArray).map(_._1).toList
   }
 
   /** Follower follows a followee. If the operation is invalid, it should be a no-op. */
