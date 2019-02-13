@@ -1,4 +1,4 @@
-package p355.design.twitter;
+package set300.set350.p355;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,13 +12,13 @@ import java.util.Set;
 /**
  * Created by wangsenyuan on 6/11/16.
  */
-public class Twitter {
+public class Twitter1 {
 
     private Map<Integer, Set<Integer>> users = new HashMap<>();
     private Map<Integer, Map<Integer, Integer>> tweets = new HashMap<>();
     private int timeStamp = 0;
 
-    public Twitter() {
+    public Twitter1() {
 
     }
 
