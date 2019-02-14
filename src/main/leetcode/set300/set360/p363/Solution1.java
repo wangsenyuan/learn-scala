@@ -1,4 +1,4 @@
-package p363;
+package set300.set360.p363;
 
 import java.util.Arrays;
 import java.util.TreeSet;
@@ -6,7 +6,7 @@ import java.util.TreeSet;
 /**
  * Created by wangsenyuan on 30/11/2016.
  */
-public class Solution {
+public class Solution1 {
     public int maxSumSubmatrix(int[][] matrix, int target) {
         int m = matrix.length;
         int n = matrix[0].length;
