@@ -1,16 +1,19 @@
-package p368;
+package set300.set360.p368;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by senyuanwang on 2016/12/3.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
         int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 72};
-        List<Integer> result = solution.largestDivisibleSubset(nums);
+        List<Integer> result = solution1.largestDivisibleSubset(nums);
         result.forEach(System.out::println);
     }
 

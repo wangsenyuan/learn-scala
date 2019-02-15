@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Created by senyuanwang on 16/6/26.
  */
-public class Solution {
+public class Solution1 {
 
     public static boolean isPerfectSquare(int num) {
         int guess = num;
