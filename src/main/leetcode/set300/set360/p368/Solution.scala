@@ -17,7 +17,6 @@ object Solution {
 
       var i = 0
       while (i < n) {
-        val num = nums(i)
         dp(i) = 1
 
         var j = i - 1
