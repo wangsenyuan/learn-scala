@@ -12,7 +12,6 @@ object Solution {
 
       Sorting.quickSort(nums)
 
-      val ii = nums.zipWithIndex.toMap
       val n = nums.length
       val dp = Array.ofDim[Int](n)
 
