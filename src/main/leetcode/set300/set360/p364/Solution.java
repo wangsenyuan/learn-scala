@@ -1,4 +1,4 @@
-package p364;
+package set300.set360.p364;
 
 import set300.set330.p339.NestedInteger;
 
