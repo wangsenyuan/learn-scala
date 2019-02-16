@@ -1,4 +1,4 @@
-package p370;
+package set300.set370.p370;
 
 /**
  * Created by wangsenyuan on 6/29/16.
