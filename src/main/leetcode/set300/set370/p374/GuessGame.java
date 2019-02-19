@@ -1,4 +1,4 @@
-package p374;
+package set300.set370.p374;
 
 /**
  * Created by wangsenyuan on 7/13/16.

@@ -1,9 +1,9 @@
-package p376;
+package set300.set370.p376;
 
 /**
  * Created by wangsenyuan on 7/21/16.
  */
-public class Solution {
+public class Solution1 {
     public int wiggleMaxLength(int[] nums) {
         if (nums.length < 2) {
             return nums.length;

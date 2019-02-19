@@ -1,9 +1,9 @@
-package p375;
+package set300.set370.p375;
 
 /**
  * Created by senyuanwang on 16/7/16.
  */
-public class Solution {
+public class Solution1 {
 
     public int getMoneyAmount(int n) {
         if (n == 1) {
@@ -15,9 +15,8 @@ public class Solution {
                 int j = i + jminusi;
                 dp[i][j] = Integer.MAX_VALUE;
                 for (int k = i; k <= j; k++) {
-                    dp[i][j] = Math.min(dp[i][j],
-                            k + Math.max(k - 1 >= i ? dp[i][k - 1] : 0,
-                                    j >= k + 1 ? dp[k + 1][j] : 0));
+                    dp[i][j] =
+                        Math.min(dp[i][j], k + Math.max(k - 1 >= i ? dp[i][k - 1] : 0, j >= k + 1 ? dp[k + 1][j] : 0));
                 }
             }
         }
@@ -25,8 +24,8 @@ public class Solution {
     }
 
     public static void main(String[] arg) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
 
-        System.out.println(solution.getMoneyAmount(10));
+        System.out.println(solution1.getMoneyAmount(10));
     }
 }
