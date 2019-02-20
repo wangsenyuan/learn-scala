@@ -1,11 +1,11 @@
-package p378;
+package set300.set370.p378;
 
 import java.util.PriorityQueue;
 
 /**
  * Created by wangsenyuan on 8/1/16.
  */
-public class Solution {
+public class Solution1 {
     public int kthSmallest(final int[][] matrix, int k) {
         int c = 0;
         PriorityQueue<int[]> queue = new PriorityQueue<>(k, (o1, o2) -> matrix[o1[0]][o1[1]] - matrix[o2[0]][o2[1]]);
