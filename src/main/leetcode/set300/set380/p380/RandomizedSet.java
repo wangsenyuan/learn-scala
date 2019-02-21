@@ -1,4 +1,4 @@
-package p380;
+package set300.set380.p380;
 
 import java.util.Arrays;
 import java.util.HashMap;

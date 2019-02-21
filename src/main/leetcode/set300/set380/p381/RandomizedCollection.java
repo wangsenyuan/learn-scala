@@ -1,17 +1,12 @@
-package p381;
+package set300.set380.p381;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by wangsenyuan on 8/9/16.
  */
 public class RandomizedCollection {
-    private Map<Integer, List<Integer>> vals;
+    private Map<Integer, Set<Integer>> vals;
 
     private int[] idxs;
 
@@ -41,11 +36,11 @@ public class RandomizedCollection {
      * Inserts a value to the collection. Returns true if the collection did not already contain the specified element.
      */
     public boolean insert(int val) {
-        List<Integer> pos = this.vals.get(val);
+        Set<Integer> pos = this.vals.get(val);
         boolean has = true;
         if (pos == null) {
             has = false;
-            pos = new ArrayList<>();
+            pos = new HashSet<>();
             this.vals.put(val, pos);
         }
 
@@ -62,22 +57,24 @@ public class RandomizedCollection {
      * Removes a value from the collection. Returns true if the collection contained the specified element.
      */
     public boolean remove(int val) {
-        List<Integer> pos = this.vals.get(val);
-        if (pos == null) {
+        Set<Integer> pos = this.vals.get(val);
+        if (pos == null || pos.isEmpty()) {
             return false;
         }
-        int x = pos.remove(0);
+        int x = pos.iterator().next();
+        pos.remove(x);
+
         if (x < size - 1) {
             int last = this.idxs[size - 1];
-            List<Integer> as = this.vals.get(last);
-            as.remove(as.size() - 1);
+            Set<Integer> as = this.vals.get(last);
+            as.remove(size - 1);
             as.add(x);
             this.idxs[x] = last;
         }
 
         size--;
 
-        if (pos.size() == 0) {
+        if (pos.isEmpty()) {
             this.vals.remove(val);
         }
 
