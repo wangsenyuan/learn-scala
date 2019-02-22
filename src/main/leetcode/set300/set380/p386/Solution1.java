@@ -1,4 +1,4 @@
-package p386;
+package set300.set380.p386;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 /**
  * Created by senyuanwang on 16/8/22.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        List<Integer> result = solution.lexicalOrderQuick(999);
+        Solution1 solution1 = new Solution1();
+        List<Integer> result = solution1.lexicalOrderQuick(999);
         result.forEach(System.out::println);
         System.out.println("++++++++++");
         System.out.println(result.size());
