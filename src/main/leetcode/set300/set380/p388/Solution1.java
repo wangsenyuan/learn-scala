@@ -1,12 +1,12 @@
-package p388;
+package set300.set380.p388;
 
 /**
  * Created by wangsenyuan on 8/23/16.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.lengthLongestPath(
+        Solution1 solution1 = new Solution1();
+        System.out.println(solution1.lengthLongestPath(
             "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"));
     }
 
