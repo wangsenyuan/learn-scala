@@ -1,9 +1,9 @@
-package p389;
+package set300.set380.p389;
 
 /**
  * Created by senyuanwang on 16/8/28.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
         System.out.println(findTheDifference("abcd", "abcde"));
     }
