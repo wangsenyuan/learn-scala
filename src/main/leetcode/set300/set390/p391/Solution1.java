@@ -1,13 +1,11 @@
-package p391;
+package set300.set390.p391;
 
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.TreeMap;
 
 /**
  * Created by senyuanwang on 16/8/28.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
         int[][] rects = {{0, 0, 4, 1}, {7, 0, 8, 2}, {6, 2, 8, 3}, {5, 1, 6, 3}, {4, 0, 5, 1}, {6, 0, 7, 2}, {4, 2, 5, 3}, {2, 1, 4, 3}, {0, 1, 2, 2}, {0, 2, 2, 3}, {4, 1, 5, 2}, {5, 0, 6, 1}};
         System.out.println(isRectangleCover(rects));
