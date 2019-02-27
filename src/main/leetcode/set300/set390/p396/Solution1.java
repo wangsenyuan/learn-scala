@@ -1,9 +1,9 @@
-package p396;
+package set300.set390.p396;
 
 /**
  * Created by wangsenyuan on 07/12/2016.
  */
-public class Solution {
+public class Solution1 {
     public int maxRotateFunction(int[] A) {
         int n = A.length;
         long f = 0;
