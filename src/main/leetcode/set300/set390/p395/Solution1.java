@@ -1,4 +1,4 @@
-package p395;
+package set300.set390.p395;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,11 +6,11 @@ import java.util.Map;
 /**
  * Created by senyuanwang on 16/9/4.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.longestSubstring("aaabb", 3));
-        System.out.println(solution.longestSubstring("ababbc", 2));
+        Solution1 solution1 = new Solution1();
+        System.out.println(solution1.longestSubstring("aaabb", 3));
+        System.out.println(solution1.longestSubstring("ababbc", 2));
     }
 
     public int longestSubstring(String s, int k) {
