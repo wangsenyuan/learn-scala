@@ -1,14 +1,14 @@
-package p398;
+package set300.set390.p398;
 
 import java.util.Random;
 
 /**
  * Created by wangsenyuan on 9/12/16.
  */
-public class Solution {
+public class Solution1 {
     private int[] nums;
 
-    public Solution(int[] nums) {
+    public Solution1(int[] nums) {
         this.nums = nums;
     }
 
