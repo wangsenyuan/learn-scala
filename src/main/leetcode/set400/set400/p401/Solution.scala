@@ -5,6 +5,7 @@ object Solution {
     val res = for {
       h <- 0 to (4 max num)
       m = num - h
+      if(m < 6)
     } yield {
       convert(h, m)
     }
