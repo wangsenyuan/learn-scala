@@ -1,22 +1,20 @@
-package p409;
+package set400.set400.p409;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  * Created by senyuanwang on 16/10/2.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/leetcode/p409/input1.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/leetcode/set400.set400.p409/input1.txt"))) {
             String line = br.readLine();
-            Solution solution = new Solution();
-            System.out.println(solution.longestPalindrome(line));
+            Solution1 solution1 = new Solution1();
+            System.out.println(solution1.longestPalindrome(line));
         }
     }
 
