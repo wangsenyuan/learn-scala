@@ -1,18 +1,18 @@
-package p407;
+package set400.set400.p407;
 
 import java.util.*;
 
 /**
  * Created by wangsenyuan on 9/25/16.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
         //int[][] height = {{1, 4, 3, 1, 3, 2}, {3, 2, 1, 3, 2, 4}, {2, 3, 3, 2, 3, 1}};
         //int[][] height = {{5, 5, 5, 1}, {5, 1, 1, 5}, {5, 1, 5, 5}, {5, 2, 5, 8}};
         int[][] height = {{12, 13, 1, 12}, {13, 4, 13, 12}, {13, 8, 10, 12}, {12, 13, 12, 12}, {13, 13, 13, 13}};
-        System.out.println(solution.trapRainWater(height));
+        System.out.println(solution1.trapRainWater(height));
     }
 
     int[] dx = {0, 0, 1, -1};

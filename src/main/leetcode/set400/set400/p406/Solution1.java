@@ -1,4 +1,4 @@
-package p406;
+package set400.set400.p406;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by wangsenyuan on 9/25/16.
  */
-public class Solution {
+public class Solution1 {
 
     public static int[][] reconstructQueue(int[][] people) {
         Arrays.sort(people, (int[] a, int[] b) -> {
