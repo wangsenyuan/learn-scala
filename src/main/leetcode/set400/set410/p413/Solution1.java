@@ -1,16 +1,15 @@
-package p413;
+package set400.set410.p413;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
  * Created by senyuanwang on 2016/11/6.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
         //int[] A = {2, 4, 6, 8, 10};
         int[] A = {0, 2000000000, -294967296};
         System.out.println(numberOfArithmeticSlices(A));
