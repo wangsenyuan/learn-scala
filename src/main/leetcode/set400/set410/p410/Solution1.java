@@ -1,9 +1,9 @@
-package p410;
+package set400.set410.p410;
 
 /**
  * Created by senyuanwang on 16/10/3.
  */
-public class Solution {
+public class Solution1 {
 
     public int splitArray(int[] nums, int m) {
         int n = nums.length;
