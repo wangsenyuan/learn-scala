@@ -1,22 +1,21 @@
-package p417;
+package set400.set410.p417;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
-import java.util.TreeSet;
 
 /**
  * Created by wangsenyuan on 09/10/2016.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
         int[][] matrix = {{1, 2, 2, 3, 5}, {3, 2, 3, 4, 4}, {2, 4, 5, 3, 1}, {6, 7, 1, 4, 5}, {5, 1, 1, 2, 4}};
         //int[][] matrix = {{1, 1}, {1, 1}};
-        Solution solution = new Solution();
-        List<int[]> result = solution.pacificAtlantic(matrix);
+        Solution1 solution1 = new Solution1();
+        List<int[]> result = solution1.pacificAtlantic(matrix);
         result.forEach((int[] xs) -> {
             for (int x : xs) {
                 System.out.print(x + ", ");
