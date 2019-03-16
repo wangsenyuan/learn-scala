@@ -1,4 +1,4 @@
-package p435;
+package set400.set430.p435;
 
 import common.Interval;
 import common.IntervalParser;
@@ -8,10 +8,10 @@ import java.util.Arrays;
 /**
  * Created by senyuanwang on 2016/10/30.
  */
-public class Solution implements IntervalParser {
+public class Solution1 implements IntervalParser {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        Interval[] intervals = solution.parseAsIntervals("[1,2], [2,3]");
+        Solution1 solution1 = new Solution1();
+        Interval[] intervals = solution1.parseAsIntervals("[1,2], [2,3]");
         System.out.println(eraseOverlapIntervals(intervals));
     }
 
