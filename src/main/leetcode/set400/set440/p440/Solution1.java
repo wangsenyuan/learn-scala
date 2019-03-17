@@ -1,20 +1,17 @@
-package p440;
-
-import java.util.ArrayList;
-import java.util.List;
+package set400.set440.p440;
 
 /**
  * Created by senyuanwang on 2016/10/23.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
 
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
 
-        System.out.println(solution.findKthNumber(13, 6));
+        System.out.println(solution1.findKthNumber(13, 6));
 
-        System.out.println(solution.findKthNumber(681692778, 351251360));
+        System.out.println(solution1.findKthNumber(681692778, 351251360));
     }
 
     int index = 0;
