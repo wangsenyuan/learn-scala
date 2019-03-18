@@ -1,6 +1,6 @@
-package p443;
+package set400.set440.p443;
 
-public class Solution {
+public class Solution1 {
     public static int compress(char[] chars) {
         int n = chars.length;
         int x = 0;
