@@ -1,17 +1,17 @@
-package p452;
+package set400.set450.p452;
 
 import java.util.Arrays;
 
 /**
  * Created by senyuanwang on 2016/11/6.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
         //int[][] points = {{3, 9}, {7, 12}, {3, 8}, {6, 8}, {9, 10}, {2, 9}, {0, 9}, {3, 9}, {0, 6}, {2, 8}};
         int[][] points = {{9, 12}, {1, 10}, {4, 11}, {8, 12}, {3, 9}, {6, 9}, {6, 7}};
-        Solution solution = new Solution();
-        System.out.println(solution.findMinArrowShots(points));
+        Solution1 solution1 = new Solution1();
+        System.out.println(solution1.findMinArrowShots(points));
     }
 
     public int findMinArrowShots(int[][] points) {
