@@ -1,4 +1,4 @@
-package p445;
+package set400.set440.p445;
 
 import common.ListNode;
 import common.ListNodeParser;
@@ -6,13 +6,13 @@ import common.ListNodeParser;
 /**
  * Created by wangsenyuan on 29/10/2016.
  */
-public class Solution implements ListNodeParser {
+public class Solution1 implements ListNodeParser {
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
         //ListNode l1 = solution.parseAsList("[7,2,4,3]");
-        ListNode l1 = solution.parseAsList("[2,4,3]");
-        ListNode l2 = solution.parseAsList("[5,6,4]");
-        ListNode l3 = solution.addTwoNumbers(l1, l2);
+        ListNode l1 = solution1.parseAsList("[2,4,3]");
+        ListNode l2 = solution1.parseAsList("[5,6,4]");
+        ListNode l3 = solution1.addTwoNumbers(l1, l2);
         while (l3 != null) {
             System.out.printf("%d->", l3.val);
             l3 = l3.next;

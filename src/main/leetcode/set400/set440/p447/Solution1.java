@@ -1,11 +1,11 @@
-package p447;
+package set400.set440.p447;
 
 import java.util.*;
 
 /**
  * Created by senyuanwang on 2016/11/6.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
         int[][] points = {{0, 0}, {1, 0}, {2, 0}};
         System.out.println(numberOfBoomerangs(points));

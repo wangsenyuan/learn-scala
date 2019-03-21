@@ -1,11 +1,11 @@
-package p450;
+package set400.set450.p450;
 
 import common.TreeNode;
 
 /**
  * Created by wangsenyuan on 01/11/2016.
  */
-public class Solution {
+public class Solution1 {
 
     public TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {
