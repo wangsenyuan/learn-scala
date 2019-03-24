@@ -1,13 +1,13 @@
-package p458;
+package set400.set450.p458;
 
 /**
  * Created by wangsenyuan on 08/11/2016.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.poorPigs(1000, 15, 60));
+        Solution1 solution1 = new Solution1();
+        System.out.println(solution1.poorPigs(1000, 15, 60));
     }
 
     public int poorPigs(int buckets, int minutesToDie, int minutesToTest) {
