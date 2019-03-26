@@ -1,21 +1,21 @@
-package p464;
+package set400.set460.p464;
 
 import java.util.*;
 
 /**
  * Created by senyuanwang on 2016/11/20.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.canIWin(10, 11)); //false
-        System.out.println(solution.canIWin(4, 6)); //true
-        System.out.println(solution.canIWin(18, 79));
-        System.out.println(solution.canIWin(5, 50)); //false
-        System.out.println(solution.canIWin(10, 40)); //false
-        System.out.println(solution.canIWin(10, 0)); //true
-        System.out.println(solution.canIWin(18, 188)); //false
+        Solution1 solution1 = new Solution1();
+        System.out.println(solution1.canIWin(10, 11)); //false
+        System.out.println(solution1.canIWin(4, 6)); //true
+        System.out.println(solution1.canIWin(18, 79));
+        System.out.println(solution1.canIWin(5, 50)); //false
+        System.out.println(solution1.canIWin(10, 40)); //false
+        System.out.println(solution1.canIWin(10, 0)); //true
+        System.out.println(solution1.canIWin(18, 188)); //false
 
     }
 
