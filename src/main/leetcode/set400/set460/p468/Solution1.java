@@ -1,13 +1,13 @@
-package p468;
+package set400.set460.p468;
 
 /**
  * Created by senyuanwang on 2016/12/11.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
         //System.out.println(solution.validIPAddress("172.16.254.1"));
-        System.out.println(solution.validIPAddress("2001:0db8:85a3:0:0:8A2E:0370:7334"));
+        System.out.println(solution1.validIPAddress("2001:0db8:85a3:0:0:8A2E:0370:7334"));
     }
 
     public String validIPAddress(String IP) {
