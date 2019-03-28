@@ -1,22 +1,18 @@
-package p474;
-
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.PriorityQueue;
+package set400.set470.p474;
 
 /**
  * Created by senyuanwang on 2016/12/11.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
 //        String[] strs = {"10", "0001", "111001", "1", "0"};
 //        String[] strs = {"10", "0001", "111001", "1", "0"};
         String[] strs = {"10", "0", "1"};
         int m = 1;
         int n = 1;
-        System.out.println(solution.findMaxForm(strs, m, n));
+        System.out.println(solution1.findMaxForm(strs, m, n));
     }
 
     public int findMaxForm(String[] strs, int m, int n) {
