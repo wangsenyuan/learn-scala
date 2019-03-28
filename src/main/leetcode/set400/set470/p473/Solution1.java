@@ -1,23 +1,23 @@
-package p473;
+package set400.set470.p473;
 
 import java.util.Arrays;
 
 /**
  * Created by senyuanwang on 2016/12/18.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.makesquare(new int[]{
+        Solution1 solution1 = new Solution1();
+        System.out.println(solution1.makesquare(new int[]{
                 1, 1, 2, 2, 2
         }));
 
-        System.out.println(solution.makesquare(new int[]{
+        System.out.println(solution1.makesquare(new int[]{
                 3, 3, 3, 3, 4
         }));
 
-        System.out.println(solution.makesquare(new int[]{
+        System.out.println(solution1.makesquare(new int[]{
                 5, 5, 5, 5, 4, 4, 4, 4, 3, 3, 3, 3
         }));
     }
