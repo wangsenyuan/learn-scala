@@ -1,17 +1,17 @@
-package p475;
+package set400.set470.p475;
 
 import java.util.Arrays;
 
 /**
  * Created by senyuanwang on 2016/12/11.
  */
-public class Solution {
+public class Solution1 {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution1 = new Solution1();
         int[] houses = {1, 2, 3, 4};
         int[] heaters = {1, 4};
-        System.out.println(solution.findRadius(houses, heaters));
+        System.out.println(solution1.findRadius(houses, heaters));
     }
 
     public int findRadius(int[] houses, int[] heaters) {
