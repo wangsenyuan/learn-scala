@@ -1,4 +1,4 @@
-package p491;
+package set400.set490.p491;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * Created by senyuanwang on 2017/1/25.
  */
-public class Solution {
+public class Solution1 {
     public List<List<Integer>> findSubsequences(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         find(nums, new ArrayList<>(), -1, res);
