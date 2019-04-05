@@ -21,29 +21,29 @@ class Solution(_rects: Array[Array[Int]]) {
   for {
     i <- 1 until n
   } {
-    counts(i) += counts(i-1)
+    counts(i) += counts(i - 1)
   }
 
-  val total = counts(n-1)
+  val total = counts(n - 1)
 
   def pick(): Array[Int] = {
-    val a = rand.nextInt(total) + 1
-
-    val i = binarySearch(n, counts(_) >= a)
+    val a = rand.nextInt(total)
+    val i = binarySearch(n, counts(_) > a)
+    val b =
+      if (i == 0) {
+        a
+      } else {
+        a - counts(i - 1)
+      }
 
     val rect = _rects(i)
     val x1 = rect(0)
     val y1 = rect(1)
     val x2 = rect(2)
-    val y2 = rect(3)
     val w = x2 - x1 + 1
-    val h = y2 - y1 + 1
-    val j = rand.nextInt(w * h)
-
-    val x = j % w
-    val y = j / w
-
-    Array(x1 + x, y1 + y)
+    val x = b % w + x1
+    val y = b / w + y1
+    Array(x, y)
   }
 
   private def binarySearch(n: Int, fn: Int => Boolean): Int = {
