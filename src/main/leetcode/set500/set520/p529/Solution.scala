@@ -5,15 +5,6 @@ object Solution {
     val m = board.length
     val n = board(0).length
 
-    val res = Array.ofDim[Char](m, n)
-
-    for {
-      i <- 0 until m
-      j <- 0 until n
-    } {
-      res(i)(j) = board(i)(j)
-    }
-
     def countMine(x: Int, y: Int) = {
       var res = 0
       for {
@@ -35,7 +26,7 @@ object Solution {
     val b = click(1)
     if (board(a)(b) == 'M') {
       // boom
-      res(a)(b) = 'X'
+      board(a)(b) = 'X'
     } else {
       val que = Array.ofDim[Int](m * n)
       var front = 0
@@ -49,7 +40,7 @@ object Solution {
         val y = cur % n
         val cnt = countMine(x, y)
         if (cnt == 0) {
-          res(x)(y) = 'B'
+          board(x)(y) = 'B'
           for {
             i <- -1 to 1
             u = x + i
@@ -57,18 +48,18 @@ object Solution {
             j <- -1 to 1
             v = y + j
             if (v >= 0 && v < n && (u != x || v != y))
-            if (res(u)(v) == 'E')
+            if (board(u)(v) == 'E')
           } {
-            res(u)(v) = 'F'
+            board(u)(v) = 'F'
             que(end) = u * n + v
             end += 1
           }
         } else {
-          res(x)(y) = ('0' + cnt).toChar
+          board(x)(y) = ('0' + cnt).toChar
         }
       }
     }
 
-    res
+    board
   }
 }
