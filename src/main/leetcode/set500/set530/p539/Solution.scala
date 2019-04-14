@@ -5,35 +5,39 @@ import scala.collection.mutable.ArrayBuffer
 object Solution {
   def findMinDifference(timePoints: List[String]): Int = {
     val MOD = 24 * 60
-    val buckets = Array.ofDim[Int](MOD)
-
-    for {
-      s <- timePoints
-      min = parseTime(s) % MOD
-    } {
-      buckets(min) += 1
-    }
-
-    if (buckets.exists(_ > 1)) {
+    if (timePoints.size > MOD) {
       0
     } else {
-      val arr = ArrayBuffer.empty[Int]
-      for {
-        i <- 0 until MOD
-        if (buckets(i) > 0)
-      } {
-        arr += i
-      }
-      val n = arr.length
-      var best = (arr(0) + MOD - arr(n - 1)) % MOD
+      val buckets = Array.ofDim[Int](MOD)
 
       for {
-        i <- 1 until n
+        s <- timePoints
+        min = parseTime(s) % MOD
       } {
-        best = (arr(i) - arr(i - 1)) min best
+        buckets(min) += 1
       }
 
-      best
+      if (buckets.exists(_ > 1)) {
+        0
+      } else {
+        val arr = ArrayBuffer.empty[Int]
+        for {
+          i <- 0 until MOD
+          if (buckets(i) > 0)
+        } {
+          arr += i
+        }
+        val n = arr.length
+        var best = (arr(0) + MOD - arr(n - 1)) % MOD
+
+        for {
+          i <- 1 until n
+        } {
+          best = (arr(i) - arr(i - 1)) min best
+        }
+
+        best
+      }
     }
   }
 
