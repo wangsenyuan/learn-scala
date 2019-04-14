@@ -1,5 +1,6 @@
 package fp.laziness
 
+import scala.language.postfixOps
 import Stream._
 
 sealed abstract class Stream[+A] { // The abstract base class for streams. It will have only two sub-classes, one for the empty stream and another for the nonepty stream.

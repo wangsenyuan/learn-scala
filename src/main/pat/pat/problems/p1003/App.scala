@@ -1,5 +1,7 @@
 package pat.problems.p1003
 
+import scala.language.postfixOps
+
 object App extends App {
 
   val firstLine = readLine

@@ -1,5 +1,6 @@
 package fp.parallelism
 
+import scala.language.implicitConversions
 import java.util.concurrent.{ Callable, CountDownLatch, ExecutorService }
 import java.util.concurrent.atomic.AtomicReference
 

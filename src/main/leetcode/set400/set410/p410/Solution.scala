@@ -1,5 +1,7 @@
 package set400.set410.p410
 
+import scala.language.postfixOps
+
 object Solution {
   def splitArray(nums: Array[Int], m: Int): Int = {
     val n = nums.length

@@ -24,6 +24,7 @@ object A1 extends App with FileOp {
       case (0 :: at, 1 :: bt, _ :: mt) => markMask(at, bt, mt).map(mask => 0 :: mask) //确认该节点是损坏的
       case (0 :: at, 0 :: bt, m :: mt) => markMask(at, bt, mt).map(mask => m :: mask) //无法确认该节点是否损坏
       case (Nil, Nil, Nil) => Some(Nil)
+      case _ => throw new Error("")
     }
   }
 
