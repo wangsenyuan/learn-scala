@@ -1,4 +1,4 @@
-package p554;
+package set500.set550.p554;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Created by wangsenyuan on 09/04/2017.
  */
-public class Solution {
+public class Solution1 {
     public int leastBricks(List<List<Integer>> wall) {
         Map<Integer, Integer> edges = new HashMap<>();
         for (List<Integer> row : wall) {
