@@ -1,9 +1,9 @@
-package p556;
+package set500.set550.p556;
 
 /**
  * Created by wangsenyuan on 09/04/2017.
  */
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) {
         System.out.println(nextGreaterElement(12));
         System.out.println(nextGreaterElement(21));

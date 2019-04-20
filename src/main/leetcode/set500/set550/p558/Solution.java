@@ -1,4 +1,4 @@
-package p558;
+package set500.set550.p558;
 
 /*
 // Definition for a QuadTree node.
