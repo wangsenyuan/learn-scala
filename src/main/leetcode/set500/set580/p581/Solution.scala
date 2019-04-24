@@ -3,7 +3,38 @@ package set500.set580.p581
 import scala.collection.mutable
 
 object Solution {
+
   def findUnsortedSubarray(nums: Array[Int]): Int = {
+    val ii = nums.zipWithIndex
+    val xs = ii.sortBy(_._1)
+    var a = -1
+    var end = -1
+    for {
+      x <- xs
+      i = x._2
+    } {
+      if (a > i) {
+        end = end max a
+      }
+      a = a max i
+    }
+    val n = ii.length
+    var b = n
+    var start = n
+    val ys = ii.sortBy(_._1).reverse
+    for {
+      y <- ys
+      i = y._2
+    } {
+      if (b < i) {
+        start = start min b
+      }
+      b = b min i
+    }
+    0 max (end - start + 1)
+  }
+
+  def findUnsortedSubarray3(nums: Array[Int]): Int = {
     val n = nums.length
     var a = Int.MaxValue
     for {
