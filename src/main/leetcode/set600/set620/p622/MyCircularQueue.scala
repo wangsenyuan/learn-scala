@@ -1,4 +1,4 @@
-package p622
+package set600.set620.p622
 
 class MyCircularQueue(_k: Int) {
   val array = Array.fill(_k)(0)
