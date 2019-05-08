@@ -1,6 +1,17 @@
 package set600.set630.p638
 
 object Solution {
+
+  def getCount(cnt: Array[Int], state: Int, n: Int) = {
+    var tmp = state
+    var i = 0
+    while (i < n) {
+      cnt(i) = tmp % 7
+      tmp /= 7
+      i += 1
+    }
+  }
+
   def shoppingOffers(pprice: List[Int], special: List[List[Int]], nneeds: List[Int]): Int = {
     val needs = nneeds.toArray
     val price = pprice.toArray
@@ -8,31 +19,42 @@ object Solution {
     val ps = Array.ofDim[Int](n + 1)
 
     ps(0) = 1
-    (1 to n).foreach(i => ps(i) = (needs(i - 1) + 1) * ps(i - 1))
+    (1 to n).foreach(i => ps(i) = 7 * ps(i - 1))
 
-    val X = ps(n)
+    val X = (0 until n).map(i => needs(i) * ps(i)).sum
 
-
-    val dp = Array.fill(X)(Int.MaxValue)
+    val dp = Array.fill(X + 1)(Int.MaxValue)
 
     val arrs = special.map(_.toArray).toArray
 
     val m = arrs.length
 
+    val masks = Array.ofDim[Int](m)
+
+    (0 until m) foreach (i => {
+      val arr = arrs(i)
+      var j = 0
+      var tmp = 0
+      while (j < n) {
+        tmp += arr(j) * ps(j)
+        j += 1
+      }
+      masks(i) = tmp
+    })
+
 
     dp(0) = 0
-
     val cnt = Array.ofDim[Int](n)
     var state = 0
     while (state < X) {
+      getCount(cnt, state, n)
       if (dp(state) < Int.MaxValue) {
-        getCount(state, n, ps, cnt)
 
         var i = 0
         while (i < n) {
-          if (cnt(i) < needs(i)) {
+          val next = state + ps(i)
+          if (cnt(i) + 1 <= needs(i)) {
             // need to add one more
-            val next = state + ps(i)
             dp(next) = dp(next) min (dp(state) + price(i))
           }
           i += 1
@@ -41,23 +63,16 @@ object Solution {
         i = 0
         while (i < m) {
           val arr = arrs(i)
-          var next = state
-          var fit = true
-          val k = arr.length
-          val cost = arr(k - 1)
+
+          val cost = arr(n)
+          val next = state + masks(i)
+
           var j = 0
-
-          while (j < k - 1 && fit) {
-            if (arr(j) + cnt(j) <= needs(j)) {
-              next += arr(j) * ps(j)
-            } else {
-              fit = false
-            }
-
+          while (j < n && cnt(j) + arr(j) <= needs(j)) {
             j += 1
           }
 
-          if (fit) {
+          if (j == n) {
             dp(next) = dp(next) min (dp(state) + cost)
           }
 
@@ -68,15 +83,8 @@ object Solution {
       state += 1
     }
 
-    dp(X - 1)
+    dp(X)
   }
 
-  private def getCount(state: Int, n: Int, ps: Array[Int], res: Array[Int]): Unit = {
-    var i = 0
-    while (i < n) {
-      res(i) = state % ps(i+1)
-      res(i) /= ps(i)
-      i += 1
-    }
-  }
+
 }
