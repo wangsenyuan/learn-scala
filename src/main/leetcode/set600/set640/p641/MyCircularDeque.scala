@@ -1,4 +1,4 @@
-package p641
+package set600.set640.p641
 
 class MyCircularDeque(_k: Int) {
   /** Initialize your data structure here. Set the size of the deque to be k. */
