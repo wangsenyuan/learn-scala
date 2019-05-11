@@ -23,7 +23,7 @@ object Solution {
           "Infinite solutions"
         }
       } else {
-
+        s"x=${con / coe}"
       }
     }
   }
