@@ -1,10 +1,41 @@
 package set600.set640.p649
 
+import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 
 object Solution {
 
   def predictPartyVictory(senate: String): String = {
+    val stack = new mutable.Stack[Char]()
+    val buf = ArrayBuffer.empty[Char]
+    buf.appendAll(senate)
+
+    val back = ArrayBuffer.empty[Char]
+    while(buf.size > 0) {
+
+      back.clear()
+
+      buf.foreach(c => {
+
+        if(stack.isEmpty || c == stack.top) {
+          stack.push(c)
+        } else {
+          back.append(stack.pop())
+        }
+      })
+
+      buf.clear()
+      buf.appendAll(back)
+    }
+
+    if (stack.top == 'R') {
+      "Radiant"
+    } else {
+      "Dire"
+    }
+  }
+
+  def predictPartyVictory1(senate: String): String = {
 
     var buf = ArrayBuffer.empty[Char]
 
