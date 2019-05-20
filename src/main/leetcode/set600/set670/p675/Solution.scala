@@ -1,116 +1,87 @@
 package set600.set670.p675
 
-import scala.collection.mutable
-import scala.collection.mutable.ListBuffer
+import scala.collection.mutable.ArrayBuffer
+import scala.util.Sorting
 
 object Solution {
 
-  def main(args: Array[String]): Unit = {
-    val forest = List(
-      List(1, 2, 3),
-      List(0, 0, 4),
-      List(7, 6, 5)
-    )
-
-    println(cutOffTree(forest))
-  }
-
-  def findTrees(forest: Array[Array[Int]]) = {
-
-    val trees = ListBuffer.empty[(Int, Int)]
-
-    var i = 0
-    while (i < forest.length) {
-      var j = 0
-      while (j < forest(i).length) {
-        if (forest(i)(j) > 1) {
-          trees += (i -> j)
-        }
-        j += 1
-      }
-
-      i += 1
-    }
-
-    trees.toArray
-  }
-
   val dd = Array(-1, 0, 1, 0, -1)
 
-  def bfs(forest: Array[Array[Int]], x: Int, y: Int, a: Int, b: Int): Int = {
-    val n = forest.length
-    val m = forest(0).length
-    val dist = Array.fill(n, m)(Int.MaxValue)
+  def process(grid: Array[Array[Int]], m: Int, n: Int, trees: Array[(Int, Int)]): Int = {
+    Sorting.quickSort(trees)(new Ordering[(Int, Int)]() {
+      override def compare(x: (Int, Int), y: (Int, Int)): Int = Ordering.Int.compare(x._2, y._2)
+    })
 
-    val pq = new mutable.PriorityQueue[(Int, Int)]()(
-      (x: (Int, Int), y: (Int, Int)) => {
-        val (a, b) = x
-        val (c, d) = y
-        if (dist(a)(b) < dist(c)(d)) {
-          1
-        } else if (dist(a)(b) > dist(c)(d)) {
-          -1
-        } else {
-          0
-        }
-      }
-    )
+    val que = Array.ofDim[Int](m * n)
+    val dist = Array.ofDim[Int](m * n)
 
-    pq.enqueue(x -> y)
-    dist(x)(y) = 0
+    def distance(src: Int, dst: Int): Int = {
 
-    while (!pq.isEmpty) {
-      val (c, d) = pq.dequeue()
-      if (c == a && d == b) {
-        return dist(c)(d)
-      }
+      (0 until m).foreach(r => (0 until n).foreach(c => dist(r * n + c) = -1))
 
-      var i = 0
-      while (i < 4) {
-        val nc = c + dd(i)
-        val nd = d + dd(i + 1)
-        if (nc >= 0 && nc < n && nd >= 0 && nd < m && forest(nc)(nd) > 0 && dist(nc)(nd) > dist(c)(d) + 1) {
-          dist(nc)(nd) = dist(c)(d) + 1
-          pq.enqueue(nc -> nd)
-        }
-        i += 1
+      var front = 0
+      var tail = 0
+      que(tail) = src
+      tail += 1
+      dist(src) = 0
+
+      while (front < tail && que(front) != dst) {
+        val cur = que(front)
+        front += 1
+        val x = cur / n
+        val y = cur % n
+
+        (0 until 4) foreach (k => {
+          val u = x + dd(k)
+          val v = y + dd(k + 1)
+          if (u >= 0 && u < m && v >= 0 && v < n && grid(u)(v) != 0 && dist(u * n + v) == -1) {
+            dist(u * n + v) = dist(cur) + 1
+            que(tail) = u * n + v
+            tail += 1
+          }
+        })
+
       }
 
+      dist(dst)
     }
 
-    -1
-  }
-
-  def cutOffTree(ff: List[List[Int]]): Int = {
-    val n = ff.length
-    val m = ff.head.length
-
-    val forest = ff.map(_.toArray).toArray
-
-    val trees = findTrees(forest).sortBy(x => forest(x._1)(x._2))
-
-    var x = 0
-    var y = 0
 
     var ans = 0
+    var prev =0
     var i = 0
     while (i < trees.length) {
-      val (a, b) = trees(i)
-
-      if (x != a || y != b) {
-        val tmp = bfs(forest, x, y, a, b)
-        if (tmp < 0) {
-          return -1
-        }
-        ans += tmp
+      val d = distance(prev, trees(i)._1)
+      if (d < 0) {
+        return -1
       }
-
-      x = a
-      y = b
+      prev = trees(i)._1
+      ans += d
       i += 1
     }
-
     ans
   }
-}
 
+  def cutOffTree(forest: List[List[Int]]): Int = {
+    if (forest.isEmpty) {
+      0
+    } else {
+      val treeBuf = ArrayBuffer.empty[(Int, Int)]
+      val grid = forest.map(_.toArray).toArray
+      val n = grid(0).length
+      (0 until grid.length).foreach(r => {
+        (0 until n).foreach(c => {
+          if (grid(r)(c) > 1) {
+            treeBuf += (r * n + c -> grid(r)(c))
+          }
+        })
+      })
+
+      if (treeBuf.isEmpty) {
+        0
+      } else {
+        process(grid, grid.length, n, treeBuf.toArray)
+      }
+    }
+  }
+}
