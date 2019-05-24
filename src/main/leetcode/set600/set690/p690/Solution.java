@@ -1,4 +1,4 @@
-package p690;
+package set600.set690.p690;
 
 import java.util.List;
 import java.util.Map;
