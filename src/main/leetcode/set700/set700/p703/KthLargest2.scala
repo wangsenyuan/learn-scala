@@ -1,4 +1,4 @@
-package p703
+package set700.set700.p703
 
 class KthLargest2(_k: Int, _nums: Array[Int]) {
   val nums = _nums.sorted.reverse

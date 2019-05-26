@@ -1,4 +1,4 @@
-package p700
+package set700.set700.p700
 
 /**
   * Definition for a binary tree node.
