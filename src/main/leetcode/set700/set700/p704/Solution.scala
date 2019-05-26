@@ -1,4 +1,4 @@
-package p704
+package set700.set700.p704
 
 object Solution {
 
