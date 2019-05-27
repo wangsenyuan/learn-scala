@@ -1,4 +1,4 @@
-package p706
+package set700.set700.p706
 
 import scala.collection.mutable.ListBuffer
 

@@ -1,118 +1,114 @@
-package p707
+package set700.set700.p707
 
 class MyLinkedList() {
 
-  var head: Node = null
-  var tail: Node = null
+  class Node(val value: Int) {
+    var prev: Node = null
+    var next: Node = null
+  }
+
+  val head = new Node(-1)
+  val last = new Node(-1)
+
+  head.next = last
+  last.prev = head
+
+  var size = 0
+
   /** Initialize your data structure here. */
 
+  private def getFromBegin(index: Int): Node = {
+    var i = 0
+    var node = head.next
+    while (i < index) {
+      node = node.next
+      i += 1
+    }
+    node
+  }
+
+  private def getFromEnd(index: Int): Node = {
+    var i = size - 1
+    var node = last.prev
+    while (i > index) {
+      node = node.prev
+      i -= 1
+    }
+    node
+  }
 
   /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
   def get(index: Int): Int = {
-    def loop(node: Node, i: Int): Int = {
-      if (node == null) {
-        -1
-      } else if (i == index) {
-        node.value
-      } else {
-        loop(node.next, i + 1)
-      }
+    if (index < 0 || index >= size) {
+      -1
+    } else if (index * 2 < size) {
+      getFromBegin(index).value
+    } else {
+      getFromEnd(index).value
     }
-
-    loop(head, 0)
   }
 
   /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
   def addAtHead(`val`: Int) {
-    if (head == null) {
-      head = new Node(`val`)
-      tail = head
-    } else {
-      val newHead = new Node(`val`)
-      newHead.next = head
-      head.prev = newHead
-      head = newHead
-    }
+    val node = new Node(`val`)
+    node.next = head.next
+    head.next.prev = node
+    head.next = node
+    node.prev = head
+    size += 1
   }
 
   /** Append a node of value val to the last element of the linked list. */
   def addAtTail(`val`: Int) {
-    if (tail == null) {
-      tail = new Node(`val`)
-      head = tail
-    } else {
-      val newTail = new Node(`val`)
-      tail.next = newTail
-      newTail.prev = tail
-      tail = newTail
-    }
+    val node = new Node(`val`)
+    node.prev = last.prev
+    last.prev.next = node
+    last.prev = node
+    node.next = last
+    size += 1
   }
 
   /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */
   def addAtIndex(index: Int, `val`: Int) {
-    if (index == 0 && head == null) {
-      addAtHead(`val`)
-    } else if (index > 0) {
-      def loop(node: Node, i: Int): Unit = {
-        if (node != null) {
-          if (i < index) {
-            loop(node.next, i + 1)
+    if (index <= size) {
+      if (index <= 0) {
+        addAtHead(`val`)
+      } else if (index == size) {
+        addAtTail(`val`)
+      } else {
+        val node = new Node(`val`)
+        val cur =
+          if (index * 2 < size) {
+            getFromBegin(index)
           } else {
-            val prev = node.prev
-            val cur = new Node(`val`)
-            prev.next = cur
-            cur.prev = prev
-            cur.next = node
-            node.prev = cur
+            getFromEnd(index)
           }
-        } else if (i == index) {
-          addAtTail(`val`)
-        }
+        val prev = cur.prev
+        prev.next = node
+        node.prev = prev
+        node.next = cur
+        cur.prev = node
+        size += 1
       }
-
-      loop(head, 0)
     }
   }
 
   /** Delete the index-th node in the linked list, if the index is valid. */
   def deleteAtIndex(index: Int) {
-    def loop(node: Node, i: Int): Unit = {
-      if (node != null) {
-        if (i < index) {
-          loop(node.next, i + 1)
+    if (index >= 0 && index < size) {
+      val node =
+        if (index * 2 < size) {
+          getFromBegin(index)
         } else {
-          val prev = node.prev
-          val next = node.next
-          if (prev == null && next == null) {
-            // the head & tail
-            head = null
-            tail = null
-          } else if (prev == null) {
-            // the head
-            next.prev = null
-            head = next
-          } else if (next == null) {
-            // the tail
-            prev.next = null
-            tail = prev
-          } else {
-            // a internal node
-            prev.next = next
-            next.prev = prev
-          }
-          node.next = null
-          node.prev = null
+          getFromEnd(index)
         }
-      }
+      val prev = node.prev
+      val next = node.next
+      prev.next = next
+      next.prev = prev
+      size -= 1
     }
-
-    loop(head, 0)
   }
-
-  class Node(val value: Int, var prev: Node, var next: Node) {
-    def this(value: Int) = this(value, null, null)
-  }
-
 }
 
 
