@@ -1,12 +1,12 @@
-package p715;
+package set700.set710.p715;
 
 import java.util.Map;
 import java.util.TreeMap;
 
-public class RangeModule {
+public class RangeModule1 {
     private TreeMap<Integer, Integer> map = new TreeMap<>();
 
-    public RangeModule() {
+    public RangeModule1() {
 
     }
 
@@ -55,12 +55,12 @@ public class RangeModule {
     }
 
     public static void main(String[] args) {
-        RangeModule rangeModule = new RangeModule();
-        rangeModule.addRange(10, 20);
-        rangeModule.removeRange(14, 16);
-        System.out.println(rangeModule.queryRange(10, 14));
-        System.out.println(rangeModule.queryRange(13, 15));
-        System.out.println(rangeModule.queryRange(16, 17));
+        RangeModule1 rangeModule1 = new RangeModule1();
+        rangeModule1.addRange(10, 20);
+        rangeModule1.removeRange(14, 16);
+        System.out.println(rangeModule1.queryRange(10, 14));
+        System.out.println(rangeModule1.queryRange(13, 15));
+        System.out.println(rangeModule1.queryRange(16, 17));
     }
 
 }
