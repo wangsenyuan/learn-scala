@@ -7,4 +7,14 @@ class SolutionSpec extends FlatSpec with Matchers{
     val res = Solution.isOneBitCharacter(Array(0, 1, 0))
     res should be(false)
   }
+
+  "example two" should "work" in {
+    val res = Solution.isOneBitCharacter(Array(1,0,0))
+    res should be(true)
+  }
+
+  "example three" should "work" in {
+    val res = Solution.isOneBitCharacter(Array(0,0))
+    res should be(true)
+  }
 }
