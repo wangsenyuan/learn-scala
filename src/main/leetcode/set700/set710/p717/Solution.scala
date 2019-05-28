@@ -10,7 +10,7 @@ object Solution {
       var b = bits(1) == 0 || bits(0) == 1
 
       var i = 2
-      while(i < n) {
+      while(i < n && (a || b)) {
         var c = false
         if(bits(i) == 1) {
           if(i > 0 && bits(i-1) == 1) {
