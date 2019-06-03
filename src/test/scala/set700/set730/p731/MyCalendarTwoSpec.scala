@@ -4,7 +4,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class MyCalendarTwoSpec extends FlatSpec with Matchers{
   "example one" should "work" in {
-    val calender = new MyCalendarTwo
+    val calender = new MyCalendarTwo1
     calender.book(10, 20) should be(true)
     calender.book(50, 60) should be (true)
     calender.book(10, 40) should be (true)

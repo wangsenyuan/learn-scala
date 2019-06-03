@@ -1,10 +1,10 @@
-package p731;
+package set700.set730.p731;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-public class MyCalendarTwo {
+public class MyCalendarTwo1 {
     private class Calendar {
         TreeMap<Integer, Integer> map = new TreeMap<>();
 
@@ -27,7 +27,7 @@ public class MyCalendarTwo {
 
     private List<int[]> list = new ArrayList<>();
 
-    public MyCalendarTwo() {
+    public MyCalendarTwo1() {
 
     }
 
@@ -71,7 +71,7 @@ public class MyCalendarTwo {
     }
 
     private static void execute(int[][] bookings, boolean[] result) {
-        MyCalendarTwo calendar = new MyCalendarTwo();
+        MyCalendarTwo1 calendar = new MyCalendarTwo1();
         for (int i = 0; i < bookings.length; i++) {
             int a = bookings[i][0];
             int b = bookings[i][1];
@@ -93,7 +93,7 @@ public class MyCalendarTwo {
     }
 
     private static void test1() {
-        MyCalendarTwo calendar = new MyCalendarTwo();
+        MyCalendarTwo1 calendar = new MyCalendarTwo1();
         if (!calendar.book(10, 20)) {
             System.err.println("should be able to book 10 - 20");
             System.exit(1);
