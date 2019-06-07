@@ -1,4 +1,4 @@
-package p739;
+package set700.set730.p739;
 
 public class Main {
     public int[] dailyTemperatures(int[] temperatures) {
