@@ -29,10 +29,6 @@ object Solution {
 
     while (pq.size > 0) {
       val cur = pq.pop()
-      var r = pq.check()
-      if (!r) {
-
-      }
       val u = cur.value
       val d = dist(u)
       if (d < Int.MaxValue) {
@@ -43,9 +39,6 @@ object Solution {
           if (dist(v) > d + w) {
             dist(v) = dist(u) + w
             pq.update(items(v).index, v, dist(v))
-            r = pq.check()
-            if (!r) {
-            }
           }
           i += 2
         }
