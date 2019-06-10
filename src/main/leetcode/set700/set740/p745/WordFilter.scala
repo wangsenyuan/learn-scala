@@ -31,6 +31,7 @@ class WordFilter(_words: Array[String]) {
         var i = 0
         while(node != null && i < word.length) {
             node = node.get(word(i))
+            i += 1
         }
         if(node == null) {
             -1
@@ -40,7 +41,7 @@ class WordFilter(_words: Array[String]) {
     }
 
     class Trie() {
-        val children = Array.ofDim[Trie][27]
+        val children = Array.ofDim[Trie](27)
         var weight = -1
 
         def add(c: Char): Trie = {
