@@ -19,11 +19,11 @@ object Solution {
     def check(x: Int): Int = {
       val a = row(2 * x)
       var b = row(2 * x + 1)
-      val c = couple(a)
+      val c = a ^ 1
       vis(x) = true
       var ans = 0
       while (b != c) {
-        val d = couple(b)
+        val d = b ^ 1
         val j = index(d)
         vis(j / 2) = true
         ans += 1
@@ -45,13 +45,4 @@ object Solution {
 
     ans
   }
-
-  private def couple(a: Int) =
-    if (a % 2 == 0) {
-      // need to find a + 1
-      a + 1
-    } else {
-      // need to find a - 1
-      a - 1
-    }
 }
