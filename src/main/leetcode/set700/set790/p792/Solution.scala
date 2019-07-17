@@ -5,21 +5,20 @@ import scala.collection.mutable.ArrayBuffer
 object Solution {
 
   def numMatchingSubseq(S: String, words: Array[String]): Int = {
-    val nn = words.map(_.length)
-    val ii = Array.ofDim[Int](nn.length)
+    val ii = Array.ofDim[Int](words.length)
 
     var res = 0
     var j = 0
     while (j < S.length) {
       var k = 0
-      while (k < nn.length) {
+      while (k < words.length) {
         val i = ii(k)
-        if (i < nn(k)) {
+        if (i < words(k).length) {
 
           if (S(j) == words(k)(i)) {
             ii(k) += 1
 
-            if (ii(k) == nn(k)) {
+            if (ii(k) == words(k).length) {
               res += 1
             }
           }
