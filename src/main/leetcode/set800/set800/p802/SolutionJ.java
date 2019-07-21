@@ -1,8 +1,8 @@
-package p802;
+package set800.set800.p802;
 
 import java.util.*;
 
-public class Solution {
+public class SolutionJ {
     public List<Integer> eventualSafeNodes(int[][] graph) {
         int n = graph.length;
         Map<Integer, Boolean>[] rg = new Map[n];

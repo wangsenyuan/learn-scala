@@ -1,8 +1,8 @@
-package p802
+package set800.set800.p802
 
-import scala.collection.mutable.ListBuffer
 
 object Main {
+  import scala.collection.mutable.ListBuffer
 
   def eventualSafeNodes(graph: Array[Array[Int]]): List[Int] = {
     val n = graph.length
