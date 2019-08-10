@@ -1,8 +1,8 @@
-package p843;
+package set800.set840.p843;
 
 import java.util.Arrays;
 
-public class Solution {
+public class SolutionJ {
 
     public static void main(String[] args) {
         test1();
@@ -31,7 +31,7 @@ public class Solution {
                 "jqmbib", "mypnvf", "lnrgnj", "clijwa", "kiioqr", "syzebr", "rqsmhg", "sczjmz", "hsdjfp", "mjcgvm",
                 "ajotcx", "olgnfv", "mjyjxj", "wzgbmg", "lpcnbj", "yjjlwn", "blrogv", "bdplzs", "oxblph", "twejel",
                 "rupapy", "euwrrz", "apiqzu", "ydcroj", "ldvzgq", "zailgu", "xgqpsr", "wxdyho", "alrplq", "brklfk"};
-        Solution solution = new Solution();
+        SolutionJ solution = new SolutionJ();
         solution.findSecretWord(words, master);
         System.out.println(cnt[0]);
     }
@@ -47,7 +47,7 @@ public class Solution {
             }
         };
         String[] words = {"acckzz", "ccbazz", "eiowzz", "abcczz"};
-        Solution solution = new Solution();
+        SolutionJ solution = new SolutionJ();
         solution.findSecretWord(words, master);
         System.out.println(cnt[0]);
     }
@@ -74,7 +74,7 @@ public class Solution {
                 "ccoyyo", "ajcwbj", "arwfnl", "nafmtm", "xoaumd", "vbejda", "kaefne", "swcrkh", "reeyhj", "vmcwaf",
                 "chxitv", "qkwjna", "vklpkp", "xfnayl", "ktgmfn", "xrmzzm", "fgtuki", "zcffuv", "srxuus", "pydgmq"};
 
-        Solution solution = new Solution();
+        SolutionJ solution = new SolutionJ();
         solution.findSecretWord(words, master);
         System.out.println(cnt[0]);
     }
@@ -118,7 +118,3 @@ public class Solution {
     }
 }
 
-
-interface Master {
-    int guess(String word);
-}
