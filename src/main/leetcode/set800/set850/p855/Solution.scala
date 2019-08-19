@@ -8,6 +8,55 @@ object Solution {
   import scala.collection.mutable
 
   class ExamRoom(_N: Int) {
+    val seats = new util.TreeSet[Int]()
+
+    def seat(): Int = {
+      if (seats.isEmpty) {
+        seats.add(0)
+        0
+      } else {
+        val iter = seats.iterator()
+        var prev = iter.next()
+        var pos = -1
+        var dist = -1
+
+        if (prev != 0) {
+          pos = 0
+          dist = prev
+        }
+
+        while (iter.hasNext) {
+          val cur = iter.next()
+          val d = cur - prev
+          if (d > 1) {
+            val hd = d / 2
+            if (pos < 0 || hd > dist) {
+              pos = prev + hd
+              dist = hd
+            }
+          }
+          prev = cur
+        }
+
+
+        if (prev != _N - 1) {
+          if (_N - 1 - prev > dist) {
+            pos = _N - 1
+          }
+        }
+
+        seats.add(pos)
+
+        pos
+      }
+    }
+
+    def leave(p: Int) {
+      seats.remove(p)
+    }
+  }
+
+  class ExamRoom1(_N: Int) {
     val seats = new util.TreeMap[Int, Boolean]()
     val queue = mutable.PriorityQueue[(Int, Int)]()(Ordering.fromLessThan((a, b) => a._2 < b._2 || (a._2 == b._2 && a._1 > b._1)))
     val dist = mutable.Map.empty[Int, Int].withDefaultValue(-1)
