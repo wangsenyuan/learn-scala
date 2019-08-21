@@ -6,10 +6,10 @@ object Solution {
 
     var i = 0
     while (i < bills.length) {
-      val x = bills(i) / 5
-      if (x == 1) {
+      val x = bills(i)
+      if (x == 5) {
         hand(0) += 1
-      } else if (x == 2) {
+      } else if (x == 10) {
         if (hand(0) == 0) {
           return false
         }
