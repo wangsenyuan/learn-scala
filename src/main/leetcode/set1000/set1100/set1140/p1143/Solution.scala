@@ -1,4 +1,4 @@
-package set1100.set1140.p1143
+package set1000.set1100.set1140.p1143
 
 object Solution {
   def longestCommonSubsequence(text1: String, text2: String): Int = {

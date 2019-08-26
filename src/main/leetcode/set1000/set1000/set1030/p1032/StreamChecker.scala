@@ -1,4 +1,4 @@
-package set1000.set1030.p1032
+package set1000.set1000.set1030.p1032
 
 class StreamChecker(_words: Array[String]) {
   val root = new Trie
