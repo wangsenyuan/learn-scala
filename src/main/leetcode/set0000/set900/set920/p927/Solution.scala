@@ -45,7 +45,6 @@ object Solution {
         Array(-1, -1)
       } else {
         // we need to compare [0...i) and [0...k...n)
-        var can = true
         var x = i - 1
         var y = n - 1
         while (x >= 0 && y >= k && A(x) == A(y)) {
