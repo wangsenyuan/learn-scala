@@ -1,5 +1,7 @@
 package set0000.set900.set930.p931
 
+import scala.language.postfixOps
+
 object Solution {
   def minFallingPathSum(A: Array[Array[Int]]): Int = {
     val m = A.length

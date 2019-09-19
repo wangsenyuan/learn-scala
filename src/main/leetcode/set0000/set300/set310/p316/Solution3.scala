@@ -1,8 +1,8 @@
 package set0000.set300.set310.p316
 
 /**
-  * Created by wangsenyuan on 02/11/2016.
-  */
+ * Created by wangsenyuan on 02/11/2016.
+ */
 object Solution3 {
 
   def main(args: Array[String]): Unit = {
@@ -41,6 +41,6 @@ object Solution3 {
       }
     }
 
-    construct(visit(0, s.groupBy(identity).mapValues(_.length), Vector(), Set()), Set(), "")
+    construct(visit(0, s.groupBy(identity).mapValues(_.length).toMap, Vector(), Set()), Set(), "")
   }
 }

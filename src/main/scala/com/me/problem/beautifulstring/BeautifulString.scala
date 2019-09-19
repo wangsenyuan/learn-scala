@@ -1,16 +1,17 @@
 package com.me.problem.beautifulstring
 
-import scala.collection.immutable.BitSet
 import scala.collection.immutable.SortedMap
+import scala.io.StdIn
+import scala.language.postfixOps
 
 object BeautifulString extends App {
 
-  Iterator.continually(readLine).foreach((line) => {
-        var s = new S
-        var theMostBeautifulString = s.process(line)
-        println(theMostBeautifulString)
-//    val sw = new SW(line)
-//    println(sw.theMostBeautifulString)
+  Iterator.continually(StdIn.readLine).foreach((line) => {
+    var s = new S
+    var theMostBeautifulString = s.process(line)
+    println(theMostBeautifulString)
+    //    val sw = new SW(line)
+    //    println(sw.theMostBeautifulString)
   })
 }
 

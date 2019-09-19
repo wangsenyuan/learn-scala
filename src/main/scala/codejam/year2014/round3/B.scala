@@ -1,8 +1,6 @@
 package codejam.year2014.round3
 
 import scala.io.Source
-import scala.concurrent.ExecutionContext
-import scala.concurrent.future
 
 object B extends App {
 
@@ -12,15 +10,15 @@ object B extends App {
 
   val T = lines.next().toInt
 
-//  implicit val ec = new ExecutionContext {
-//    val threadPool = Executors.newFixedThreadPool(4);
-//
-//    def execute(runnable: Runnable) {
-//      threadPool.submit(runnable)
-//    }
-//
-//    def reportFailure(t: Throwable) {}
-//  }
+  //  implicit val ec = new ExecutionContext {
+  //    val threadPool = Executors.newFixedThreadPool(4);
+  //
+  //    def execute(runnable: Runnable) {
+  //      threadPool.submit(runnable)
+  //    }
+  //
+  //    def reportFailure(t: Throwable) {}
+  //  }
 
   def cal(p: Int, q: Int, n: Int): Int = {
     val ms = Array.fill(n, 2)(0)
@@ -33,6 +31,7 @@ object B extends App {
     })
 
     var cache = Map.empty[(Int, Int, Int), Int]
+
     def play(i: Int, rem: Int, extra: Int): Int =
       if (cache.contains((i, rem, extra))) cache((i, rem, extra))
       else {

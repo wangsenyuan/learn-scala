@@ -5,7 +5,7 @@ import org.junit.Test
 import org.scalacheck.{Gen, Prop}
 import org.scalatest.junit.JUnitSuite
 import org.scalatest.prop.Checkers
-
+import scala.language.postfixOps
 /**
   * Created by wangsenyuan on 16/12/2016.
   */

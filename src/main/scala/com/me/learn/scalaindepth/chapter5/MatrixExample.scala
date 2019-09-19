@@ -3,6 +3,7 @@ package com.me.learn.scalaindepth.chapter5
 import java.util.concurrent.{Callable, Executors}
 
 import scala.collection.mutable.ArrayBuffer
+import scala.language.postfixOps
 
 /**
  * Created by senyuanwang on 15/6/14.
@@ -17,7 +18,7 @@ object MatrixExample extends App {
         (buf, row) =>
           buf.append(row(idx))
           buf
-      } toArray
+      }.toSeq
     }
 
     def rowRank = repr.length
@@ -52,7 +53,7 @@ object MatrixExample extends App {
         j <- 0 until b.colRank
       } yield threadStrategy.execute(() => computeValue(i, j))
 
-      computations.foreach(_())
+      computations.foreach(_ ())
       new Matrix(buffer)
     }
   }
@@ -80,7 +81,7 @@ object MatrixExample extends App {
     }
   }
 
-//  implicit val ts = ThreadPoolStrategy
+  //  implicit val ts = ThreadPoolStrategy
 
   val x = new Matrix(Array(Array(1, 2, 3), Array(4, 5, 6)))
 

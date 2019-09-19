@@ -3,8 +3,8 @@ package codejam.year2008.round1b
 import scala.io.StdIn
 
 /**
-  * Created by wangsenyuan on 09/12/2016.
-  */
+ * Created by wangsenyuan on 09/12/2016.
+ */
 object AppA {
 
   def main(args: Array[String]): Unit = {
@@ -48,7 +48,7 @@ object AppA {
       for (i <- 0 until 9) yield {
         (bucket(i) * (bucket(i) - 1) * (bucket(i) - 2)) / 6
       }
-    } sum
+      }.sum
 
     val differentBucket = {
       for {
@@ -60,7 +60,7 @@ object AppA {
       } yield {
         bucket(i) * bucket(j) * bucket(k)
       }
-    } sum
+      }.sum
 
     sameBucket + differentBucket
   }

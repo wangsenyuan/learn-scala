@@ -1,20 +1,23 @@
 package com.me.problem.lawnmower
 
+import scala.io.StdIn
+
 object App extends App {
 
   def provideRow(m: Int) = {
-    val row = readLine
+    val row = StdIn.readLine
     val a = row.split(" ").toArray
-    a.map(_ toInt)
+    a.map(_.toInt)
   }
-  var tLine = readLine
-  val t = tLine toInt
-  var nmLine = readLine
+
+  var tLine = StdIn.readLine
+  val t = tLine.toInt
+  var nmLine = StdIn.readLine
   var count = 1
   while (nmLine != null) {
     val nm = nmLine.split(" ")
-    val n = nm(0) toInt
-    val m = nm(1) toInt
+    val n = nm(0).toInt
+    val m = nm(1).toInt
     val lawn = new Lawn(n, m)
     lawn.construct(provideRow)
     val yesNo = lawn.check
@@ -25,11 +28,12 @@ object App extends App {
     }
 
     count += 1
-    nmLine = readLine
+    nmLine = StdIn.readLine
   }
 }
 
 class Lawn(val n: Int, val m: Int) {
+
   case class Cell(r: Int, c: Int, expectedHeight: Int, var height: Int)
 
   case class Mower(var height: Int)
@@ -74,7 +78,7 @@ class Lawn(val n: Int, val m: Int) {
 
     def mow(i: Int, j: Int) = {
       val cell = cells(i * m + j)
-      if(cell.height > mower.height) {
+      if (cell.height > mower.height) {
         cell.height = mower.height
       }
     }

@@ -1,12 +1,14 @@
 package codejam.meetandparty
 
+import scala.io.StdIn
+
 object App extends App {
 
-  val T = readLine.toInt
+  val T = StdIn.readLine.toInt
 
   def process(t: Int): Unit = {
     if (t <= T) {
-      val N = readLine.toInt
+      val N = StdIn.readLine.toInt
 
       var xs = List.empty[Long]
       var ys = List.empty[Long]
@@ -14,7 +16,7 @@ object App extends App {
 
       def read(n: Int): Unit = {
         if (n < N) {
-          val line = readLine.split("\\s+").map(_.toLong)
+          val line = StdIn.readLine.split("\\s+").map(_.toLong)
           for {
             i <- line(0) to line(2)
             j <- line(1) to line(3)
@@ -26,6 +28,7 @@ object App extends App {
           read(n + 1)
         }
       }
+
       read(0)
 
       xs = xs.sorted
@@ -48,6 +51,7 @@ object App extends App {
           sumy(i) = sumy(i - 1) + ys.head
           sum(i + 1, xs.tail, ys.tail)
         }
+
       sum(1, xs, ys)
 
       def find(answer: Option[(Long, Long, Long)], pairs: List[(Long, Long)]): Option[(Long, Long, Long)] = pairs match {
@@ -73,5 +77,6 @@ object App extends App {
       process(t + 1)
     }
   }
+
   process(1)
 }

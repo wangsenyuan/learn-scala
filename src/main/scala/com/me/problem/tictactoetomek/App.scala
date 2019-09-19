@@ -1,22 +1,23 @@
 package com.me.problem.tictactoetomek
 
-import scala.collection.mutable.{ BitSet, ListBuffer, Map }
+import scala.collection.mutable.{ListBuffer, Map}
+import scala.io.StdIn
 
 object App extends App {
 
-  var tl = readLine
+  var tl = StdIn.readLine
   while (tl != null) {
 
-    val t = tl toInt
+    val t = tl.toInt
 
     var result = "T"
     for (i <- 0 until t) {
       var won = false
       val game = new Game
       for (j <- 0 until 4) {
-        val row = readLine
+        val row = StdIn.readLine
         if (!won) {
-          result = game.append((row.toCharArray()).map(_ toString))
+          result = game.append((row.toCharArray()).map(_.toString))
           result match {
             case "X" =>
               won = true
@@ -33,10 +34,10 @@ object App extends App {
         case "D" => println(s"Case #${i + 1}: Draw")
         case _ => println(s"Case #${i + 1}: $result won")
       }
-      readLine
+      StdIn.readLine
     }
 
-    tl = readLine
+    tl = StdIn.readLine
   }
 
 }
@@ -154,7 +155,7 @@ class Game {
   }
 
   private def findB(row: Int, col: Int): String = {
-    find(row, col, (r, c) => (r -1, c + 1), (r, c) => r == 0)
+    find(row, col, (r, c) => (r - 1, c + 1), (r, c) => r == 0)
   }
 
   private def findC(row: Int, col: Int): String = {

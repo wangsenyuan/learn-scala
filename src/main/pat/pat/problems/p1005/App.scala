@@ -1,13 +1,16 @@
 package pat.problems.p1005
 
+import scala.io.StdIn
+import scala.language.postfixOps
+
 object App extends App {
 
   val words = Array("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
 
-  val line = readLine
+  val line = StdIn.readLine
   val digits = line.toCharArray.map(_ - '0')
   //  println(digits.mkString(" "))
-  val sum = (0 /: digits)(_ + _)
+  val sum = (0 /: digits) (_ + _)
 
   var result = List.empty[String]
   var temp = sum

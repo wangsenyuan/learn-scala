@@ -2,6 +2,8 @@ package com.me.problems.leetcode
 
 object Solution extends App {
 
+  import scala.language.implicitConversions
+
   def evalRPN(expr: List[String]): Int = {
 
     def fr(pre: List[Int], tail: List[String]): Int = tail match {
@@ -35,6 +37,7 @@ object Solution extends App {
 
   object Point {
     def apply() = new Point(0, 0)
+
     implicit def fromTuple(x: (Int, Int)) = new Point(x._1, x._2)
   }
 
@@ -45,6 +48,7 @@ object Solution extends App {
   object Line {
     def apply(a: Point, b: Point) = new Line(a, b)
   }
+
   def maxPoints(ps: Array[Point]): Int = {
     if (ps.length <= 2) {
       ps.length
@@ -115,6 +119,7 @@ object Solution extends App {
           fr(idx + 1, num, math.max(cur, idx + x), last, tail)
         }
     }
+
     fr(0, 0, 0, 0, xs)
   }
 
@@ -325,6 +330,7 @@ object Solution extends App {
       val n = str.length()
       val flags = Array.fill(n, n)(-1)
       val cuts = Array.fill(n)(-1)
+
       def check(i: Int, j: Int): Int = flags(i)(j) match {
         case -1 =>
           if (i == j) {
@@ -346,6 +352,7 @@ object Solution extends App {
           }
         case x => x
       }
+
       def cut(i: Int): Int = {
         if (cuts(i) >= 0) {
           cuts(i)
@@ -372,6 +379,7 @@ object Solution extends App {
           }
         }
       }
+
       cut(n - 1)
     }
   }
@@ -419,7 +427,7 @@ object Solution extends App {
 
     fun(n)
   }
-  
+
   println(generateParenthesis(2))
   println(generateParenthesis(3))
   println(generateParenthesis(4))

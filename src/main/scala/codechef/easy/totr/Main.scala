@@ -3,8 +3,8 @@ package codechef.easy.totr
 import scala.io.StdIn
 
 /**
-  * Created by wangsenyuan on 09/12/2016.
-  */
+ * Created by wangsenyuan on 09/12/2016.
+ */
 object Main {
 
   def main(args: Array[String]): Unit = {
@@ -16,14 +16,14 @@ object Main {
     val mapping = letters.zip(m).flatMap {
       case (a, b) =>
         List(a -> b, a.toUpper -> b.toUpper)
-    } toMap
+    }.toMap
 
     while (t > 0) {
       t -= 1
       val line = StdIn.readLine()
       val translation = line.map {
         case '_' => ' '
-        case letter if (letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z') => mapping(letter)
+        case letter: Char if (letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z') => mapping(letter)
         case a => a
       }
 

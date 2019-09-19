@@ -3,8 +3,8 @@ package codechef.easy.fatchef
 import scala.io.StdIn
 
 /**
-  * Created by wangsenyuan on 24/03/2017.
-  */
+ * Created by wangsenyuan on 24/03/2017.
+ */
 object Main {
 
   val MOD = 1000000009
@@ -14,7 +14,7 @@ object Main {
     val n = line(0)
     val m = line(1)
 
-    val colors = Array.fill(n)('\0')
+    val colors = Array.fill(n)('\n')
 
     var i = 0
     while (i < m) {
@@ -27,7 +27,7 @@ object Main {
     var prev = -1
     i = 0
     while (i < n) {
-      if (colors(i) != '\0') {
+      if (colors(i) != '\n') {
         if (prev > -1 && colors(i) != colors(prev)) {
           ans = (ans * (i - prev)) % MOD
         }

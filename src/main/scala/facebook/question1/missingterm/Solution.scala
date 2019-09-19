@@ -1,10 +1,12 @@
 package facebook.question1.missingterm
 
+import scala.io.StdIn
+
 object Solution {
 
   def main(args: Array[String]) {
-    val n = readLine.toInt
-    val xs = readLine.split("\\s+").map(_.toInt)
+    val n = StdIn.readInt()
+    val xs = StdIn.readLine().split("\\s+").map(_.toInt)
 
     val a = xs(0)
     val b = xs(1)

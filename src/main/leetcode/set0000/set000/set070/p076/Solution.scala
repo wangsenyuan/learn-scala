@@ -4,7 +4,7 @@ import scala.collection.mutable
 
 object Solution {
   def minWindow(s: String, t: String): String = {
-    val cnt = t.groupBy(identity).mapValues(_.length).withDefaultValue(0)
+    val cnt = t.groupBy(identity).mapValues(_.length)
     val count = mutable.Map.empty[Char, Int]
 
     def hasMore(c: Char): Boolean = {

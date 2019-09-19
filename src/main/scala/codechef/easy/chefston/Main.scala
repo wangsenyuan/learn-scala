@@ -3,8 +3,8 @@ package codechef.easy.chefston
 import scala.io.StdIn
 
 /**
-  * Created by wangsenyuan on 22/12/2016.
-  */
+ * Created by wangsenyuan on 22/12/2016.
+ */
 object Main {
 
   def main(args: Array[String]): Unit = {
@@ -23,7 +23,7 @@ object Main {
       val cs = as.zip(bs).map {
         case (a, b) => k / a * b
       }
-      val res = cs max
+      val res = cs.max
 
       println(res)
     }

@@ -1,17 +1,18 @@
 package pat.problems.p1003
 
+import scala.io.StdIn
 import scala.language.postfixOps
 
 object App extends App {
 
-  val firstLine = readLine
+  val firstLine = StdIn.readLine
   val nmc1c2 = firstLine.split(" ")
   val n = nmc1c2(0) toInt
   val m = nmc1c2(1) toInt
   val c1 = nmc1c2(2) toInt
   val c2 = nmc1c2(3) toInt
 
-  val secondLine = readLine
+  val secondLine = StdIn.readLine
   val mrcs = secondLine.split(" ").map(_ toInt)
 
   val g = new Array[Array[Int]](n)
@@ -23,7 +24,7 @@ object App extends App {
   }
 
   for (i <- 0 until m) {
-    val line = readLine
+    val line = StdIn.readLine
     val nmd = line.split(" ").map(_ toInt)
     val n = nmd(0)
     val m = nmd(1)
@@ -39,6 +40,7 @@ object App extends App {
 }
 
 class Alg(g: Array[Array[Int]], mrcs: Array[Int], n: Int, start: Int, end: Int) {
+
   case class E(v: Int, w: Int, var d: Int = Int.MaxValue) {
     var index: Int = -1
     var sc = 0

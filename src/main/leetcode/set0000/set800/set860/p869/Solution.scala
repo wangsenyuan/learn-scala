@@ -10,8 +10,8 @@ object Solution {
       ps += x
       x <<= 1
     }
-    val ns = ps.map(_.toString.toCharArray.groupBy(identity).mapValues(_.size))
-    val num = N.toString.toCharArray.groupBy(identity).mapValues(_.size)
+    val ns = ps.map(_.toString.toCharArray.groupBy(identity).view.mapValues(_.size).toMap)
+    val num = N.toString.toCharArray.groupBy(identity).view.mapValues(_.size).toMap
     var i = 0
     while (i < ns.length && !mapEquals(num, ns(i))) {
       i += 1

@@ -1,5 +1,7 @@
 package problems
 
+import scala.language.postfixOps
+
 object P39 {
 
   import P31._
@@ -18,5 +20,9 @@ object P39 {
   }
 
   def listPrimesinRange(r: Range): List[Int] =
-    primes dropWhile { _ < r.head } takeWhile { _ <= r.last } toList
+    primes dropWhile {
+      _ < r.head
+    } takeWhile {
+      _ <= r.last
+    } toList
 }

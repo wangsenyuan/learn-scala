@@ -1,10 +1,11 @@
 package codechef.easy.stdytab
 
 import scala.io.StdIn
+import scala.language.postfixOps
 
 /**
-  * Created by wangsenyuan on 04/07/2017.
-  */
+ * Created by wangsenyuan on 04/07/2017.
+ */
 object Main {
 
   val MOD = 1000000000

@@ -22,7 +22,7 @@ object C extends App with FileOp {
 
     dp(0)(n) = 1.0
     var k = 0
-    for{
+    for {
       r <- 0 until m
     } {
       for {
@@ -35,7 +35,7 @@ object C extends App with FileOp {
       k = (k + 1) % 2
     }
 
-    val i = (x * n / 1000000) toInt
+    val i = (x * n / 1000000).toInt
 
     sa(t - 1) = f"Case #$t: ${dp(k)(i)}%.6f\n"
 

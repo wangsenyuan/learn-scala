@@ -3,7 +3,7 @@ package set0000.set300.set350.p350
 
 object Solution {
   def intersect1(nums1: Array[Int], nums2: Array[Int]): Array[Int] = {
-    var cnt = nums1.groupBy(identity).mapValues(_.size)
+    var cnt = nums1.groupBy(identity).view.mapValues(_.size).toMap
     var res = List.empty[Int]
     nums2.foreach(x => {
       if (cnt.contains(x) && cnt(x) > 0) {

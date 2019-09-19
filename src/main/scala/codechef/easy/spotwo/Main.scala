@@ -1,10 +1,11 @@
 package codechef.easy.spotwo
 
 import scala.io.StdIn
+import scala.language.postfixOps
 
 /**
-  * Created by wangsenyuan on 16/02/2017.
-  */
+ * Created by wangsenyuan on 16/02/2017.
+ */
 object Main {
 
   val M = 1000000007L

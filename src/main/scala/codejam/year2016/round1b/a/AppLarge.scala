@@ -1,10 +1,11 @@
 package codejam.year2016.round1b.a
 
 import scala.io.StdIn
+import scala.language.postfixOps
 
 /**
-  * Created by wangsenyuan on 5/5/16.
-  */
+ * Created by wangsenyuan on 5/5/16.
+ */
 object AppLarge extends App {
 
   val T = StdIn.readLine().toInt
@@ -37,8 +38,8 @@ object AppLarge extends App {
 
   def removeNum(m: Map[Char, Int], num: Int, cnt: Int): Map[Char, Int] = {
     val name = names(num)
-    val g = name.groupBy(c => c).mapValues(_.length)
-    m.map(p => {
+    val g = name.toSeq.groupBy(c => c).view.mapValues(_.length).toMap
+    m.map[Char, Int](p => {
       val (k, x) = p
       g.get(k) match {
         case None => p
@@ -66,7 +67,7 @@ object AppLarge extends App {
     i <- 1 to T
   } {
     val line = StdIn.readLine()
-    val m = line.groupBy(c => c).mapValues(_.length)
+    val m = line.groupBy(c => c).view.mapValues(_.length).toMap
     val r = play(m, uniqueWordList, Nil).mkString
     println(s"Case #$i: $r")
   }

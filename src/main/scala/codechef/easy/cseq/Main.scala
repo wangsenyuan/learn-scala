@@ -1,10 +1,11 @@
 package codechef.easy.cseq
 
 import scala.io.StdIn
+import scala.language.postfixOps
 
 /**
-  * Created by senyuanwang on 2017/4/5.
-  */
+ * Created by senyuanwang on 2017/4/5.
+ */
 object Main {
 
   val MOD = 1000003

@@ -3,8 +3,8 @@ package set0000.set300.set350.p358
 import scala.annotation.tailrec
 
 /**
-  * Created by wangsenyuan on 28/11/2016.
-  */
+ * Created by wangsenyuan on 28/11/2016.
+ */
 object App {
 
   def main(args: Array[String]): Unit = {
@@ -14,7 +14,7 @@ object App {
 
   def rearrangeString(str: String, k: Int): String = {
     val words = str.groupBy(identity).mapValues(_.size).toVector.sortBy(_._2).reverse
-    val res = Array.fill(str.length)('\0')
+    val res = Array.fill(str.length)('\n')
 
     @tailrec
     def fillWord(ch: Char, count: Int, cycles: Int, index: Int, i: Int): Option[(Int, Int)] = {

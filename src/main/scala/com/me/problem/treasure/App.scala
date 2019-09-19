@@ -1,15 +1,16 @@
 package com.me.problem.treasure
 
-import scala.collection.mutable.ListBuffer
-import scala.collection.mutable.Queue
+import scala.collection.mutable.{ListBuffer, Queue}
+import scala.io.StdIn
+import scala.language.postfixOps
 
 object App extends App {
 
   var count = 1
-  val tl = readLine
+  val tl = StdIn.readLine()
   if (tl != null) {
     val t = tl toInt
-    var knl = readLine
+    var knl = StdIn.readLine()
     while (knl != null) {
       val kn = knl split (" ")
       val k = kn(0) toInt
@@ -17,7 +18,7 @@ object App extends App {
 
       var keys: Map[Int, Int] = Map()
 
-      val startKs = readLine().split(" ")
+      val startKs = StdIn.readLine().split(" ")
 
       for (i <- 0 until k) {
         val tp = startKs(i) toInt
@@ -33,7 +34,7 @@ object App extends App {
 
       val clb: ListBuffer[C] = new ListBuffer()
       for (i <- 1 to n) {
-        val l = readLine
+        val l = StdIn.readLine()
         val xs = l.split(" ")
         val kToOpen = (xs(0) toInt)
         val c = new C(i, kToOpen)
@@ -76,6 +77,7 @@ object App extends App {
       }
 
       val totalCount = cl.size
+
       def find(cl: List[C], path: List[C], keys: Map[Int, Int]): List[C] = {
 
         cl foreach (_.visited = false)
@@ -93,7 +95,7 @@ object App extends App {
             }
 
             if (queueToProcess.size == 0) {
-              val notProcessedCount = (0 /: cl)(
+              val notProcessedCount = (0 /: cl) (
                 (count, c) => {
                   if (c.visited) {
                     count
@@ -183,7 +185,7 @@ object App extends App {
       }
 
       count += 1
-      knl = readLine
+      knl = StdIn.readLine()
     }
 
   }

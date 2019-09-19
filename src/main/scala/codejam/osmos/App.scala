@@ -1,14 +1,17 @@
 package codejam.osmos
 
+import scala.io.StdIn
+
 object App extends App {
 
-  val T = readLine.toInt
+  val T = StdIn.readLine.toInt
+
   def process(t: Int): Unit = {
     if (t <= T) {
-      val an = readLine.split("\\s+").map(_.toInt)
+      val an = StdIn.readLine.split("\\s+").map(_.toInt)
       val a = an(0)
       val n = an(1)
-      val xs = readLine.split("\\s+").map(_.toInt).sorted
+      val xs = StdIn.readLine.split("\\s+").map(_.toInt).sorted
 
       def absorb(a: Int, idx: Int, cnt: Int): Int =
         if (idx >= n) cnt
@@ -44,5 +47,6 @@ object App extends App {
       process(t + 1)
     }
   }
+
   process(1)
 }

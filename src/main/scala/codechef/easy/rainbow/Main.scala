@@ -3,8 +3,8 @@ package codechef.easy.rainbow
 import scala.io.StdIn
 
 /**
-  * Created by senyuanwang on 2017/6/29.
-  */
+ * Created by senyuanwang on 2017/6/29.
+ */
 object Main {
 
   def readGrid(n: Int) = {
@@ -22,7 +22,7 @@ object Main {
     val n = StdIn.readInt()
     val grid = readGrid(n)
 
-    val colors = grid.map(row => row.groupBy(identity).mapValues(_.size))
+    val colors = grid.map(row => row.groupBy(identity).view.mapValues(_.size).toMap)
     val nodes = (0 until n).toList
     val removed = Array.fill(n)(false)
 

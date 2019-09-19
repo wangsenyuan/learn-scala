@@ -1,6 +1,8 @@
 package com.me.problem.fairandsqure
 
 import scala.collection.mutable.ListBuffer
+import scala.io.StdIn
+import scala.language.postfixOps
 
 object FairAndSquareGen extends App {
 
@@ -72,17 +74,17 @@ object FairAndSquareGen extends App {
     })
   }
 
-  var tl = readLine
+  var tl = StdIn.readLine
   if (tl != null) {
     val t = tl toInt
 
     for (i <- 0 until t) {
-      val line = readLine
+      val line = StdIn.readLine
       val nm = line.split(" ")
       val n = nm(0) toLong
       val m = nm(1) toLong
 
-      val count = (0 /: rt)((c, p) => {
+      val count = (0 /: rt) ((c, p) => {
         if (p >= n && p <= m) {
           c + 1
         } else {

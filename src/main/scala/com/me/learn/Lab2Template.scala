@@ -32,7 +32,7 @@ object Lab2Template extends App {
 
   def isValid(l: Long): Boolean = sumDigits(doubleSecond(toDigits(l).reverse)) % 10 == 0
 
-  def numValid(list: List[Long]): Long = list filter (isValid) map (_ => 1L) sum
+  def numValid(list: List[Long]): Long = list.filter(isValid).map(x => 1L).sum
 
   def creditcards: List[Long] = List(4716347184862961L, 4532899082537349L,
     4485429517622493L, 4320635998241421L, 4929778869082405L, 5256283618614517L,

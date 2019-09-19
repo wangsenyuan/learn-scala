@@ -2,8 +2,8 @@ package set0000.set300.set340.p347
 
 
 /**
-  * Created by wangsenyuan on 5/3/16.
-  */
+ * Created by wangsenyuan on 5/3/16.
+ */
 object Solution extends App {
 
   def topKFrequent1(nums: Array[Int], k: Int): List[Int] = {
@@ -14,7 +14,7 @@ object Solution extends App {
   import scala.collection.mutable
 
   def topKFrequent(nums: Array[Int], k: Int): List[Int] = {
-    val cnt = nums.groupBy(identity).mapValues(_.size)
+    val cnt = nums.groupBy(identity).view.mapValues(_.size)
     val que = new mutable.PriorityQueue[Int]()(
       Ordering.by(cnt).reverse
     )
@@ -28,6 +28,6 @@ object Solution extends App {
       }
     }
 
-    que.dequeueAll
+    que.dequeueAll.toList
   }
 }

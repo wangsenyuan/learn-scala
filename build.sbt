@@ -2,9 +2,9 @@ import sbt.Keys._
 
 name := "ALG-S"
 
-scalaVersion := "2.12.4"
+scalaVersion := "2.13.0"
 
-scalaVersion in ThisBuild := "2.12.4"
+scalaVersion in ThisBuild := "2.13.0"
 
 autoScalaLibrary := false
 
@@ -16,16 +16,14 @@ autoScalaLibrary := false
 //resolvers += Classpaths.typesafeResolver
 
 libraryDependencies ++= List(
-  "org.scalactic" %% "scalactic" % "3.0.1",
-  "org.scalatest" %% "scalatest" % "3.0.1" % "test",
+  "org.scalactic" %% "scalactic" % "3.0.8",
+  "org.scalatest" %% "scalatest" % "3.0.8" % "test",
   "com.novocode" % "junit-interface" % "0.11" % "test",
-  "org.scalaz" %% "scalaz-core" % "7.2.8",
-  //"org.scalaz" %% "scalaz-effect" % "7.2.0",
-  //"org.scalaz" %% "scalaz-typelevel" % "7.2.0",
-  "org.scalaz" %% "scalaz-scalacheck-binding" % "7.2.8" % "test"
+  "org.scalaz" %% "scalaz-core" % "7.3.0-M31",
+  "org.scalaz" %% "scalaz-scalacheck-binding" % "7.3.0-M31" % "test",
+  "com.typesafe.play" %% "play-json" % "2.8.0-M6"
 )
 
-libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.0"
 
 unmanagedSourceDirectories in Compile += baseDirectory(_ / "src/main/pat").value
 unmanagedSourceDirectories in Compile += baseDirectory(_ / "src/main/s99").value

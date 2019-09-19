@@ -2,10 +2,11 @@ package codechef.easy.rbtree
 
 import scala.annotation.tailrec
 import scala.io.StdIn
+import scala.language.postfixOps
 
 /**
-  * Created by wangsenyuan on 28/03/2017.
-  */
+ * Created by wangsenyuan on 28/03/2017.
+ */
 object Main {
 
 

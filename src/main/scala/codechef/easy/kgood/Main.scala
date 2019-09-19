@@ -3,8 +3,8 @@ package codechef.easy.kgood
 import scala.io.StdIn
 
 /**
-  * Created by wangsenyuan on 02/04/2017.
-  */
+ * Created by wangsenyuan on 02/04/2017.
+ */
 object Main {
 
   def binarySearch(xs: Array[Int], x: Int): Int = {
@@ -24,7 +24,7 @@ object Main {
   def solve() = {
     val line = StdIn.readLine().split("\\s+")
     val str = line(0)
-    val k = line(1) toInt
+    val k = line(1).toInt
 
     val n = str.length
     val count = Array.fill(26)(0)

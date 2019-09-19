@@ -3,8 +3,8 @@ package codechef.easy.hdeliver
 import scala.io.StdIn
 
 /**
-  * Created by wangsenyuan on 27/02/2017.
-  */
+ * Created by wangsenyuan on 27/02/2017.
+ */
 object Main {
 
   def main(args: Array[String]): Unit = {
@@ -40,7 +40,7 @@ object Main {
   }
 
   class UF(n: Int) {
-    val parent = (0 until n) toArray
+    val parent = (0 until n).toArray
     val mass = Array.fill(n)(1)
 
     def find(x: Int): Int = {

@@ -1,6 +1,8 @@
 package com.me.problem.fairandsqure
 
 import scala.collection.mutable.ListBuffer
+import scala.io.StdIn
+import scala.language.postfixOps
 
 object App2 extends App {
 
@@ -40,10 +42,10 @@ object App2 extends App {
         (true, List(x))
       } else {
         val lh = ListBuffer.empty[X]
-        var checkpoint = if(even) half else half + 1
+        var checkpoint = if (even) half else half + 1
         if (p > checkpoint) {
           //only one possibility left
-          val distance = if(even) (p - checkpoint - 1) else (p - checkpoint)
+          val distance = if (even) (p - checkpoint - 1) else (p - checkpoint)
           var tempNode = x
           while (tempNode.height != checkpoint) {
             tempNode = tempNode.parent
@@ -109,7 +111,7 @@ object App2 extends App {
 
     }
   }
-  
+
 
   def func(d: Int): List[List[Int]] = {
     if (d == 1) {
@@ -140,9 +142,9 @@ object App2 extends App {
 
   def sqaure(as: List[Int]): String = {
     val n = as.size
-    
+
     val bs = ListBuffer.empty[Int]
-    
+
     for (k <- 0 until n) {
       val is = 0
       val ie = k
@@ -164,47 +166,47 @@ object App2 extends App {
     }
     bs.mkString("")
   }
-  
+
   val got = ListBuffer.empty[String]
-//  val got = func(10)
-//  got foreach (l => println(l.mkString("")))
-  for(i <- 1 until 51) {
+  //  val got = func(10)
+  //  got foreach (l => println(l.mkString("")))
+  for (i <- 1 until 51) {
     val rt = func(i)
     rt.foreach(lx => {
       got += sqaure(lx)
     })
   }
-  
+
   got foreach println
-  
+
   //if -1 for s1 < s2, 0 for s1 == s2, 1 for s1 > s2
   def compareStr(s1: String, s2: String): Int = {
-    if(s1.length() < s2.length()) {
+    if (s1.length() < s2.length()) {
       -1
-    } else if(s1.length() > s2.length()) {
+    } else if (s1.length() > s2.length()) {
       1
     } else {
       s1.compareTo(s2)
     }
   }
-  
-  var tl = readLine
+
+  var tl = StdIn.readLine
   if (tl != null) {
     val t = tl toInt
 
     for (i <- 0 until t) {
-      val line = readLine
+      val line = StdIn.readLine
       val nm = line.split(" ")
       val n = nm(0)
       val m = nm(1)
 
-      val count = (0 /: got)((c, s) => {
+      val count = (0 /: got) ((c, s) => {
         val n1 = compareStr(n, s)
-        if(n1 > 0) {
+        if (n1 > 0) {
           c
         } else {
           val m1 = compareStr(s, m)
-          if(m1 > 0) {
+          if (m1 > 0) {
             c
           } else {
             c + 1
@@ -220,26 +222,32 @@ object App2 extends App {
 
 class X(val value: Int, val height: Int) {
   var _0: X = _
+
   def set0(x: X) = x match {
     case null => _0 = null
     case _ =>
       _0 = x
       x.parent = this
   }
+
   var _1: X = _
+
   def set1(x: X) = x match {
     case null => _1 = null
     case _ =>
       _1 = x
       x.parent = this
   }
+
   var _2: X = _
+
   def set2(x: X) = x match {
     case null => _2 = null
     case _ =>
       _2 = x
       x.parent = this
   }
+
   var parent: X = _
 
   def toList(): List[Int] = {

@@ -3,8 +3,8 @@ package codejam.year2016.round1b.a
 import scala.io.StdIn
 
 /**
-  * Created by wangsenyuan on 5/5/16.
-  */
+ * Created by wangsenyuan on 5/5/16.
+ */
 object AppSmall extends App {
 
   val numbers = (0 to 9).toList
@@ -72,7 +72,7 @@ object AppSmall extends App {
     i <- 1 to T
   } {
     val line = StdIn.readLine()
-    val m = line.groupBy(c => c).mapValues(_.length)
+    val m = line.toSeq.groupBy(c => c).view.mapValues(_.length).toMap
     val r = play(m, -1).get.mkString
     println(s"Case #$i: $r")
   }
