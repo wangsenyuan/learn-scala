@@ -13,12 +13,8 @@ object Solution {
   def isCompleteTree(root: TreeNode): Boolean = {
     if (root == null) {
       true
-    } else if (root.left == null && root.right == null) {
-      true
     } else {
-      val a = isCompleteTree(root.left)
-      val b = isCompleteTree(root.right)
-      if (!a || !b) {
+      if (!isCompleteTree(root.left) || !isCompleteTree(root.right)) {
         false
       } else {
         // a and b are both complete
