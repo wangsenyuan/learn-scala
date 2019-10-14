@@ -2,7 +2,7 @@ package set0000.set900.set990.p996;
 
 import java.util.Arrays;
 
-public class Solution {
+public class Solution1 {
     int count = 0;
     int[] buf = new int[12];
 
@@ -49,7 +49,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         System.out.println(solution.numSquarefulPerms(new int[] {0, 0, 0, 1, 1, 1}));
     }
 }
