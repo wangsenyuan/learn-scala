@@ -36,8 +36,7 @@ object Solution {
               if (less || x < d) {
                 res += pow(m - i - 1)
               } else {
-                res += N % pow(m - i - 1)
-                res += 1
+                res += N % pow(m - i - 1) + 1
               }
             } else {
               res += dfs(i + 1, less || x < d, flag | (1 << x))
