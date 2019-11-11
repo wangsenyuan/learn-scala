@@ -52,7 +52,7 @@ object Solution {
         i += 1
       }
 
-      buf.reduce((a, b) => a.union(b))
+      buf.reduce(_.union(_))
     }
 
     val r = parse(0, n)
