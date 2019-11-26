@@ -6,6 +6,36 @@ object Solution {
   def numSmallerByFrequency(queries: Array[String], words: Array[String]): Array[Int] = {
     val qs = queries.map(f)
     val ws = words.map(f)
+
+    val cnt = Array.ofDim[Int](12)
+
+    for {
+      w <- ws
+    } {
+      cnt(w) += 1
+    }
+
+    for {
+      i <- 10 to 1 by -1
+    } {
+      cnt(i) += cnt(i + 1)
+    }
+
+    val ans = Array.ofDim[Int](qs.length)
+
+    for {
+      i <- 0 until qs.length
+    } {
+      val q = qs(i)
+      ans(i) = cnt(q + 1)
+    }
+    ans
+  }
+
+
+  def numSmallerByFrequency1(queries: Array[String], words: Array[String]): Array[Int] = {
+    val qs = queries.map(f)
+    val ws = words.map(f)
     Sorting.quickSort(ws)
 
     val ans = Array.ofDim[Int](qs.length)
