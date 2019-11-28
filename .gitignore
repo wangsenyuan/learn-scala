@@ -29,3 +29,8 @@ project/plugins/project/
 .ensime_cache/
 .ensime
 *.out
+
+.metals/
+project/.bloop/
+.bloop/
+.vscode/
