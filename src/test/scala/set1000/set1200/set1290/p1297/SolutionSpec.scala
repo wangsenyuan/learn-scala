@@ -1,0 +1,17 @@
+package set1000.set1200.set1290.p1297
+
+import org.scalatest.{FlatSpec, Matchers}
+
+class SolutionSpec extends FlatSpec with Matchers {
+  "example one" should "work" in {
+    val s = "aababcaab"
+    val res = Solution.maxFreq(s, 2, 3, 4)
+    res should be(2)
+  }
+
+  "example two" should "work" in {
+    val s = "jrjfprvcrsdgbkofpiqoqwrehkmpaemkjjifezufhmlbyxcvgguhxaseqlsbbleyjncnfkawfesnllfqhburxwhbrvxwdjmccamvszppefzideuwtzurumdinxdahddtowaaygbrikdcmhobjczlsbepfujixslienuskhceclcjlgiopdowtcelduhvbxqqcrnaufapsmniuitftwrvpxuwpfrmdspnwocpqmverbykwbolokvjshibeasmduhfsyxqemsbaybbdudlygihqtvxqygxbvotxdeywigrqrbsxiikcxbwrewhzissnozdzeybalfnevstephqwxhzaydgjnezvutbsxkpwejizsupqvyqjimmcbppueqhljpglqwarkcmslxqxglzlmaijpxerxtignyxdtejpiicdnnlltgwhesozucmrdxfhxudlyctzktrxgwqzbzclwcxcgrarixfetimfvoggexohhyxzhaqiusngcdslbrsjubybtprtryvqofuqdcblsnttsrhepeigkxxaxnozvfnoutnlaryrjbhszlhwvlbpkhxnsmwtwjhrkdkquudxktouuobaakzqdmfqkdgrzjfpnvbqdvmiyrhafchksrgpswxiavkxjpdiragklidudknxrovtwunyyzdtxaxxgwhimjjpwjrhulivmihlayvuvguchaizgewlkpvokrgrmnfjwsxrqsteyhyqnmnzhfdvootznekjsafaktsnfetqbejezxmbrfksoxiasbgwuyhbircmtgsiaoszsurcpcrkzlyeqwseyiezhbqibztaxvqikxcysnugdppgkwnmqqltmixlvxuwbtfvfzzxmpdftjmzepijrufdoehmdvfjtbwyuwjdbjgymugbzrevzmvgtxuhredbslmltokttggyxahikvkauqkrfxyzvoqpkovuhzssrkmpwuannshibomvxerggmogpanrlowemdv"
+    val res = Solution.maxFreq(s, 3, 4, 4)
+    res should be(1)
+  }
+}
