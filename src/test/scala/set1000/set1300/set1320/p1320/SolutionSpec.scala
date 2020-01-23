@@ -22,4 +22,9 @@ class SolutionSpec extends FlatSpec with Matchers {
     val res = Solution.minimumDistance("YEAR")
     res should be(7)
   }
+
+  "example five" should "work" in {
+    val res = Solution.minimumDistance("KHXKW")
+    res should be(7)
+  }
 }
