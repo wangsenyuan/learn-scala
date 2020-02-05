@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "codechef.easy.section2.prmprt.Main",
+            "projectName": "ALG_4c0b6bfc"
+        },
+        {
             "name": "Java",
             "type": "java",
             "request": "launch",
