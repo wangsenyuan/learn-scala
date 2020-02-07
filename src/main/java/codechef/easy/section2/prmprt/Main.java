@@ -78,6 +78,21 @@ public class Main {
             return 0;
         }
 
+        if (u % v == 0 && factors[v] == v) {
+            return 1;
+        }
+
+        if (v % u == 0 && factors[u] == u) {
+            return 1;
+        }
+
+        while (u > 1) {
+            if (v % factors[u] == 0) {
+                return 2;
+            }
+            u /= factors[u];
+        }
+
         int x = factors[u];
         int y = factors[v];
 

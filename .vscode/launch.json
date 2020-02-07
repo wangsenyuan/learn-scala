@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "niuke.p2.Solution",
+            "projectName": "ALG_4c0b6bfc"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "niuke.p1.Solution",
+            "projectName": "ALG_4c0b6bfc"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "niuke.p0.Solution",
+            "projectName": "ALG_4c0b6bfc"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
             "mainClass": "codechef.easy.section2.prmprt.Main",
