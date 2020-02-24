@@ -1,9 +1,44 @@
 package set1000.set1300.set1350.p1354
 
+import scala.collection.mutable
 import scala.util.Sorting
 
 object Solution {
   def isPossible(target: Array[Int]): Boolean = {
+    val n = target.length
+    if (n == 1) {
+      target(0) == 1
+    } else {
+      var sum = target.sum
+
+      val pq = mutable.PriorityQueue.empty[Int]
+
+      pq ++= target
+
+      var ok = true
+
+      while (!pq.isEmpty && pq.head > 1 && ok) {
+        val cur = pq.dequeue()
+
+        val rest = sum - cur
+        if (rest == 1) {
+          pq.dequeueAll
+        } else {
+          val x = cur % rest
+          if (x < 1 || x == cur) {
+            ok = false
+          } else {
+            sum = sum - cur + x
+            pq.enqueue(x)
+          }
+        }
+      }
+
+      ok
+    }
+  }
+
+  def isPossible1(target: Array[Int]): Boolean = {
     val n = target.length
     if (n == 1) {
       target(0) == 1
