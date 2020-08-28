@@ -76,7 +76,7 @@ public class Main {
                 int x = reader.nextInt();
 
                 Map.Entry<Integer, Integer> entry = appears[x].floorEntry(l);
-                if (entry != null && entry.getValue() >= r) {
+                if (entry != null && entry.getValue() >= l) {
                     l = entry.getKey();
                 }
 
