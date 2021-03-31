@@ -3,7 +3,10 @@ package codechef.easy.section1.unicolor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class Main {
     static class FastReader {
@@ -77,30 +80,26 @@ public class Main {
 
     public static int solve(int C, int N, int M, List<Event> E) {
         Collections.sort(E);
-        Set<Integer> active = new HashSet<>();
 
         UF uf = new UF(C);
-
+        int first = -1;
         int prev = 1;
         int free = 0;
         int level = 0;
         for (Event cur : E) {
             if (cur.type < 0) {
-                active.remove(cur.club);
                 level--;
                 prev = cur.pos;
                 continue;
             }
             if (level == 0) {
                 free += cur.pos - prev;
+                first = cur.club;
+            } else {
+                uf.union(first, cur.club);
             }
+
             level++;
-            for (Integer x : active) {
-                uf.union(x, cur.club);
-            }
-
-            active.add(cur.club);
-
             prev = cur.pos;
         }
 
@@ -192,8 +191,5 @@ public class Main {
             array[b] = a;
             size--;
         }
-
     }
-
-
 }
