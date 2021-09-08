@@ -115,6 +115,9 @@ public class Main {
             } else {
                 col--;
             }
+            if (cnt >= 10000) {
+                return cnt;
+            }
         }
         return cnt;
     }
