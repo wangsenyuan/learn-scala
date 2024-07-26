@@ -34,3 +34,5 @@ project/plugins/project/
 project/.bloop/
 .bloop/
 .vscode/
+
+.bsp/
