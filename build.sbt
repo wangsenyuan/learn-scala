@@ -2,18 +2,9 @@ import sbt.Keys._
 
 name := "ALG-S"
 
-scalaVersion := "2.13.0"
-
-scalaVersion in ThisBuild := "2.13.0"
+scalaVersion := "2.13.14"
 
 autoScalaLibrary := false
-
-/* ivyScala := ivyScala.value map {
-  _.copy(overrideScalaVersion = true)
-} */
-
-//resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
-//resolvers += Classpaths.typesafeResolver
 
 libraryDependencies ++= List(
   "org.scalactic" %% "scalactic" % "3.0.8",
@@ -23,8 +14,6 @@ libraryDependencies ++= List(
   "org.scalaz" %% "scalaz-scalacheck-binding" % "7.3.0-M31" % "test",
   "com.typesafe.play" %% "play-json" % "2.8.0-M6"
 )
-
-
 unmanagedSourceDirectories in Compile += baseDirectory(_ / "src/main/pat").value
 unmanagedSourceDirectories in Compile += baseDirectory(_ / "src/main/s99").value
 unmanagedSourceDirectories in Compile += baseDirectory(_ / "src/test/s99").value
@@ -41,5 +30,3 @@ retrieveManaged := true
 
 scalacOptions += "-feature"
 scalacOptions += "-target:jvm-1.8"
-
-//initialCommands in console := "import scalaz._, Scalaz._"
