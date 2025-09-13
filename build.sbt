@@ -30,7 +30,6 @@ retrieveManaged := true
 
 scalacOptions ++= Seq(
   "-feature",
-  "-java-output-version:21",
   "-deprecation",
   "-unchecked",
   "-source:3.4-migration",
